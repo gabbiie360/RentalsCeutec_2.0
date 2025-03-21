@@ -1,0 +1,1351 @@
+.car-rentals-section {
+    position: relative;
+    z-index: 9;
+
+    &::before {
+        @include before;
+        background-image: url(../../assets/img/car/car-bg.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: -1;
+        height: 58.2%;
+    }
+}
+
+.car-rentals-wrapper {
+    padding: 0 160px;
+    position: relative;
+
+    @include breakpoint (max-xl4){
+        padding: 0 30px;
+    }
+
+    &.style-2 {
+        padding: 0;
+
+        .array-button {
+            .array-prev {
+                top: 50%;
+                left: -40px;
+                z-index: 9;
+            }
+        
+            .array-next {
+                top: 50%;
+                right: -40px;
+                z-index: 9;
+            }
+    
+        }
+    }
+
+    .array-button {
+        opacity: 0;
+        visibility: hidden;
+        @include transition;
+
+        .array-prev, .array-next {
+            width: 30px;
+            height: 30px;
+            border: 1px solid $text-color;
+            font-size: 12px;
+            border-radius: 50%;
+            line-height: 30px;
+            color: $text-color;
+            background-color: transparent;
+    
+            &:hover {
+                border: 1px solid $theme-color;
+                background-color: transparent;
+                color: $theme-color;
+            }
+        }
+    
+        .array-prev {
+            position: absolute;
+            top: 55%;
+            left: 6%;
+            transform: translateY(-50%);
+        }
+    
+        .array-next {
+            position: absolute;
+            top: 55%;
+            right: 6%;
+            transform: translateY(-50%);
+        }
+    
+        &:hover {
+            opacity: 1;
+            visibility: visible;
+        }
+
+    }
+
+    &:hover {
+        .array-button {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+.car-rentals-items {
+    margin-top: 30px;
+
+    .car-image {
+        position: relative;
+        overflow: hidden;
+
+        img {
+            @include imgw;
+            border-radius: 10px 10px 0 0;
+            @include transition;
+        }
+    }
+
+    .car-content {
+        padding: 25px 35px;
+        background-color: $white;
+        border-radius: 0 0 10px 10px;
+        border: 1px solid #d0d7de;
+        position: relative;
+
+        .post-cat {
+            padding: 8px 14px;
+            border-radius: 10px;
+            background-color: $theme-color-2;
+            color: $white;
+            position: absolute;
+            right: 30px;
+            top: -15px;
+            font-size: 14px;
+            line-height: 1.3;
+        }
+
+        .star {
+            margin-bottom: 5px;
+
+            i {
+                font-size: 14px;
+                color: $ratting-color;
+            }
+
+            span {
+                font-size: 14px;
+            }
+        }
+
+        h4 {
+            margin-bottom: 10px;
+
+            a {
+                &:hover {
+                    color: $theme-color;
+                }
+            }
+        }
+
+        h6 {
+            font-size: 14px;
+            color: $theme-color-2;
+
+            span {
+                color: $text-color;
+            }
+        }
+
+        .icon-items {
+            margin-top: 20px;
+            border-top: 1px solid $border-color;
+            padding-top: 20px;
+            @include flex;
+            gap: 70px;
+            margin-bottom: 20px;
+
+            @include breakpoint (max-xl){
+                gap: 40px;
+            }
+
+            @include breakpoint (max-md){
+                gap: 20px;
+            }
+
+            ul {
+                li {
+                    &:not(:last-child){
+                        margin-bottom: 5px;
+                    }
+                }
+            }
+        }
+
+        .theme-btn {
+            line-height: 1;
+            font-size: 15px;
+            font-weight: 400;
+            letter-spacing: 1.3px;
+        }
+    }
+
+    &:hover {
+        .car-image {
+           img {
+            transform: scale(1.1);
+           }
+        }
+    }
+}
+
+.car-service-wrapper {
+    background-color: #EDF2F5;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+
+    .shape-image {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        opacity: .1;
+    }
+
+    .service-car-image {
+        position: relative;
+        overflow: hidden;
+
+        img {
+            @include imgw;
+        }
+
+        .color-shape {
+            position: absolute;
+            bottom: -40px;
+            right: 0;
+        }
+
+        .booking-content {
+            position: absolute;
+            bottom: 50px;
+            right: 30px;
+
+            p {
+                color: $white;
+                margin-bottom: 10px;
+                text-align: right;
+            }
+
+            h3 {
+                font-size: 24px;
+
+                a {
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    .service-car-content {
+        margin-left: 40px;
+
+        @include breakpoint (max-xl){
+            margin-left: 0;
+        }
+
+        @include breakpoint (max-lg){
+            padding: 30px 35px;
+        }
+
+        @include breakpoint (max-sm){
+            padding: 30px 25px;
+        }
+
+        h2 {
+            font-size: 40px;
+
+            @include breakpoint (max-xl){
+               font-size: 32px;
+            }
+
+            @include breakpoint (max-sm){
+                font-size: 26px;
+            }
+        }
+
+        h3 {
+            font-size: 40px;
+            color: $theme-color;
+            margin-top: 20px;
+            margin-bottom: 40px;
+
+            @include breakpoint (max-sm){
+                font-size: 36px;
+                margin-bottom: 30px;
+            }
+            
+            sup {
+                margin-right: -7px;
+            }
+
+            span {
+                font-size: 18px;
+                color: $text-color;
+                font-weight: 400;
+                text-transform: initial;
+            }
+
+            .text {
+                margin-left: -10px;
+            }
+        }
+    }
+}
+
+.popular-card-items {
+   // margin-top: 30px;
+    @include flex;
+    border: 1px solid $border-color;
+    border-radius: 10px;
+
+    .content {
+        flex-basis: 50%;
+        padding-left: 30px;
+
+        h4 {
+            margin-bottom: 5px;
+
+            a {
+                &:hover {
+                    color: $theme-color;
+                }
+            }
+        }
+    }
+
+    .car-image {
+        max-width: 300px;
+        position: relative;
+        height: 180px;
+
+        img {
+            @include imgw;
+            border-radius: 0 10px 10px 0;
+            object-fit: cover;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #fefdfd 0%, rgba(254, 253, 253, 0) 100%);
+        }
+    }
+}
+
+.popular-car-text {
+    text-align: center;
+    background-color: $theme-color;
+    padding: 0 20px;
+    border-radius: 10px;
+    @include flex;
+    justify-content: space-between;
+    max-width: 630px;
+    margin: 40px auto 0;
+    padding-right: 0;
+
+    @include breakpoint (max-md){
+        flex-wrap: wrap;
+        gap: 20px;
+        text-align: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    h6 {
+        color: $white;
+        font-weight: 400;
+    }
+
+    .theme-btn {
+        background-color: $white;
+        color: $header-color;
+        padding: 14px 30px;
+        font-size: 14px;
+        margin: 2px;
+
+        &:hover {
+            color: $white;
+        }
+    }
+}
+
+.select-car-section {
+    margin-bottom: -20px;
+    position: relative;
+    z-index: 9;
+}
+
+.select-car-items {
+    margin-top: 30px;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 9;
+
+    .bg-overlay {
+        @include before;
+        background-color: rgba(12, 20, 46, 0.8);
+        z-index: 1;
+        border-radius: 10px;
+        height: 92%;
+    }
+
+    .thumb {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 92%;
+        bottom: 0;
+        right: 0;
+
+        img {
+            @include imgw;
+            border-radius: 10px;
+            //height: 148px;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .icon {
+        margin-bottom: 10px;
+        position: relative;
+        z-index: 9;
+    }
+
+    .content {
+        position: relative;
+        z-index: 9;
+
+        h5 {
+            a {
+                color: $white;
+
+                &:hover {
+                    color: $theme-color;
+                }
+            }
+        }
+
+        p {
+            font-size: 14px;
+            color: $white;
+            transform: translateY(-40px);
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+
+    .arrow-icon {
+        transition: all 0.5s ease;
+        position: absolute;
+        left: 50%;
+        bottom: -38px;
+        transform: translateX(-50%);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        background-color: $theme-color;
+        border-radius: 50%;
+        z-index: 9;
+        opacity: 0;
+        visibility: hidden;
+        color: $white;
+        @include transition;
+
+        &:hover {
+            background-color: $header-color;
+        }
+    }
+
+    &:hover {
+        &::before {
+            @include before;
+            border: 1px solid $border-color;
+            border-radius: 10px;
+            height: 92%;
+           background-image: initial;
+        }
+
+        .bg-overlay {
+            background-color: transparent;
+        }
+
+        p {
+            transition: all 0.3s ease;
+            margin: 0;
+            opacity: 1;
+            color: $text-color;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        h5 {
+            a {
+                color: $header-color;
+            }
+        }
+
+        .thumb {
+           opacity: 0;
+           visibility: hidden;
+        }
+        
+        .arrow-icon {
+            transition: all 0.5s ease;
+            bottom: -5px;
+            opacity: 1;
+            visibility: visible;
+            z-index: 99;
+        }
+    }
+}
+
+.car-sale-section {
+    .container-fluid {
+        padding: 0 170px;
+
+        @include breakpoint (max-xxxl){
+            padding: 0 50px;
+        }
+
+        @include breakpoint (max-xl){
+            padding: 0 30px;
+        }
+    }
+
+    @include breakpoint (max-xl){
+        margin-bottom: 30px;
+    }
+}
+
+.car-sale-wrapper {
+    background-color: transparent;
+    background-image: linear-gradient(90deg, #0C142E 0%, #FF3726 100%);
+    padding: 80px 170px;
+    border-radius: 10px;
+    position: relative;
+
+    @include breakpoint (max-xxl){
+       padding: 80px 70px;
+    }
+
+    @include breakpoint (max-xl){
+        padding: 70px 60px;
+    }
+
+    @include breakpoint (max-md){
+        padding: 60px 40px;
+    }
+
+    @include breakpoint (max-sm){
+        padding: 50px 30px;
+    }
+
+    .car-shape {
+        position: absolute;
+        bottom: -65px;
+        left: 0;
+
+        @include breakpoint (max-xl){
+           max-width: 550px
+        }
+
+        @include breakpoint (max-md){
+            max-width: 400px
+        }
+
+        img {
+            @include imgw;
+        }
+    }
+
+    .sale-shape {
+        position: absolute;
+        top: -40%;
+        left: -15%;
+
+        img {
+            @include imgw;
+        }
+    }
+
+    .badge-shape {
+        position: absolute;
+        bottom: 30%;
+        left: 40%;
+        z-index: 9;
+        animation: cir36 10s linear infinite;
+
+        @include breakpoint (max-xl){
+            left: 25%;
+        }
+
+        @include breakpoint (max-lg){
+            display: none;
+        }
+    }
+
+    .car-sale-content {
+        text-align: right;
+        position: relative;
+        z-index: 9;
+
+        h2 {
+            font-size: 70px;
+            color: $white;
+            font-weight: 500;
+            margin-bottom: 10px;
+
+            @include breakpoint (max-md){
+               font-size: 50px;
+            }
+
+            @include breakpoint (max-sm){
+                font-size: 40px;
+            }
+        }
+
+        h3 {
+            font-size: 24px;
+            color: $white;
+            font-weight: 400;
+            margin-bottom: 30px;
+
+            @include breakpoint (max-md){
+                font-size: 20px;
+            }
+
+            @include breakpoint (max-sm){
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+.car-slider-wrapper {
+    padding: 0 140px;
+
+    @include breakpoint (max-xxxl){
+        padding: 0 50px;
+    }
+
+    @include breakpoint (max-xl){
+        padding: 0 30px;
+    }
+
+    .car-slider-image {
+        img {
+            @include imgw;
+            border-radius: 10px;
+        }
+    }
+}
+
+.car-list-items {
+    @include flex;
+    border-radius: 10px;
+    border: 1px solid $border-color;
+    @include transition;
+    background-color: $white;
+
+    @include breakpoint (max-md){
+        flex-wrap: wrap;
+    }
+
+    .car-image {
+        max-width: 390px;
+        height: 304px;
+        flex-basis: 40%;
+        border-radius: 10px 0 0 10px;
+        position: relative;
+
+        @include breakpoint (max-md){
+           flex-basis: 100%;
+           max-width: 600px;
+        }
+
+        .post-cat {
+            padding: 8px 14px;
+            border-radius: 10px;
+            background-color: $theme-color-2;
+            color: $white;
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            font-size: 14px;
+            line-height: 1.3;
+        }
+    }
+
+    .car-content {
+        padding: 30px;
+        position: relative;
+        width: 100%;
+
+        .price {
+            background-color: $theme-color;
+            color: $white;
+            line-height: 1;
+            padding: 15px 20px;
+            border-radius: 10px;
+            position: absolute;
+            top: 30px;
+            right: 30px;
+
+            @include breakpoint (max-sm){
+                top: 0;
+                padding: 12px 16px;
+                right: 20px;
+            }
+
+            span {
+                font-weight: 400;
+            }
+        }
+
+        .star {
+            margin-bottom: 10px;
+
+            i {
+                font-size: 14px;
+                color: $ratting-color;
+            }
+
+            span {
+                font-size: 14px;
+            }
+        }
+
+        h3 {
+            margin-bottom: 15px;
+
+            a {
+                &:hover {
+                    color: $theme-color;
+                }
+            }
+        }
+
+        p {
+            padding-bottom: 25px;
+
+            @include breakpoint (max-sm){
+            padding-bottom: 20px;
+            }
+        }
+
+        .icon-items {
+            @include flex;
+            gap: 35px;
+            border-top: 1px solid $border-color;
+            padding-top: 25px;
+
+            @include breakpoint (max-sm){
+               gap: 20px;
+               flex-wrap: wrap;
+               padding: 20px;
+            }
+        }
+    }
+
+    &:hover {
+        box-shadow: 0px 10px 60px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    &.style-2 {
+        @include breakpoint (max-xl){
+            flex-wrap: wrap;
+        }
+
+        @include breakpoint (max-lg){
+            flex-wrap: initial;
+        }
+
+        @include breakpoint (max-md){
+            flex-wrap: wrap;
+        }
+
+        .car-image {
+            @include breakpoint (max-xl){
+                flex-basis: 100%;
+                max-width: 700px;
+            }
+
+            @include breakpoint (max-md){
+                max-width: 390px;
+                flex-basis: 40%;
+            }
+
+            @include breakpoint (max-md){
+                flex-basis: 100%;
+                max-width: 600px;
+            }
+        }
+    }
+}
+
+.car-list-sidebar {
+    background-color: #ecf0f4;
+    border-radius: 10px;
+
+    .title {
+        color: $white;
+        padding: 30px;
+        background-color: $theme-color-2;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .contact-form-items {
+        padding: 30px;
+
+        .form-clt {
+            .label-text {
+                font-size: 16px;
+                font-weight: 500;
+                color: $header-color;
+                text-transform: capitalize;
+                margin-bottom: 10px;
+            }
+
+            .input-group {
+                position: relative;
+
+                .form-control {
+                    width: 100%;
+                    outline: none;
+                    border: none;
+                    padding: 18px 24px;
+                    border-radius: 10px !important;
+                    color: $text-color;
+    
+                    &::placeholder {
+                        color: $text-color;
+                    }
+                }
+
+                .input-group-addon {
+                    position: absolute;
+                    top: 15px;
+                    right: 20px;
+                }
+            }
+
+            .category-oneadjust{
+                background-color: $white;
+                border-radius: 10px;
+                padding: 18px 55px 18px 24px;
+                width: 100%;
+    
+                @include breakpoint (max-xxl){
+                   width: initial;
+                }
+    
+                .nice-select{
+                    width: 100% !important;
+                    gap: 20px;
+                    font-size: 16px;
+    
+                    span {
+                        color: $text-color;
+                    }
+    
+                    &::after{
+                        border-bottom: 2px solid $text-color;
+                        border-right: 2px solid $text-color;
+                        right: -25px;
+                    }
+    
+                    .list{
+                        max-height: 15vh;
+                        background: $header-color;
+                        width: 100%;
+                        padding: 5px 8px;
+                        overflow-y: scroll;
+                        right: 0;
+                        left: 0;
+    
+                        li {
+                            color: $white;
+                            font-size: 14px;
+                            border: none;
+                        }
+                    }
+                }
+            }
+
+            .input-save {
+    
+                input {
+                    width: 27px;
+                    height: 27px;
+                    border: none;
+                    background-color: $theme-color-2;
+                    outline: none;
+                    color: $theme-color;
+                    padding: 5px;
+                    border-radius: 27px;
+                }
+    
+                label {
+                    margin-left: 10px;
+                    color: $text-color;
+                    text-transform: capitalize;
+                    font-size: 16px;
+    
+                    a {
+                        font-weight: 500;
+                        color: $header-color;
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            .input-save-items-area {
+                @include flex;
+                justify-content: space-between;
+            }
+        }
+    }
+}
+
+.car-details-wrapper {
+    .car-details-items {
+        border: 1px solid $border-color;
+        border-radius: 10px;
+
+        .car-image {
+            img {
+                @include imgw;
+                border-radius: 10px 10px 0 0;
+            }
+        }
+
+        .car-content {
+            padding: 30px;
+
+            .star {
+                margin-bottom: 10px;
+    
+                i {
+                    font-size: 14px;
+                    color: $ratting-color;
+                }
+    
+                span {
+                    font-size: 14px;
+                }
+            }
+
+            h3 {
+                font-size: 26px;
+                margin-bottom: 15px;
+            }
+
+            h6 {
+                font-size: 18px;
+                color: $theme-color-2;
+                padding-bottom: 20px;
+                border-bottom: 1px solid $border-color;
+    
+                span {
+                    color: $text-color;
+                    font-weight: 400;
+                }
+            }
+
+            .icon-details-area {
+                border-top: 1px solid $border-color;
+                padding-top: 25px;
+                border-bottom: 1px solid $border-color;
+                padding-bottom: 30px;
+
+                h4 {
+                    margin-bottom: 25px;
+                }
+
+                .icon-details-main-items {
+                    @include flex;
+                    justify-content: space-between;
+
+                    @include breakpoint (max-xl){
+                        flex-wrap: wrap;
+                        gap: 20px;
+                    }
+
+                    &:not(:last-child){
+                        margin-bottom: 20px;
+                    }
+
+                    .icon-items {
+                        @include flex;
+                        gap: 12px;
+    
+                       .icon {
+                            width: 40px;
+                            height: 40px;
+                            line-height: 40px;
+                            border-radius: 50%;
+                            background-color: #ecf0f4;
+                            text-align: center;
+                       }
+    
+                       .content {
+                            h6 {
+                                font-size: 14px;
+                                color: $header-color;
+                                border: none;
+                                padding-bottom: 0;
+                            }
+    
+                            p {
+                                text-transform: uppercase;
+                            }
+                       }
+                    }
+                }
+            }
+
+            .price-table-area {
+                margin-top: 30px;
+
+                h6 {
+                    border: none;
+                    color: $header-color;
+                    padding-bottom: 30px;
+
+                    span {
+                        color: $text-color;
+                        font-weight: 400;
+                        text-transform: initial;
+                    }
+                }
+
+                .price-table-items {
+                    padding: 16px 40px;
+                    @include flex;
+                    justify-content: space-between;
+                }
+            }
+
+            .car-video {
+                height: 470px;
+                margin-top: 30px;
+                position: relative;
+
+                @include breakpoint (max-sm){
+                    height: 250px;
+                }
+
+                .video-box {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    border-radius: 50%;
+                    text-align: center;
+                    transform: translate(-50%,-50%);
+        
+                    .video-btn {
+                        width: 85px;
+                        height: 85px;
+                        line-height: 85px;
+                        font-size: 22px;
+                        background-color: #005cb5;
+                        color: $white;
+                        display: inline-block;
+                        text-align: center;
+                        border-radius: 50%;
+        
+                        @include breakpoint (max-md){
+                            width: 70px;
+                            height: 70px;
+                            line-height: 70px;
+                        }
+        
+                        @include breakpoint (max-sm){
+                            width: 60px;
+                            height: 60px;
+                            line-height: 60px;
+                        }
+                    }
+        
+                    .ripple {
+                        &::before,&::after {
+                            box-shadow: 0 0 0 0 rgb(0, 92, 181,.8);
+                        }
+                    }
+                }
+
+                img {
+                    @include imgw;
+                    border-radius: 10px;
+                    object-fit: cover;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+
+    .car-booking-items {
+        padding: 30px;
+        border: 1px solid $border-color;
+        border-radius: 10px;
+        margin-top: 30px;
+
+        .booking-header {
+            h3 {
+                font-size: 26px;
+                margin-bottom: 5px;
+            }
+        }
+
+        .contact-form-items {
+            padding-top: 30px;
+
+            .form-clt {
+                .label-text {
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: $header-color;
+                    text-transform: capitalize;
+                    margin-bottom: 10px;
+                }
+
+                .input-group {
+                    position: relative;
+
+                    input {
+                        width: 100%;
+                        outline: none;
+                        border: none;
+                        padding: 18px 24px;
+                        border-radius: 10px !important;
+                        color: $text-color;
+                        background-color: $bg-color;
+    
+                        &::placeholder {
+                            color: $text-color;
+                        }
+                    }
+
+                    .input-group-addon {
+                        position: absolute;
+                        top: 15px;
+                        right: 20px;
+                    }
+                }
+
+                input {
+                    width: 100%;
+                    outline: none;
+                    border: none;
+                    padding: 18px 24px;
+                    border-radius: 10px;
+                    color: $text-color;
+                    background-color: $bg-color;
+
+                    &::placeholder {
+                        color: $text-color;
+                    }
+                }
+
+                .category-oneadjust{
+                    background-color: $bg-color;
+                    border-radius: 10px;
+                    padding: 18px 55px 18px 24px;
+                    width: 100%;
+        
+                    @include breakpoint (max-xxl){
+                       width: initial;
+                    }
+        
+                    .nice-select{
+                        width: 100% !important;
+                        gap: 20px;
+                        font-size: 16px;
+        
+                        span {
+                            color: $text-color;
+                        }
+        
+                        &::after{
+                            border-bottom: 2px solid $text-color;
+                            border-right: 2px solid $text-color;
+                            right: -25px;
+                        }
+        
+                        .list{
+                            max-height: 15vh;
+                            background: $header-color;
+                            width: 100%;
+                            padding: 5px 8px;
+                            overflow-y: scroll;
+                            right: 0;
+                            left: 0;
+        
+                            li {
+                                color: $white;
+                                font-size: 14px;
+                                border: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .input-save {
+    
+                input {
+                    width: 27px;
+                    height: 27px;
+                    border: none;
+                    background-color: $bg-color;
+                    outline: none;
+                    color: $theme-color;
+                    padding: 5px;
+                    border-radius: 27px;
+                }
+    
+                label {
+                    margin-left: 10px;
+                    color: $text-color;
+                    text-transform: capitalize;
+                    font-size: 16px;
+    
+                    a {
+                        font-weight: 500;
+                        color: $text-color;
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            .input-save-items-area {
+                @include flex;
+                justify-content: space-between;
+            }
+        }
+    }
+
+    .comment-reviews {
+        padding: 30px;
+        border: 1px solid $border-color;
+        border-radius: 10px;
+        margin-top: 30px;
+
+        h3 {
+            font-size: 26px;
+            margin-bottom: 30px;
+        }
+
+        .car-single-comment {
+            border-bottom: 1px solid $border-color;
+
+            @include breakpoint (max-sm){
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .content {
+                .head {
+                    .con {
+                        h5 {
+                            margin-bottom: 5px;
+                            font-weight: 600;
+                        }
+                    }
+
+                    .star {
+                        i {
+                            color: $ratting-color;
+                            font-size: 14px;
+                        }
+                    }
+                }
+
+            }
+
+            &.border-none {
+                border: none;
+            }
+        }
+    }
+}
+
+.woocommerce-notices-wrapper {
+    margin-bottom: 30px;
+    @include flex;
+    justify-content: space-between;
+  
+    @include breakpoint (max-md){
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+    }
+  
+    .product-showing {
+        font-size: 16px;
+    }
+  
+    .woocommerce-right {
+        gap: 30px;
+
+        .icon-items {
+            @include flex;
+            gap: 20px;
+
+            a {
+                color: $text-color;
+
+                &:hover {
+                    color: $header-color;
+                }
+            }
+        }
+  
+        .form-clt {
+          width: 350px;
+
+          @include breakpoint (max-xxs){
+           width: 280px;
+        }
+    
+          .nice-select {
+              padding: 18px 20px;
+              font-size: 16px;
+              text-transform: capitalize;
+              border-radius: 0;
+              background-color: $bg-color;
+
+              span {
+                color: $text-color;
+              }
+
+              &::after {
+                    right: 25px;
+                    border-bottom: 2px solid $text-color;
+                    width: 10px;
+                    height: 10px;
+                    top: 35px;
+                    border-right: 2px solid $text-color;
+              }
+          }
+       }
+    }
+  }

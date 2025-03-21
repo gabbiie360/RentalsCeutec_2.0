@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--<< Header Area >>-->
+    <head>
+        <!-- ========== Meta Tags ========== -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="pixydrops">
+        <meta name="description" content="Remons - Booking Rental HTML Template">
+        <!-- ======== Page title ============ -->
+        <title>Remons - Booking Rental HTML Template</title>
+        <!--<< Favcion >>-->
+        <link rel="shortcut icon" href="assets/img/favicon.png">
+        <!--<< Bootstrap min.css >>-->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <!--<< All Min Css >>-->
+        <link rel="stylesheet" href="assets/css/all.min.css">
+        <!--<< Animate.css >>-->
+        <link rel="stylesheet" href="assets/css/animate.css">
+        <!--<< Magnific Popup.css >>-->
+        <link rel="stylesheet" href="assets/css/magnific-popup.css">
+        <!--<< MeanMenu.css >>-->
+        <link rel="stylesheet" href="assets/css/meanmenu.css">
+        <!--<< DatePicker.css >>-->
+        <link rel="stylesheet" href="assets/css/datepickerboot.css">
+        <!--<< Swiper Bundle.css >>-->
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+        <!--<< Nice Select.css >>-->
+        <link rel="stylesheet" href="assets/css/nice-select.css">
+        <!--<< Main.css >>-->
+        <link rel="stylesheet" href="assets/css/main.css">
+    </head>
+    <body>
+
+        <!-- Preloader Start -->
+        <div id="preloader" class="preloader">
+            <div class="animation-preloader">
+                <div class="spinner">                
+                </div>
+                <div class="txt-loading">
+                    <span data-text-preloader="R" class="letters-loading">
+                        R
+                    </span>
+                    <span data-text-preloader="E" class="letters-loading">
+                        E
+                    </span>
+                    <span data-text-preloader="M" class="letters-loading">
+                        M
+                    </span>
+                    <span data-text-preloader="O" class="letters-loading">
+                        O
+                    </span>
+                    <span data-text-preloader="N" class="letters-loading">
+                        N
+                    </span>
+                    <span data-text-preloader="S" class="letters-loading">
+                        S
+                    </span>
+                </div>
+                <p class="text-center">Loading</p>
+            </div>
+            <div class="loader">
+                <div class="row">
+                    <div class="col-3 loader-section section-left">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-left">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-right">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-right">
+                        <div class="bg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back To Top Start -->
+        <div class="scroll-up">
+            <svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+            </svg>
+        </div>
+
+           <!-- Offcanvas Area Start -->
+           <div class="fix-area">
+            <div class="offcanvas__info">
+                <div class="offcanvas__wrapper">
+                    <div class="offcanvas__content">
+                        <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                            <div class="offcanvas__logo">
+                                <a href="index.html">
+                                    <img src="assets/img/logo/black-logo.svg" alt="logo-img">
+                                </a>
+                            </div>
+                            <div class="offcanvas__close">
+                                <button>
+                                <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <p class="text d-none d-xl-block">
+                            Nullam dignissim, ante scelerisque the  is euismod fermentum odio sem semper the is erat, a feugiat leo urna eget eros. Duis Aenean a imperdiet risus.
+                        </p>
+                        <div class="mobile-menu fix mb-3"></div>
+                        <div class="offcanvas__contact">
+                            <h4>Contact Info</h4>
+                            <ul>
+                                <li class="d-flex align-items-center">
+                                    <div class="offcanvas__contact-icon">
+                                        <i class="fal fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="offcanvas__contact-text">
+                                        <a target="_blank" href="#">Main Street, Melbourne, Australia</a>
+                                    </div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div class="offcanvas__contact-icon mr-15">
+                                        <i class="fal fa-envelope"></i>
+                                    </div>
+                                    <div class="offcanvas__contact-text">
+                                        <a href="mailto:info@example.com"><span class="mailto:info@example.com">info@example.com</span></a>
+                                    </div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div class="offcanvas__contact-icon mr-15">
+                                        <i class="fal fa-clock"></i>
+                                    </div>
+                                    <div class="offcanvas__contact-text">
+                                        <a target="_blank" href="#">Mod-friday, 09am -05pm</a>
+                                    </div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div class="offcanvas__contact-icon mr-15">
+                                        <i class="far fa-phone"></i>
+                                    </div>
+                                    <div class="offcanvas__contact-text">
+                                        <a href="tel:+11002345909">+11002345909</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="header-button mt-4">
+                                <a href="contact.html" class="theme-btn text-center">
+                                    <span>Get A Quote<i class="fa-solid fa-arrow-right-long"></i></span>
+                                </a>
+                            </div>
+                            <div class="social-icon d-flex align-items-center">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-youtube"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="offcanvas__overlay"></div>
+
+        <!-- Header Top Section Start -->
+        <div class="header-top-section">
+            <div class="container-fluid">
+                <div class="header-top-wrapper">
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@example.com" class="link">info@example.com</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            88 Broklyn Golden Street. New York
+                        </li>
+                    </ul>
+                    <div class="header-top-right">
+                        <ul class="top-list">
+                            <li><a href="contact.html">Help</a></li>
+                            <li><a href="contact.html">Support</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                        <div class="social-icon d-flex align-items-center">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header Section Start -->
+        <header id="header-sticky" class="header-1">
+            <div class="container-fluid">
+                <div class="mega-menu-wrapper">
+                    <div class="header-main">
+                        <div class="header-left">
+                            <div class="logo">
+                                <a href="index.html" class="header-logo">
+                                    <img src="assets/img/logo/black-logo.svg" alt="logo-img">
+                                </a>
+                            </div>
+                            <div class="mean__menu-wrapper">
+                                <div class="main-menu">
+                                    <nav id="mobile-menu">
+                                        <ul>
+                                            <li class="has-dropdown active menu-thumb">
+                                                <a href="index.html">
+                                                Home 
+                                                <i class="fas fa-angle-down"></i>
+                                                </a>
+                                                <ul class="submenu">
+                                                    <li><a href="index.html">Home 01</a></li>
+                                                    <li><a href="index-2.html">Home 02</a></li>
+                                                    <li><a href="index-3.html">Home 03</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="about.html">About Us</a>
+                                            </li>
+                                            <li class="has-dropdown">
+                                                <a href="news.html">
+                                                    Pages
+                                                    <i class="fas fa-angle-down"></i>
+                                                </a>
+                                                <ul class="submenu">
+                                                    <li><a href="gallery.html">Gallery</a></li>
+                                                    <li><a href="faq.html">Faq's</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="program-details.html">
+                                                    Cars
+                                                    <i class="fas fa-angle-down"></i>
+                                                </a>
+                                                <ul class="submenu">
+                                                    <li><a href="car-grid.html">Car Grid</a></li>
+                                                    <li><a href="car-list.html">Car List</a></li>
+                                                    <li><a href="car-list-sidebar.html">Car Sidebar</a></li>
+                                                    <li><a href="car-details.html">Car Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="news.html">
+                                                    Blog
+                                                    <i class="fas fa-angle-down"></i>
+                                                </a>
+                                                <ul class="submenu">
+                                                    <li><a href="news.html">Blog</a></li>
+                                                    <li><a href="news-details.html">Blog Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="contact.html">Contact</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-right d-flex justify-content-end align-items-center">
+                            <div class="icon-items">
+                                <div class="icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="content">
+                                    <p>Call Anytime</p>
+                                    <h6><a href="tel:+9288009850">+92 (8800) - 9850</a></h6>
+                                </div>
+                            </div>
+                            <a href="#0" class="search-trigger search-icon"><i class="fa-regular fa-magnifying-glass"></i></a>
+                            <div class="header-button">
+                                <a href="car-details.html" class="header-btn">
+                                    Find a Car
+                                </a>
+                            </div>
+                            <div class="header__hamburger d-xl-none my-auto">
+                                <div class="sidebar__toggle">
+                                    <i class="fas fa-bars"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Search Area Start -->
+        <div class="search-wrap">
+            <div class="search-inner">
+                <i class="fas fa-times search-close" id="search-close"></i>
+                <div class="search-cell">
+                    <form method="get">
+                        <div class="search-field-holder">
+                            <input type="search" class="main-search-input" placeholder="Search...">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!--<< Breadcrumb Section Start >>-->
+        <div class="breadcrumb-wrapper bg-cover" style="background-image: url('assets/img/bg-header-banner.jpg');">
+            <div class="container">
+                <div class="page-heading">
+                    <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".3s">
+                        <li>
+                            <a href="index.html">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li>
+                            About Us
+                        </li>
+                    </ul>
+                    <h1 class="wow fadeInUp" data-wow-delay=".5s">About Us</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section Start -->
+        <section class="about-section fix section-padding">
+            <div class="container">
+                <div class="about-wrapper-2">
+                    <div class="row g-4">
+                        <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
+                            <div class="about-image">
+                                <img src="assets/img/about/01.png" alt="about-image">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="about-content">
+                                <div class="section-title">
+                                    <img src="assets/img/sub-icon.png" alt="icon-img" class="wow fadeInUp">
+                                    <span class="wow fadeInUp" data-wow-delay=".2s">Get to know us</span>
+                                    <h2 class="wow fadeInUp" data-wow-delay=".4s">
+                                        Trusted & Leading in 
+                                        Car Rent Services
+                                    </h2>
+                                </div>
+                                <p class="mt-3 mt-md-0 wow fadeInUp" data-wow-delay=".6s">
+                                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised.
+                                </p>
+                                <div class="about-list-wrapper">
+                                    <div class="about-list-items wow fadeInUp" data-wow-delay=".3s">
+                                        <ul>
+                                            <li>
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                                Nsectetur cing elit
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                                Suspe ndisse suscit sagittis leo
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                                If you are going to use pasage
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                                Generators on the to repeatY
+                                            </li>
+                                        </ul>
+                                        <a href="about.html" class="theme-btn">Discover More</a>
+                                    </div>
+                                    <div class="author-items wow fadeInUp" data-wow-delay=".5s">
+                                        <div class="icon">
+                                            <i class="fa-solid fa-phone"></i>
+                                        </div>
+                                        <p>Need help? Talk to an <br> Expert</p>
+                                        <h6><a href="tel:9288009850">+92 (8800) - 9850</a></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section Start -->
+        <section class="team-section fix section-padding pt-0">
+            <div class="container">
+                <div class="section-title text-center">
+                    <img src="assets/img/sub-icon.png" alt="icon-img" class="wow fadeInUp">
+                    <span class="wow fadeInUp" data-wow-delay=".2s">Our expert people</span>
+                    <h2 class="wow fadeInUp" data-wow-delay=".4s">
+                        Meet Our Professional <br>
+                        Team Members
+                    </h2>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
+                        <div class="team-card-items">
+                            <div class="border-shape">
+                                <img src="assets/img/team/border.png" alt="img">
+                            </div>
+                            <div class="team-image">
+                                <img src="assets/img/team/team-01.jpg" alt="team-img">
+                            </div>
+                            <div class="team-content">
+                                <h3><a href="about.html">Mike Hardson</a></h3>
+                                <p>manager</p>
+                                <div class="social-icon d-flex align-items-center justify-content-center">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-youtube"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
+                        <div class="team-card-items">
+                            <div class="border-shape">
+                                <img src="assets/img/team/border.png" alt="img">
+                            </div>
+                            <div class="team-image">
+                                <img src="assets/img/team/team-02.jpg" alt="team-img">
+                            </div>
+                            <div class="team-content">
+                                <h3><a href="about.html">Aleesha Brown</a></h3>
+                                <p>manager</p>
+                                <div class="social-icon d-flex align-items-center justify-content-center">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-youtube"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s">
+                        <div class="team-card-items">
+                            <div class="border-shape">
+                                <img src="assets/img/team/border.png" alt="img">
+                            </div>
+                            <div class="team-image">
+                                <img src="assets/img/team/team-03.jpg" alt="team-img">
+                            </div>
+                            <div class="team-content">
+                                <h3><a href="about.html">David Jhonson</a></h3>
+                                <p>manager</p>
+                                <div class="social-icon d-flex align-items-center justify-content-center">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-youtube"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Funfact Section Start -->
+        <section class="funfact-section section-padding fix bg-cover mt-0" style="background-image: url('assets/img/funfact-bg.jpg');">
+            <div class="container">
+                <div class="funfact-wrapper mt-0">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-lg-6">
+                            <div class="section-title mb-0">
+                                <img src="assets/img/sub-icon-2.png" alt="icon-img" class="wow fadeInUp">
+                                <span class="wow fadeInUp" data-wow-delay=".2s">fun facts</span>
+                                <h2 class="text-white wow fadeInUp" data-wow-delay=".4s">
+                                    Save Time & Money <br>
+                                    with Top Car Rent <br>
+                                    Services
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="funfact-counter-area">
+                                <div class="funfact-items wow fadeInUp" data-wow-delay=".3s">
+                                    <div class="icon">
+                                        <img src="assets/img/icon/car.png" alt="img">
+                                    </div>
+                                    <h2><span class="count">990</span></h2>
+                                    <p>
+                                        Cars <br>
+                                        rentouts
+                                    </p>
+                                </div>
+                                <div class="funfact-items wow fadeInUp" data-wow-delay=".5s">
+                                    <div class="icon">
+                                        <img src="assets/img/icon/center.png" alt="img">
+                                    </div>
+                                    <h2><span class="count">230</span></h2>
+                                    <p>
+                                        Center <br>
+                                        solutions
+                                    </p>
+                                </div>
+                                <div class="funfact-items wow fadeInUp" data-wow-delay=".7s">
+                                    <div class="icon">
+                                        <img src="assets/img/icon/like.png" alt="img">
+                                    </div>
+                                    <h2><span class="count">660</span></h2>
+                                    <p>
+                                        happy <br>
+                                        customers
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial Section Start -->
+        <section class="testimonial-section fix section-padding">
+            <div class="testimonial-bg-shape">
+                <img src="assets/img/testimonial/testimonial-bg.jpg" alt="shape-img">
+            </div>
+            <div class="container">
+                <div class="section-title-area">
+                    <div class="section-title">
+                        <img src="assets/img/sub-icon.png" alt="icon-img" class="wow fadeInUp">
+                        <span class="wow fadeInUp" data-wow-delay=".2s">our testimonials</span>
+                        <h2 class="wow fadeInUp" data-wow-delay=".4s">
+                            What They’re Talking <br>
+                            About Remons
+                        </h2>
+                    </div>
+                    <p class="wow fadeInUp" data-wow-delay=".5s">
+                        Lorem ipsum dolor sit amet nsectetur cing elituspe ndisse suscipit <br> sagitis leo sit.
+                    </p>
+                </div>
+                <div class="swiper testimonial-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="testimonial-card-items">
+                                <div class="testimoni-bg-shape">
+                                    <div class="testimonial-items-top">
+                                        <div class="icon">
+                                            <i class="fa-solid fa-quote-left"></i>
+                                        </div>
+                                        <p>
+                                            I was very impresed by the remons service lorem ipsum is simply free text used by copy typing refreshing. Neque porro est qui dolorem ipsum quia.
+                                        </p>
+                                        <div class="star">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="client-info-items d-flex align-items-center gap-3">
+                                    <div class="client-img bg-cover" style="background-image: url('assets/img/testimonial/client-1.png');"></div>
+                                    <div class="content">
+                                        <h5>
+                                            Jessica Brown
+                                        </h5>
+                                        <span>Customer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="testimonial-card-items">
+                                <div class="testimoni-bg-shape">
+                                    <div class="testimonial-items-top">
+                                        <div class="icon">
+                                            <i class="fa-solid fa-quote-left"></i>
+                                        </div>
+                                        <p>
+                                            I was very impresed by the remons service lorem ipsum is simply free text used by copy typing refreshing. Neque porro est qui dolorem ipsum quia.
+                                        </p>
+                                        <div class="star">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="client-info-items d-flex align-items-center gap-3">
+                                    <div class="client-img bg-cover" style="background-image: url('assets/img/testimonial/client-2.png');"></div>
+                                    <div class="content">
+                                        <h5>
+                                            Kevin Martin
+                                        </h5>
+                                        <span>Customer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="testimonial-card-items">
+                                <div class="testimoni-bg-shape">
+                                    <div class="testimonial-items-top">
+                                        <div class="icon">
+                                            <i class="fa-solid fa-quote-left"></i>
+                                        </div>
+                                        <p>
+                                            I was very impresed by the remons service lorem ipsum is simply free text used by copy typing refreshing. Neque porro est qui dolorem ipsum quia.
+                                        </p>
+                                        <div class="star">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="client-info-items d-flex align-items-center gap-3">
+                                    <div class="client-img bg-cover" style="background-image: url('assets/img/testimonial/client-3.png');"></div>
+                                    <div class="content">
+                                        <h5>
+                                            Jessica Brown
+                                        </h5>
+                                        <span>Customer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Car Sale Section Start -->
+        <section class="car-sale-section fix section-padding pt-0">
+            <div class="container-fluid">
+                <div class="car-sale-wrapper">
+                    <div class="sale-shape">
+                        <img src="assets/img/bg-shape-saleoff.png" alt="shape-img">
+                    </div>
+                    <div class="badge-shape">
+                        <img src="assets/img/bagde.png" alt="shape-img">
+                    </div>
+                    <div class="car-shape">
+                        <img src="assets/img/car.png" alt="img">
+                    </div>
+                    <div class="car-sale-content">
+                        <h2 class="wow fadeInUp" data-wow-delay=".3s">Sale 50% Off</h2>
+                        <h3 class="wow fadeInUp" data-wow-delay=".5s">on all rental cars for 1 month</h3>
+                        <a href="car-details.html" class="theme-btn bg-header wow fadeInUp" data-wow-delay=".7s">Book Your Car</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand Section Start -->
+        <div class="brand-wrapper style-2 pb-80">
+            <div class="array-button">
+                <button class="array-prev-2"><i class="far fa-chevron-left"></i></button>
+                <button class="array-next-2"><i class="far fa-chevron-right"></i></button>
+            </div>
+            <div class="container">
+                <div class="swiper brand-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="brand-image style-color">
+                                <img src="assets/img/brand/01.png" alt="img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="brand-image style-color">
+                                <img src="assets/img/brand/02.png" alt="img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="brand-image style-color">
+                                <img src="assets/img/brand/03.png" alt="img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="brand-image style-color">
+                                <img src="assets/img/brand/04.png" alt="img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="brand-image style-color">
+                                <img src="assets/img/brand/05.png" alt="img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="brand-image style-color">
+                                <img src="assets/img/brand/06.png" alt="img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cta Cheap Rental Section Start -->
+        <section class="cta-cheap-rental-section">
+            <div class="container">
+                <div class="cta-cheap-rental">
+                    <div class="cta-cheap-rental-left wow fadeInUp" data-wow-delay="
+                    .3s">
+                        <div class="logo-thumb">
+                            <a href="index.html">
+                                <img src="assets/img/logo/white-logo.svg" alt="logo-img">
+                            </a>
+                        </div>
+                        <h4 class="text-white">Save big with our cheap car rental</h4>
+                    </div>
+                    <div class="social-icon d-flex align-items-center wow fadeInUp" data-wow-delay="
+                    .5s">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       <!-- Footer Section Start -->
+        <footer class="footer-section fix">
+            <div class="container">
+                <div class="footer-widgets-wrapper">
+                    <div class="row justify-content-between">
+                        <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+                            <div class="single-footer-widget shape-map">
+                                <div class="widget-head">
+                                    <h4>Contact</h4>
+                                </div>
+                                <div class="footer-content">
+                                    <p>
+                                        66 Road Broklyn Golden Street, 600
+                                        New York, USA 
+                                    </p>
+                                    <ul class="contact-info">
+                                        <li>
+                                            <i class="fa-regular fa-envelope"></i>
+                                            <a href="mailto:needhelp@company.com">needhelp@company.com</a>
+                                        </li>
+                                        <li>
+                                            <i class="fa-solid fa-phone-volume"></i>
+                                            <a href="tel:926668880000">+92 (666) 888 0000</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".4s">
+                            <div class="single-footer-widget">
+                                <div class="widget-head">
+                                    <h4>Contact</h4>
+                                </div>
+                                <ul class="list-items">
+                                    <li>
+                                        <a href="about.html"> 
+                                            About Us
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="car-details.html">
+                                            New Cars
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="news-details.html">
+                                            Latest News
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="gallery.html">
+                                            Gallery
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="contact.html">
+                                            Contact
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".6s">
+                            <div class="single-footer-widget">
+                                <div class="widget-head">
+                                    <h4>Gallery</h4>
+                                </div>
+                                <div class="footer-gallery">
+                                    <div class="gallery-wrap">
+                                        <div class="gallery-item">
+                                            <div class="thumb">
+                                                <a href="assets/img/footer/gallery-1.jpg" class="img-popup">
+                                                    <img src="assets/img/footer/gallery-1.jpg" alt="gallery-img">
+                                                    <div class="icon">
+                                                        <i class="far fa-plus"></i>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="thumb">
+                                                <a href="assets/img/footer/gallery-2.jpg" class="img-popup">
+                                                    <img src="assets/img/footer/gallery-2.jpg" alt="gallery-img">
+                                                    <div class="icon">
+                                                        <i class="far fa-plus"></i>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="thumb">
+                                                <a href="assets/img/footer/gallery-3.jpg" class="img-popup">
+                                                    <img src="assets/img/footer/gallery-3.jpg" alt="gallery-img">
+                                                    <div class="icon">
+                                                        <i class="far fa-plus"></i>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="gallery-item">
+                                            <div class="thumb">
+                                                <a href="assets/img/footer/gallery-4.jpg" class="img-popup">
+                                                    <img src="assets/img/footer/gallery-4.jpg" alt="gallery-img">
+                                                    <div class="icon">
+                                                        <i class="far fa-plus"></i>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="thumb">
+                                                <a href="assets/img/footer/gallery-5.jpg" class="img-popup">
+                                                    <img src="assets/img/footer/gallery-5.jpg" alt="gallery-img">
+                                                    <div class="icon">
+                                                        <i class="far fa-plus"></i>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="thumb">
+                                                <a href="assets/img/footer/gallery-6.jpg" class="img-popup">
+                                                    <img src="assets/img/footer/gallery-6.jpg" alt="gallery-img">
+                                                    <div class="icon">
+                                                        <i class="far fa-plus"></i>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".8s">
+                            <div class="single-footer-widget">
+                                <div class="widget-head">
+                                    <h4>Newsletter</h4>
+                                </div>
+                                <div class="footer-content">
+                                    <p>Subscribe our newsletter to get our latest update & news</p>
+                                    <div class="footer-input">
+                                        <input type="email" id="email2" placeholder="Email address">
+                                        <button class="newsletter-btn" type="submit">
+                                            <i class="fa-regular fa-paper-plane"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="footer-wrapper">
+                        <p class="wow fadeInUp" data-wow-delay=".4s">
+                            © Copyright 2024 by <a href="index.html">Remons.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        
+        <!--<< All JS Plugins >>-->
+        <script src="assets/js/jquery-3.7.1.min.js"></script>
+        <!--<< Viewport Js >>-->
+        <script src="assets/js/viewport.jquery.js"></script>
+        <!--<< Bootstrap Js >>-->
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <!--<< Nice Select Js >>-->
+        <script src="assets/js/jquery.nice-select.min.js"></script>
+        <!--<< Waypoints Js >>-->
+        <script src="assets/js/jquery.waypoints.js"></script>
+        <!--<< Counterup Js >>-->
+        <script src="assets/js/jquery.counterup.min.js"></script>
+        <!--<< Datepicker Js >>-->
+        <script src="assets/js/bootstrap-datepicker.js"></script>
+        <!--<< Swiper Slider Js >>-->
+        <script src="assets/js/swiper-bundle.min.js"></script>
+        <!--<< MeanMenu Js >>-->
+        <script src="assets/js/jquery.meanmenu.min.js"></script>
+        <!--<< Magnific Popup Js >>-->
+        <script src="assets/js/jquery.magnific-popup.min.js"></script>
+        <!--<< GSAP Animation Js >>-->
+        <script src="assets/js/animation.js"></script>
+        <!--<< Wow Animation Js >>-->
+        <script src="assets/js/wow.min.js"></script>
+        <!--<< Main.js >>-->
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>

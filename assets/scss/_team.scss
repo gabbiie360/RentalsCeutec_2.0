@@ -1,0 +1,98 @@
+.team-card-items {
+    margin-top: 30px;
+    text-align: center;
+    position: relative;
+
+    .border-shape {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        height: 355px;
+
+        img {
+            @include imgw;
+        }
+
+        @include breakpoint (max-xl){
+            display: none;
+        }
+    }
+
+    .team-image {
+        position: relative;
+        height: 408px;
+        //max-width: 408px;
+        margin: 0 auto;
+        padding: 13px 13px 0 13px;
+
+        @include breakpoint (max-xl){
+            padding: 0;
+        }
+        
+
+        img {
+            @include imgw;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        // &::after {
+        //     position: absolute;
+        //     content: "";
+        //     top: -5px;
+        //     left: 50%;
+        //     transform: translateX(-50%);
+        //     height: 100%;
+        //     width: 100%;
+        //    // width: calc(100% + 10px);
+        //    // height: calc(100% - 50px);
+        //     //border-radius: 10px;
+        //    // background: linear-gradient(180deg, #FF3726, #0C142E);
+        //     z-index: 1;
+        //     border-image: linear-gradient(#FF3726, #0C142E) 30;
+        //     border-width: 2px;
+        //     border-style: solid;
+        //     border-radius: 10px;
+        // }
+    }
+
+    .team-content {
+        margin-top: 25px;
+
+        h3 {
+            a {
+                &:hover {
+                    color: $theme-color;
+                }
+            }
+        }
+
+        p {
+            text-transform: uppercase;
+        }
+
+        .social-icon {
+            gap: 10px;
+            margin-top: 20px;
+
+            a {
+                display: inline-block;
+                width: 45px;
+                height: 45px;
+                line-height: 45px;
+                text-align: center;
+                border-radius: 50%;
+                color: $header-color;
+                background-color: #ecf0f4;
+                @include transition;
+
+                &:hover {
+                    background-color: $theme-color;
+                    color: $white;
+                }
+            }
+        }
+    }
+}
