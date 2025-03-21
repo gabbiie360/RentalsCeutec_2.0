@@ -11,5 +11,8 @@
   "description": "",
   "devDependencies": {
     "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "firebase": "^11.5.0"
   }
 }
