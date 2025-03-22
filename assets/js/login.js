@@ -116,6 +116,8 @@ document.getElementById("registerEmail").addEventListener("click", async (event)
           alert("Error: " + error.message);
         }
 
+
+
         
 });
 
