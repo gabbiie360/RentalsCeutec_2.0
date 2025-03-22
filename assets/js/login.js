@@ -1,4 +1,8 @@
-import { auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, googleProvider, githubProvider, microsoftProvider } from "./firebaseConfig.js";
+console.log("login.js cargado correctamente");
+import { auth, db, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup,
+        googleProvider, githubProvider, microsoftProvider } from "./firebaseConfig.js";
+import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+
 
 // Inicio de sesión con correo
 document.getElementById("btnLogin").addEventListener("click", async function () {
@@ -52,7 +56,7 @@ document.getElementById("btnMicrosoft").addEventListener("click", async function
     }
 });
 
-// Registro de usuario con correo
+// Registro de usuario con correo y guardado en Firestore
 document.getElementById("registerEmail").addEventListener("click", async (event) => {
     event.preventDefault(); // Evita recargar la página
 
@@ -65,9 +69,20 @@ document.getElementById("registerEmail").addEventListener("click", async (event)
     }
 
     try {
+        // Registro en Firebase Authentication
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        alert("Registro exitoso. Bienvenido, " + userCredential.user.email);
-        document.getElementById("userInfo").textContent = "Bienvenido, " + userCredential.user.email;
+        const user = userCredential.user;
+        
+        // Guardar usuario en Firestore
+        await setDoc(doc(db, "usuarios", user.uid), {
+            email: user.email,
+            uid: user.uid,
+            password: password,
+            createdAt: new Date()
+        });
+
+        alert("Registro exitoso. Bienvenido, " + user.email);
+        document.getElementById("userInfo").textContent = "Bienvenido, " + user.email;
         document.getElementById("logout").style.display = "block";
     } catch (error) {
         console.error("Error en el registro:", error.message);
