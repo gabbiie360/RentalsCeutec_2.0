@@ -205,3 +205,19 @@ document.getElementById("registerEmail").addEventListener("click", async (event)
                 
 });
 
+// Alternar visibilidad de la contraseña
+document.addEventListener("DOMContentLoaded", function () {
+    const passwordInput = document.getElementById("password");
+    const togglePassword = document.getElementById("togglePassword");
+
+    togglePassword.addEventListener("click", function () {
+        const isPasswordHidden = passwordInput.type === "password";
+        passwordInput.type = isPasswordHidden ? "text" : "password";
+
+        // Alternar las clases sin necesidad de remover/agregar manualmente
+        togglePassword.classList.toggle("fa-eye");
+        togglePassword.classList.toggle("fa-eye-slash");
+    });
+});
+
+
