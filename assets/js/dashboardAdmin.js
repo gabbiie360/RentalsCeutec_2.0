@@ -4,15 +4,16 @@ import {
     collection,
     addDoc,
     updateDoc,
-    getDocs,
     query,
     where,
     doc,
     getDoc,
+    getDocs,
     deleteDoc,
     onSnapshot
   } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
   
+  import { mostrarToast } from "./toast.js";
 
 
 
@@ -45,17 +46,6 @@ const reservasRef = collection(db, "reservas");
 
 let vehiculosDisponibles = [];
 let vehiculoAnteriorId = null;
-
-// Mostrar toast
-function mostrarToast(mensaje, tipo = "primary") {
-  const toastElement = document.getElementById("toastMensaje");
-  const toastTexto = document.getElementById("toastTexto");
-  toastTexto.textContent = mensaje;
-  toastElement.className = `toast align-items-center text-bg-${tipo} border-0`;
-  const toast = new bootstrap.Toast(toastElement);
-  toast.show();
-}
-
 
 
 // ==========================
@@ -125,7 +115,7 @@ window.eliminarUsuario = async function (uid) {
     }
   }
 };
-
+cargarUsuarios();
 // === FILTROS USUARIOS ===
 document.getElementById("filtroUsuarioCorreo").addEventListener("input", cargarUsuarios);
 document.getElementById("filtroRol").addEventListener("change", cargarUsuarios);
@@ -134,6 +124,9 @@ document.getElementById("limpiarFiltrosUsuarios").addEventListener("click", () =
   document.getElementById("filtroRol").value = "";
   cargarUsuarios();
 });
+
+
+
 // ==========================
 // VEHÍCULOS
 // ==========================
@@ -302,51 +295,60 @@ document.getElementById("filtroDisponibilidad").addEventListener("change", carga
 // RESERVAS
 // ==========================
 function cargarReservas() {
-    const tabla = document.getElementById("tablaReservas");
-    tabla.innerHTML = "";
-  
-    onSnapshot(reservasRef, (snapshot) => {
-      tabla.innerHTML = "";
-      const ahora = new Date();
-  
-      const desde = document.getElementById("filtroDesde").valueAsDate;
-      const hasta = document.getElementById("filtroHasta").valueAsDate;
-      const usuarioFiltro = document.getElementById("filtroUsuario").value.toLowerCase();
-      const estadoFiltro = document.getElementById("filtroEstado").value;
-  
-      snapshot.forEach((docu) => {
-        const data = docu.data();
-        const fechaReserva = data["Fecha de Reserva"]?.toDate();
-        const fechaEntrega = data["Fecha de entrega"]?.toDate();
-  
-        // Filtrado
-        if (desde && fechaReserva < desde) return;
-        if (hasta && fechaReserva > hasta) return;
-        if (usuarioFiltro && !data.Email.toLowerCase().includes(usuarioFiltro)) return;
-  
-        if (estadoFiltro === "futuras" && fechaEntrega < ahora) return;
-        if (estadoFiltro === "pasadas" && fechaEntrega >= ahora) return;
-  
-        tabla.innerHTML += `
-          <tr>
-            <td>${data["Nombre Completo"]}</td>
-            <td>${data.Email}</td>
-            <td>${data["Numero de Telefono"]}</td>
-            <td>${data["Recoges en"]}</td>
-            <td>${data.nombreVehiculo}</td>
-            <td>${fechaReserva?.toLocaleString()}</td>
-            <td>${fechaEntrega?.toLocaleString()}</td>
-            <td>
-              <button class="btn btn-sm btn-secondary" onclick="editarReserva('${docu.id}')"><i class="fa fa-pen"></i></button>
-              <button class="btn btn-sm btn-danger" onclick="eliminarReserva('${docu.id}')"><i class="fa fa-trash"></i></button>
-            </td>
-          </tr>
-        `;
-      });
-    });
-  }
+  const tabla = document.getElementById("tablaReservas");
+  tabla.innerHTML = "";
 
-  document.getElementById("limpiarFiltrosReservas").addEventListener("click", () => {
+  onSnapshot(reservasRef, (snapshot) => {
+    const ahora = new Date();
+    const desde = document.getElementById("filtroDesde")?.valueAsDate;
+    const hasta = document.getElementById("filtroHasta")?.valueAsDate;
+    const usuarioFiltro = document.getElementById("filtroUsuario")?.value.toLowerCase();
+    const estadoFiltro = document.getElementById("filtroEstado")?.value;
+
+    let reservas = [];
+
+    snapshot.forEach((docu) => {
+      const data = docu.data();
+      const fechaReserva = data["Fecha de Reserva"]?.toDate();
+      const fechaEntrega = data["Fecha de entrega"]?.toDate();
+
+      if (!fechaReserva || !fechaEntrega) return;
+
+      if (desde && fechaReserva < desde) return;
+      if (hasta && fechaReserva > hasta) return;
+      if (usuarioFiltro && !data.Email.toLowerCase().includes(usuarioFiltro)) return;
+      if (estadoFiltro === "futuras" && fechaEntrega < ahora) return;
+      if (estadoFiltro === "pasadas" && fechaEntrega >= ahora) return;
+
+      reservas.push({ id: docu.id, ...data, fechaReserva, fechaEntrega });
+    });
+
+    // Ordenar por Fecha de Reserva descendente
+    reservas.sort((a, b) => b.fechaReserva - a.fechaReserva);
+
+    // Renderizar
+    reservas.forEach((data) => {
+      tabla.innerHTML += `
+        <tr>
+          <td>${data["Nombre Completo"]}</td>
+          <td>${data.Email}</td>
+          <td>${data["Numero de Telefono"]}</td>
+          <td>${data["Recoges en"]}</td>
+          <td>${data.nombreVehiculo}</td>
+          <td>${data.fechaReserva.toLocaleString()}</td>
+          <td>${data.fechaEntrega.toLocaleString()}</td>
+          <td>
+            <button class="btn btn-sm btn-secondary" onclick="editarReserva('${data.id}')"><i class="fa fa-pen"></i></button>
+            <button class="btn btn-sm btn-danger" onclick="eliminarReserva('${data.id}')"><i class="fa fa-trash"></i></button>
+          </td>
+        </tr>
+      `;
+    });
+  });
+}
+
+  cargarReservas();
+    document.getElementById("limpiarFiltrosReservas").addEventListener("click", () => {
     document.getElementById("filtroDesde").value = "";
     document.getElementById("filtroHasta").value = "";
     document.getElementById("filtroUsuario").value = "";
@@ -354,13 +356,13 @@ function cargarReservas() {
     cargarReservas();
   });
   
-
+  
 
   ["filtroDesde", "filtroHasta", "filtroUsuario", "filtroEstado"].forEach(id => {
     document.getElementById(id).addEventListener("input", cargarReservas);
   });
   
-
+  
 function cargarVehiculosParaReservas() {
   const select = document.getElementById("vehiculoReserva");
   select.innerHTML = '<option value="">Selecciona un vehículo</option>';
@@ -410,7 +412,7 @@ window.editarReserva = async function (id) {
 };
 
 async function validarSolapamiento(idVehiculo, nuevaInicio, nuevaFin, idReservaActual = null) {
-    const snapshot = await getDocs(query(reservasRef, where("idVehiculo", "==", idVehiculo)));
+    const snapshot = await getDoc(query(reservasRef, where("idVehiculo", "==", idVehiculo)));
   
     for (const docu of snapshot.docs) {
       if (idReservaActual && docu.id === idReservaActual) continue;
@@ -479,7 +481,7 @@ window.guardarReserva = async function () {
     mostrarToast("Error al guardar reserva.", "danger");
   }
   
-
+}
 window.eliminarReserva = async function (id) {
   if (confirm("¿Deseas eliminar esta reserva?")) {
     try {
@@ -502,6 +504,7 @@ cargarReservas();
 // CERRAR SESIÓN
 // ==========================
 document.getElementById("logout").addEventListener("click", () => {
-  localStorage.clear();
-  window.location.href = "login.html";
-})};
+    localStorage.clear();
+    window.location.href = "login.html";
+  });
+  
