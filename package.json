@@ -1,0 +1,19 @@
+{
+  "name": "rentalsceutec_project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "firebase": "^11.5.0"
+  }
+}
