@@ -1,0 +1,432 @@
+.testimonial-card-items {
+    margin-top: 50px;
+    position: relative;
+
+    .testimonial-items-top {
+        text-align: center;
+        background-color: #ecf0f4;
+        border-radius: 10px;
+        padding: 40px 60px;
+        position: relative;
+        margin-bottom: 30px;
+        @include transition;
+        border: 1px solid transparent;
+
+        @include breakpoint (max-sm){
+            padding: 30px 40px;
+        }
+
+        .icon {
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: $theme-color-2;
+            font-size: 26px;
+            color: $white;
+            margin: -70px auto 30px;
+            position: relative;
+            z-index: 9;
+    
+        }
+    
+        p {
+            font-size: 18px;
+            line-height: 190%;
+            position: relative;
+            z-index: 9;
+
+            @include breakpoint (max-sm){
+                font-size: 16px;
+            }
+        }
+    
+        .star {
+            color: $ratting-color;
+            margin-top: 15px;
+            position: relative;
+            z-index: 9;
+        }
+    
+        &::before {
+            position: absolute;
+            content: "";
+            right: 41px;
+            bottom: -1px;
+            width: 81px;
+            height: 1px;
+            background-color: transparent;
+            transform-origin: bottom left;
+            transform: rotate(30deg);
+            z-index: 1;
+        }
+    
+        &:after {
+            position: absolute;
+            content: "";
+            right: 50px;
+            bottom: -41.5px;
+            width: 72px;
+            height: 42px;
+            background-color: inherit;
+            border-right: 1px solid transparent;
+            -webkit-clip-path: polygon(100% 0, 0 0, 100% 100%);
+            clip-path: polygon(100% 0, 0 0, 100% 100%);
+        }
+    }
+
+    .client-info-items {
+        position: relative;
+
+        .client-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 2px solid $theme-color;
+        }
+    }
+    
+    .testimoni-bg-shape {
+        position: relative;
+
+        &::after {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            content: "";
+            background-image: url(../../assets/img/testimonial/bg-30.png);
+            opacity: 0.9;
+            filter: brightness(100%) contrast(100%) saturate(0%) blur(0px) hue-rotate(0deg);
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+         }
+    }
+
+    &:hover {
+        .testimonial-items-top {
+            background-color: $white;
+            border: 1px solid $border-color;
+
+            &:after {
+                border-right: 1px solid $border-color;
+            }
+
+            &::before {
+                background-color: $border-color;
+            }
+        }
+    }
+}
+
+.testimonial-section {
+    position: relative;
+    z-index: 9;
+
+    .testimonial-bg-shape {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+
+        img {
+           width: 100%;
+        }
+    }
+
+    .array-button {
+        .array-prev,.array-next {
+            background-color: #ecf0f4;
+            color: $header-color;
+            border: none;
+
+            &:hover {
+                background-color: $theme-color;
+                color: $white;
+            }
+        }
+    }
+}
+
+.testimonial-wrapper {
+    margin-bottom: 60px;
+    margin-top: -85px;
+
+    @include breakpoint (max-xxl){
+       margin-bottom: 43px;
+    }
+
+    @include breakpoint (max-xl){
+        margin-bottom: 60px;
+    }
+
+    @include breakpoint (max-md){
+        margin-bottom: 0;
+     }
+
+    .testimonial-items {
+        position: relative;
+
+        @include breakpoint (max-lg){
+           margin-top: 50px;
+        }
+
+        @include breakpoint (max-md){
+            margin-top: 0;
+        }
+
+        .client-info-items {
+            max-width: 420px;
+            border: 1px solid $theme-color;
+            background-color: $white;
+            transition: all 0.3s ease;
+            position: relative;
+            margin: 0 0 40px 0;
+            border-radius: 10px;
+            margin-left: 30px;
+
+            @include breakpoint (max-lg){
+                margin-left: 0;
+            }
+
+            p {
+                padding: 30px;
+                font-size: 20px;
+                line-height: 160%;
+                font-weight: 400;
+
+                @include breakpoint (max-md){
+                   font-size: 18px;
+                }
+
+                @include breakpoint (max-sm){
+                    font-size: 16px;
+                }
+            }
+
+            .info {
+                padding: 25px 35px;
+                background-color: $theme-color;
+                border-radius: 0 0 10px 10px;
+                position: relative;
+                display: flex;
+                align-items: center;
+                direction: ltr;
+                gap: 15px;
+
+                .icon {
+                    position: absolute;
+                    top: -37px;
+                    transform: translateX(50%);
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 74px;
+                    height: 74px;
+                    border-radius: 50%;
+                    right: 25px;
+                    transform: none;
+                    border: 5px solid $white;
+                    background-color: $header-color;
+                }
+
+                .name-job {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 15px;
+                    align-items: center;
+
+                    .name {
+                        color: $white;
+                    }
+
+                    .separator {
+                        color: $white !important;
+                    }
+
+                    .job {
+                        color: $white;
+                    }
+                }
+
+                &::after {
+                    transition: all 0.3s ease;
+                    position: absolute;
+                    content: "";
+                    right: 45px;
+                    bottom: -41.5px;
+                    width: 72px;
+                    height: 42px;
+                    background-color: inherit;
+                    -webkit-clip-path: polygon(100% 0, 0 0, 100% 100%);
+                    clip-path: polygon(100% 0, 0 0, 100% 100%);
+                    z-index: 1;
+                }
+            }
+        }
+
+        .testimonial-image {
+            position: absolute;
+            right: 45px;
+            bottom: -100px;
+            z-index: -1;
+
+            @include breakpoint (max-md){
+                display: none;
+            }
+
+            img {
+                @include imgw;
+            }
+        }
+    }
+}
+
+.testimonial-section-3 {
+    position: relative;
+}
+
+.testimonial-wrapper-2 {
+    .testimonial-single-items {
+        display: flex;
+        gap: 70px;
+
+        @include breakpoint (max-lg){
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .testimonial-img {
+            display: block;
+            margin: 0 auto;
+            width: 136px;
+            height: 136px;
+            border: 6px solid #fff;
+            object-fit: cover;
+            border-radius: 50%;
+            position: relative;
+            margin-left: 20px;
+            margin-top: 5px;
+
+            @include breakpoint (max-lg){
+                text-align: center;
+                margin: 5px auto 0;
+            }
+
+            &::after {
+                position: absolute;
+                content: "";
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 140px;
+                height: 140px;
+                border-radius: 50%;
+                background: linear-gradient(90deg, #FF3726, #0C142E);
+                z-index: -1;
+            }
+        }
+
+        .testimonial-content {
+            flex-basis: 80%;
+
+            @include breakpoint (max-lg){
+              flex-basis: 100%;
+            }
+
+            p {
+                margin: 0;
+                padding: 0 0 44px 0;
+                font-size: 34px;
+                line-height: 1.5;
+
+                @include breakpoint (max-xl){
+                    font-size: 30px;
+                }
+
+                @include breakpoint (max-lg){
+                   font-size: 26px;
+                   padding: 0 0 35px 0;
+                }
+
+                @include breakpoint (max-md){
+                    font-size: 24px;
+                    padding: 0 0 35px 0;
+                 }
+
+                @include breakpoint (max-sm){
+                    font-size: 22px;
+                    padding: 0 0 25px 0;
+                }
+            }
+
+            .name-job {
+                display: flex;
+                align-items: flex-end;
+                gap: 15px;
+
+                @include breakpoint (max-lg){
+                   justify-content: center;
+                }
+
+                .separator {
+                    font-size: 20px;
+                    color: $header-color;
+                }
+
+                .job {
+                    color: $theme-color;
+                    margin: 0;
+                    font-size: 14px;
+                    line-height: 1.6;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+    .client-img-items {
+        position: relative;
+
+        .client-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 60px;
+            display: block;
+        }
+
+        @include flex;
+        gap: 10px;
+
+        @include breakpoint (max-lg){
+           justify-content: center;
+           margin-top: 30px;
+        }
+
+        .array-button {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+
+            @include breakpoint (max-lg){
+                display: none;
+            }
+
+            .array-prev, .array-next {
+                background-color: $white;
+                box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.07);
+                color: $header-color;
+                border: none;
+
+                &:hover {
+                    background-color: $theme-color;
+                    color: $white;
+                }
+            }
+        }
+    }
+}

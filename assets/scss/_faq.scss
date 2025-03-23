@@ -1,0 +1,216 @@
+
+.faq-section {
+    position: relative;
+    margin-top: 60px;
+    z-index: 9;
+
+    @include breakpoint (max-xl){
+        margin-top: 80px;
+    }
+
+    @include breakpoint (max-lg){
+        margin-top: 42px;
+    }
+
+    @include breakpoint (max-md){
+        margin-top: 55px;
+    }
+
+    &::before {
+        background-image: url(../../assets/img/bg-shape-tire.png);
+        background-position: -130px -130px;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "";
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        animation: float-bob-y 3s linear infinite;
+    }
+}
+
+
+.faq-content {
+    .accordion-item {
+        border: 0;
+        background-color: $white;
+        border-radius: 10px;
+
+        .accordion-header { 
+            border-radius: 10px;
+            .accordion-button { 
+                font-weight: 600;
+                color: $theme-color;
+                letter-spacing: -.2px;
+                border: 0;
+                border-radius: 0;
+                box-shadow: none;
+                background-color: $white;
+                padding: 25px 30px 0;
+                text-transform: capitalize;
+                font-size: 18px;
+                border: 1px solid $border-color;
+                border-bottom: 1px solid transparent;
+
+                &::after {
+                    // content: "\2b";
+                    // font-family: "Font Awesome 6 Free";
+                    // background: transparent;
+                    font-weight: 500;
+                    transition: all 0.3s ease-in-out !important;
+                    background-image: url(../../assets/img/plus.png);
+                    color: $theme-color-2;
+                }
+                &:not(.collapsed)::after {
+                    // content: "\f068";
+                    // font-family: "Font Awesome 6 Free";
+                    // background: transparent;
+                    background-image: url(../../assets/img/minus.png);
+                    font-weight: 500;
+                    color: $theme-color-2;
+                    transform: rotate(0);
+                }
+
+                &.collapsed {
+                    background-color: $bg-color;
+                    padding: 25px 30px;
+                    color: $header-color;
+                    border-radius: 10px;
+                    border: 1px solid transparent;
+                    
+                }
+              
+            }
+        }
+
+        .accordion-collapse { 
+
+            .accordion-body {
+                padding-right: 50px;
+                padding-left: 30px;
+                padding-top: 15px;
+                color: $text-color;
+                background-color: $white;
+                border: 1px solid $border-color;
+                border-top: none;
+            }
+        }
+    }
+}
+
+.faq-wrapper {
+
+    .faq-image {
+        max-width: 580px;
+        position: relative;
+        z-index: 9;
+
+        .color-shape {
+            position: absolute;
+            top: -7%;
+            left: -18%;
+            z-index: -1;
+
+            img {
+                @include imgw;
+            }
+        }
+
+        img {
+            @include imgw;
+            border-radius: 10px;
+        }
+    }
+}
+
+.faq-sidebar {
+    background-color: $bg-color;
+    border-radius: 10px;
+    padding: 30px;
+
+    .search-widget {
+        margin-bottom: 30px;
+
+        form {
+            width: 100%;
+            position: relative;
+    
+            input {
+                background-color: $white;
+                font-size: 16px;
+                padding: 22px 40px;
+                width: 100%;
+                border: none;
+                color: $text-color;
+                border-radius: 10px;
+
+                &::placeholder {
+                    color: $text-color;
+                }
+            }
+    
+            button {
+                position: absolute;
+                right: 40px;
+                top: 0;
+                font-size: 18px;
+                height: 100%;
+                color: $theme-color;
+                text-align: center;
+                transition: all .3s ease-in-out;
+                border-radius: 0 4px 4px 0;
+                
+                &:hover {
+                    background-color: $header-color;
+                }
+            }
+        }
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    .icon-items {
+        text-align: center;
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: $white;
+            color: $theme-color;
+            margin: 30px auto 0;
+            @include transition;
+        }
+
+        .content {
+            margin-top: 20px;
+
+            p {
+                margin-bottom: 10px;
+            }
+
+            h6 {
+                font-size: 20px;
+
+                a {
+                    &:hover {
+                        color: $theme-color;
+                    }
+                }
+            }
+        }
+
+        &:hover {
+           .icon {
+            background-color: $theme-color;
+            color: $white;
+           }
+        }
+    }
+}

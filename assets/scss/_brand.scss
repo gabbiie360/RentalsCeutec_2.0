@@ -1,0 +1,128 @@
+.brand-wrapper {
+    .brand-image {
+        text-align: center;
+        margin: 0 auto;
+
+        img {
+            filter: brightness(0) invert(1);
+            opacity: 0.2;
+            @include transition;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        &.style-color {
+            img {
+                filter: initial;
+            }
+        }
+    }
+
+    .array-button {
+        justify-content: center;
+        position: relative;
+        z-index: 9;
+        margin-bottom: 50px;
+        gap: 5px;
+
+        &::before {
+            position: absolute;
+            top: 15px;
+            left: 35px;
+            content: "";
+            height: 1px;
+            width: 485px;
+            background-color: rgb(255, 255, 255);
+            opacity: 0.102;
+
+            @include breakpoint (max-xxl){
+                display: none;
+            }
+        }
+
+        &::after {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            content: "";
+            height: 1px;
+            width: 485px;
+            background-color: rgb(255, 255, 255);
+            opacity: 0.102;
+
+
+            @include breakpoint (max-xxl){
+                display: none;
+            }
+        }
+
+        .array-prev-2 {
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: rgb(22, 32, 61);
+            color: $text-color;
+            @include transition;
+            font-size: 14px;
+
+            &:hover {
+                background-color: $theme-color;
+                color: $white;
+            }
+        }
+
+        .array-next-2 {
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            background-color: $theme-color;
+            @include transition;
+            font-size: 14px;
+            color: $white;
+
+            &:hover {
+                background-color: rgb(22, 32, 61);
+                color: $text-color;
+            }
+        }
+    }
+
+    &.style-2 {
+        .array-button {
+    
+            &::before {
+                left: 18%;
+                background-color: #d0d7de;
+                opacity: 1;
+            }
+    
+            &::after {
+                right: 18%;
+                content: "";
+                background-color: #d0d7de;
+                opacity: 1;
+                
+            }
+    
+            .array-prev-2 {
+                background-color: #ecf0f4;
+
+                &:hover {
+                    background-color: $theme-color;
+                    color: $white;
+                }
+            }
+    
+            .array-next-2 {
+    
+                &:hover {
+                    background-color: rgb(22, 32, 61);
+                    color: $white;
+                }
+            }
+        }
+    }
+}

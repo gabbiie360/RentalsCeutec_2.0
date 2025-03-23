@@ -1,0 +1,372 @@
+.cta-rental-items {
+    h4 {
+        font-weight: 400;
+        color: $white;
+        margin-bottom: 5px;
+    }
+
+    h2 {
+        color: $white;
+    }
+
+    .rental-app-button {
+        @include flex;
+        gap: 10px;
+        margin-top: 30px;
+
+        @include breakpoint (max-xxs){
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .app-button-items {
+            padding: 18px 35px;
+            background-color: $theme-color;
+            @include flex;
+            gap: 15px;
+            border-radius: 10px;
+            line-height: 1;
+
+            @include breakpoint (max-xxs){
+                padding: 18px 25px;
+            }
+    
+            .button-icon {
+               font-size: 20px;
+               color: $white;
+            }
+    
+            .button-text {
+                .text {
+                    font-size: 14px;
+                    color: $white;
+                    line-height: 1;
+                }
+    
+                .headding-text {
+                    color: $white;
+                    margin-top: 2px;
+                    display: block;                
+                }
+            }
+
+            &:hover {
+                background-color: $header-color;
+            }
+
+            &.style-2 {
+                background-color: $white;
+
+                .button-icon {
+                    color: $text-color;
+                 }
+         
+                 .button-text {
+                     .text {
+                        color: $text-color;
+                    }
+         
+                    .headding-text {
+                        color: $text-color;      
+                    }
+                 }
+     
+                 &:hover {
+                    background-color: $header-color;
+
+                     .button-icon {
+                        color: $white;
+                     }
+             
+                     .button-text {
+                         .text {
+                           color: $white;
+                        }
+             
+                        .headding-text {
+                            color: $white;    
+                        }
+                     }
+                 }
+            }
+        }
+    }
+}
+
+.mobile-remons-image {
+    margin-bottom: -120px;
+    max-width: 412px;
+
+    img {
+        @include imgw;
+    }
+}
+
+.cta-cheap-rental-section {
+    background-color: rgb(17, 26, 54);
+    padding: 30px 0;
+}
+
+.cta-cheap-rental {
+    @include flex;
+    justify-content: space-between;
+
+    @include breakpoint (max-lg){
+        flex-wrap: wrap;
+        gap: 25px;
+        justify-content: center;
+    }
+    
+    .cta-cheap-rental-left {
+        @include flex;
+        gap: 70px;
+
+        @include breakpoint (max-md){
+            gap: 20px;
+        }
+
+        h4 {
+            font-weight: 400;
+            border-left: 1px solid #29314a;
+            padding-left: 30px;
+            position: relative;
+
+            @include breakpoint (max-md){
+               padding-left: 0;
+               border: none;
+               font-size: 18px;
+            }
+        }
+    }
+
+    .social-icon {
+        gap: 15px;
+        position: relative;
+        z-index: 9;
+
+        @include breakpoint (max-sm){
+            margin-top: 20px;
+        }
+
+    a {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        font-size: 16px;
+        display: block;
+        color: $header-color;
+        transition: all .4s ease-in-out;
+        text-align: center;
+        background-color: $white;
+        border-radius: 50%;
+
+            &:hover {
+                background-color: $theme-color;
+                color: $white;
+            }
+        }
+    }
+}
+
+.pickup-wrapper {
+    @include flex;
+    background-color: $white;
+    box-shadow: $shadow;
+    border-radius: 10px;
+    padding: 40px;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: -40px;
+    position: relative;
+    z-index: 9;
+
+    @include breakpoint (max-xxl){
+        flex-wrap: wrap;
+        justify-content: initial;
+    }
+
+    .pickup-items {
+        @include breakpoint (max-xxl){
+            width: 100%;
+        }
+
+        .field-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: $header-color;
+            margin-bottom: 15px;
+
+            &.style-2 {
+               opacity: 0;
+
+                @include breakpoint (max-xxl){
+                    display: none;
+                }
+            }
+        }
+
+        .input-group {
+            position: relative;
+            width: 215px;
+
+            @include breakpoint (max-xxl){
+                width: 100%;
+            }
+
+            .input-group-addon {
+                position: absolute;
+                top: 18px;
+                right: 20px;
+            }
+        }
+
+        input {
+            width: 100%;
+            outline: none;
+            border: none;
+            padding: 18px 25px;
+            color: $text-color;
+            background-color: rgb(236, 240, 244);
+            font-size: 16px;
+            text-transform: capitalize;
+            font-weight: 400;
+            border-radius: 10px !important;
+
+            &::placeholder {
+                color: $text-color;
+            }
+        }
+
+        .category-oneadjust{
+            background-color: #ecf0f4;
+            border-radius: 10px;
+            padding: 18px 60px 18px 20px;
+            width: 215px;
+
+            @include breakpoint (max-xxl){
+               width: initial;
+            }
+
+			.nice-select{
+				width: unset !important;
+				gap: 20px;
+				font-size: 16px;
+
+                span {
+                    color: $text-color;
+                }
+
+				&::after{
+                    border-bottom: 2px solid $text-color;
+                    border-right: 2px solid $text-color;
+				}
+
+				.list{
+					max-height: 15vh;
+					background: $header-color;
+					width: 250px;
+					padding: 5px 8px;
+					overflow-y: scroll;
+                    right: -55px;
+
+					@include breakpoint (max-xl){
+						right: -60px;
+					}
+
+					li {
+						color: $white;
+						font-size: 14px;
+						border: none;
+					}
+				}
+			}
+        }
+
+        .pickup-btn {
+            background-color: $theme-color;
+            transition: all 0.3s ease;
+            height: 65px;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 1.2;
+            color: $white;
+            padding: 0 40px;
+            border: none;
+            border-radius: 10px;
+
+            &:hover {
+                background-color: $theme-color-2;
+            }
+        }
+    }
+
+    &.style-2 {
+        box-shadow: none;
+        border: 10px solid  rgb(208, 215, 222);
+       padding: 40px 30px;
+       margin-top: -180px;
+
+       @include breakpoint (max-xl){
+        margin-top: -80px;
+       }
+
+       @include breakpoint (max-lg){
+        margin-top: -100px;
+       }
+    }
+}
+
+// .pickup-loaction-area-2 {
+//    position: relative;
+
+//    &::before {
+//         @include before;
+//         background-color: $white;
+//    }
+// }
+
+.cta-car-booking-section {
+    position: relative;
+    background-position: top center !important;
+    background-repeat: no-repeat !important;
+
+    &::before {
+        @include before;
+        background-color: $theme-color;
+        opacity: 0.9;
+    }
+}
+
+.cta-car-booking-items {
+    text-align: center;
+    position: relative;
+    z-index: 9;
+
+    .content {
+        h2 {
+            color: $white;
+        }
+    
+        .button-items {
+            @include flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+    }
+
+    .car-image {
+        max-width: 947px;
+        margin: 50px auto -230px;
+
+        @include breakpoint (max-lg){
+            margin: 50px auto -160px;
+        }
+
+        img {
+            @include imgw;
+        }
+    }
+}
