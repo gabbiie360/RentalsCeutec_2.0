@@ -1,3 +1,24 @@
+<<<<<<< HEAD
+=======
+import { auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, googleProvider, githubProvider, microsoftProvider } from "./firebaseConfig.js";
+import { db } from "./firebaseConfig.js";
+import { doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+
+// Obtener el rol de un usuario
+async function obtenerRol(uid) {
+    const docRef = doc(db, "usuarios", uid);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+        const data = docSnap.data();
+        return data.rol || null;
+    } else {
+        return null;
+    }
+}
+
+
+>>>>>>> ac1e144b460ff64361f127fb0e880be4d00dcf64
 
 console.log("login.js cargado correctamente");
 import { auth, db, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup,
@@ -90,13 +111,29 @@ document.getElementById("btnLogin").addEventListener("click", async function () 
 
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
+<<<<<<< HEAD
         console.log("Usuario autenticado:", userCredential.user);
         alert("Inicio de sesión exitoso");
         window.location.href = "index.html";
+=======
+        const user = userCredential.user;
+        console.log("Usuario autenticado:", user.email);
+
+        const rol = await obtenerRol(user.uid);
+        console.log("Rol:", rol);
+
+        if (rol === "admin") {
+            alert("Bienvenido administrador");
+            window.location.href = "dashboardAdmin.html"; // redirige al panel admin
+        } else if (rol === "user") {
+            alert("Inicio de sesión exitoso");
+            window.location.href = "index-2.html";        } else {
+            }
+>>>>>>> ac1e144b460ff64361f127fb0e880be4d00dcf64
     } catch (error) {
         console.error("Error en el inicio de sesión:", error.message);
         alert("Error: " + error.message);
-    }
+    }
 });
 
 // Inicio de sesión con Google
@@ -137,7 +174,7 @@ document.getElementById("btnMicrosoft").addEventListener("click", async function
 
 // Registro de usuario con correo y guardado en Firestore
 document.getElementById("registerEmail").addEventListener("click", async (event) => {
-    event.preventDefault(); // Evita recargar la página
+    event.preventDefault();
 
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
@@ -151,6 +188,7 @@ document.getElementById("registerEmail").addEventListener("click", async (event)
         // Registro en Firebase Authentication
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
+<<<<<<< HEAD
         
         // Enviar correo de verificación
         await sendEmailVerification(user);
@@ -172,5 +210,32 @@ document.getElementById("registerEmail").addEventListener("click", async (event)
         console.error("Error en el registro:", error.message);
         alert("Error: " + error.message);
     }
+=======
+
+        // Guardar rol en Firestore
+        try {
+            await setDoc(doc(db, "usuarios", user.uid), {
+              email: user.email,
+              rol: "user",
+              uid: user.uid,
+              createdAt: new Date()
+            });
+        
+            console.log("Usuario guardado correctamente en Firestore");
+        
+          } catch (error) {
+            console.error("Error al guardar en Firestore:", error.message);
+          }
+        
+          alert("Registro exitoso. Bienvenido, " + user.email);
+        } catch (error) {
+          console.error("Error en el registro:", error.message);
+          alert("Error: " + error.message);
+        }
+
+
+
+        
+>>>>>>> ac1e144b460ff64361f127fb0e880be4d00dcf64
 });
 
