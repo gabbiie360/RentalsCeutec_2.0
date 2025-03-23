@@ -15,6 +15,17 @@
   --bg2: #18185E;
   --bg3: #ffffff33;
   --box-shadow: 0px 10px 60px 0px rgba(0, 0, 0, 0.1);
+
+  /* =======================
+   PALETA DE COLORES CHARTS
+========================== */
+  --color-rojo: #ff6b6b;
+  --color-azul: #4dabf7;
+  --color-verde: #51cf66;
+  --color-naranja: #ffa94d;
+  --color-morado: #845ef7;
+  --color-celeste: #66d9e8;
+  --color-rosa: #f06595;
 }
 
 .theme-btn {
