@@ -1,110 +1,87 @@
 "use strict";
 
-var login = require('../assets/js/login'); // Ajusta la ruta según tu proyecto
+var _require = require("../assets/js/loginTest"),
+    obtenerRol = _require.obtenerRol,
+    signInWithEmail = _require.signInWithEmail; // ✅
 
 
-describe('Funcionalidad de inicio de sesión', function () {
-  it('debería devolver éxito cuando se proporcionan credenciales válidas', function _callee() {
-    var mockCredentials, result;
-    return regeneratorRuntime.async(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            mockCredentials = {
-              username: 'testuser',
-              password: 'password123'
-            };
-            _context.next = 3;
-            return regeneratorRuntime.awrap(login(mockCredentials));
+describe("Pruebas unitarias de autenticación", function () {
+  test("Debería retornar el rol 'admin' para el UID de Maria", function () {
+    // Arrange
+    var uid = "maria"; // Act
 
-          case 3:
-            result = _context.sent;
-            expect(result).toEqual({
-              success: true,
-              message: 'Inicio de sesión exitoso'
-            });
+    var rol = obtenerRol(uid); // Assert
 
-          case 5:
-          case "end":
-            return _context.stop();
-        }
+    expect(rol).toBe("admin");
+  });
+  test("Debería retornar el rol 'user' para el UID de Juan", function () {
+    // Arrange
+    var uid = "juan"; // Act
+
+    var rol = obtenerRol(uid); // Assert
+
+    expect(rol).toBe("user");
+  });
+  test("Debería retornar 'null' para un UID desconocido", function () {
+    // Arrange
+    var uid = "desconocido"; // Act
+
+    var rol = obtenerRol(uid); // Assert
+
+    expect(rol).toBeNull();
+  });
+  test("Debería iniciar sesión correctamente con el usuario admin", function () {
+    // Arrange
+    var email = "maria@example.com";
+    var password = "admin123"; // Act
+
+    var result = signInWithEmail(email, password); // Assert
+
+    expect(result).toEqual({
+      user: {
+        uid: "maria",
+        email: "maria@example.com"
       }
     });
   });
-  it('debería devolver un error cuando se proporcionan credenciales inválidas', function _callee2() {
-    var mockCredentials, result;
-    return regeneratorRuntime.async(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            mockCredentials = {
-              username: 'testuser',
-              password: 'wrongpassword'
-            };
-            _context2.next = 3;
-            return regeneratorRuntime.awrap(login(mockCredentials));
+  test("Debería iniciar sesión correctamente con el usuario común", function () {
+    // Arrange
+    var email = "juan@example.com";
+    var password = "user123"; // Act
 
-          case 3:
-            result = _context2.sent;
-            expect(result).toEqual({
-              success: false,
-              message: 'Credenciales inválidas'
-            });
+    var result = signInWithEmail(email, password); // Assert
 
-          case 5:
-          case "end":
-            return _context2.stop();
-        }
+    expect(result).toEqual({
+      user: {
+        uid: "juan",
+        email: "juan@example.com"
       }
     });
   });
-  it('debería lanzar un error si falta el nombre de usuario o la contraseña', function _callee3() {
-    var mockCredentials;
-    return regeneratorRuntime.async(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            mockCredentials = {
-              username: '',
-              password: ''
-            };
-            _context3.next = 3;
-            return regeneratorRuntime.awrap(expect(login(mockCredentials)).rejects.toThrow('Se requieren nombre de usuario y contraseña'));
+  test("Debería lanzar un error al iniciar sesión con credenciales incorrectas", function () {
+    // Arrange
+    var email = "incorrecto@example.com";
+    var password = "wrong"; // Act & Assert
 
-          case 3:
-          case "end":
-            return _context3.stop();
-        }
-      }
-    });
+    expect(function () {
+      return signInWithEmail(email, password);
+    }).toThrow("Credenciales inválidas");
   });
-  it('debería manejar los errores del servidor de manera adecuada', function _callee4() {
-    var mockCredentials;
-    return regeneratorRuntime.async(function _callee4$(_context4) {
-      while (1) {
-        switch (_context4.prev = _context4.next) {
-          case 0:
-            mockCredentials = {
-              username: 'testuser',
-              password: 'password123'
-            }; // Simula un error del servidor
+  test("Debería devolver 'dashboard.html' si el rol es admin", function () {
+    // Arrange
+    var rol = obtenerRol("maria"); // Act
 
-            jest.spyOn(global, 'fetch').mockImplementation(function () {
-              return Promise.reject(new Error('Error del servidor'));
-            });
-            _context4.next = 4;
-            return regeneratorRuntime.awrap(expect(login(mockCredentials)).rejects.toThrow('Error del servidor'));
+    var redireccion = rol === "admin" ? "dashboard.html" : "clientes.html"; // Assert
 
-          case 4:
-            // Limpia el mock
-            global.fetch.mockRestore();
+    expect(redireccion).toBe("dashboard.html");
+  });
+  test("Debería devolver 'clientes.html' si el rol es user", function () {
+    // Arrange
+    var rol = obtenerRol("juan"); // Act
 
-          case 5:
-          case "end":
-            return _context4.stop();
-        }
-      }
-    });
+    var redireccion = rol === "admin" ? "dashboard.html" : "clientes.html"; // Assert
+
+    expect(redireccion).toBe("clientes.html");
   });
 });
 //# sourceMappingURL=login.test.dev.js.map
