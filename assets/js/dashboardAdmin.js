@@ -56,12 +56,17 @@ function mostrarToast(mensaje, tipo = "primary") {
   toast.show();
 }
 
+
+
 // ==========================
 // USUARIOS
 // ==========================
 function cargarUsuarios() {
   const tabla = document.getElementById("tablaUsuarios");
   tabla.innerHTML = "";
+
+  const filtroCorreo = document.getElementById("filtroUsuarioCorreo").value.toLowerCase();
+  const filtroRol = document.getElementById("filtroRol").value;
 
   onSnapshot(usuariosRef, (snapshot) => {
     tabla.innerHTML = "";
@@ -72,22 +77,27 @@ function cargarUsuarios() {
       const rol = data.rol || "user";
       if (!email.trim()) return;
 
-      const fila = document.createElement("tr");
-      fila.innerHTML = `
-        <td>${email}</td>
-        <td>
-          <select class="form-select form-select-sm" data-uid="${uid}">
-            <option value="user" ${rol === "user" ? "selected" : ""}>Usuario</option>
-            <option value="admin" ${rol === "admin" ? "selected" : ""}>Administrador</option>
-          </select>
-        </td>
-        <td>
-          <button class="btn btn-sm btn-danger" onclick="eliminarUsuario('${uid}')">
-            <i class="fa fa-trash"></i>
-          </button>
-        </td>
-      `;
-      tabla.appendChild(fila);
+      const coincideCorreo = email.toLowerCase().includes(filtroCorreo);
+      const coincideRol = !filtroRol || rol === filtroRol;
+
+      if (coincideCorreo && coincideRol) {
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
+          <td>${email}</td>
+          <td>
+            <select class="form-select form-select-sm" data-uid="${uid}">
+              <option value="user" ${rol === "user" ? "selected" : ""}>Usuario</option>
+              <option value="admin" ${rol === "admin" ? "selected" : ""}>Administrador</option>
+            </select>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-danger" onclick="eliminarUsuario('${uid}')">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        `;
+        tabla.appendChild(fila);
+      }
     });
 
     document.querySelectorAll('select[data-uid]').forEach(select => {
@@ -116,8 +126,14 @@ window.eliminarUsuario = async function (uid) {
   }
 };
 
-cargarUsuarios();
-
+// === FILTROS USUARIOS ===
+document.getElementById("filtroUsuarioCorreo").addEventListener("input", cargarUsuarios);
+document.getElementById("filtroRol").addEventListener("change", cargarUsuarios);
+document.getElementById("limpiarFiltrosUsuarios").addEventListener("click", () => {
+  document.getElementById("filtroUsuarioCorreo").value = "";
+  document.getElementById("filtroRol").value = "";
+  cargarUsuarios();
+});
 // ==========================
 // VEHÍCULOS
 // ==========================
@@ -264,46 +280,86 @@ window.eliminarVehiculo = async function (id) {
 
 cargarVehiculos();
 
+document.getElementById("limpiarFiltrosVehiculos").addEventListener("click", () => {
+    document.getElementById("filtroMarca").value = "";
+    document.getElementById("filtroDisponibilidad").value = "";
+    document.getElementById("filtroAnio").value = "";
+    document.getElementById("precioMin").value = "";
+    document.getElementById("precioMax").value = "";
+    cargarVehiculos();
+  });
+  
+
 // Escuchar cambios en los filtros
-["filtroMarca", "filtroDisponibilidad", "filtroAnio", "precioMin", "precioMax"].forEach(id => {
-  document.getElementById(id).addEventListener("input", cargarVehiculos);
-});
+document.getElementById("filtroMarca").addEventListener("input", cargarVehiculos);
+document.getElementById("filtroAnio").addEventListener("input", cargarVehiculos);
+document.getElementById("precioMin").addEventListener("input", cargarVehiculos);
+document.getElementById("precioMax").addEventListener("input", cargarVehiculos);
+document.getElementById("filtroDisponibilidad").addEventListener("change", cargarVehiculos);
 
 
 // ==========================
 // RESERVAS
 // ==========================
 function cargarReservas() {
-  const tabla = document.getElementById("tablaReservas");
-  tabla.innerHTML = "";
-
-  onSnapshot(reservasRef, (snapshot) => {
+    const tabla = document.getElementById("tablaReservas");
     tabla.innerHTML = "";
-    const ahora = new Date();
-
-    snapshot.forEach((docu) => {
-      const data = docu.data();
-      const fechaEntrega = data["Fecha de entrega"]?.toDate();
-      if (fechaEntrega < ahora) return; // Ocultar vencidas visualmente
-
-      tabla.innerHTML += `
-        <tr>
-          <td>${data["Nombre Completo"]}</td>
-          <td>${data.Email}</td>
-          <td>${data["Numero de Telefono"]}</td>
-          <td>${data["Recoges en"]}</td>
-          <td>${data.nombreVehiculo}</td>
-          <td>${data["Fecha de Reserva"]?.toDate().toLocaleString()}</td>
-          <td>${data["Fecha de entrega"]?.toDate().toLocaleString()}</td>
-          <td>
-            <button class="btn btn-sm btn-secondary" onclick="editarReserva('${docu.id}')"><i class="fa fa-pen"></i></button>
-            <button class="btn btn-sm btn-danger" onclick="eliminarReserva('${docu.id}')"><i class="fa fa-trash"></i></button>
-          </td>
-        </tr>
-      `;
+  
+    onSnapshot(reservasRef, (snapshot) => {
+      tabla.innerHTML = "";
+      const ahora = new Date();
+  
+      const desde = document.getElementById("filtroDesde").valueAsDate;
+      const hasta = document.getElementById("filtroHasta").valueAsDate;
+      const usuarioFiltro = document.getElementById("filtroUsuario").value.toLowerCase();
+      const estadoFiltro = document.getElementById("filtroEstado").value;
+  
+      snapshot.forEach((docu) => {
+        const data = docu.data();
+        const fechaReserva = data["Fecha de Reserva"]?.toDate();
+        const fechaEntrega = data["Fecha de entrega"]?.toDate();
+  
+        // Filtrado
+        if (desde && fechaReserva < desde) return;
+        if (hasta && fechaReserva > hasta) return;
+        if (usuarioFiltro && !data.Email.toLowerCase().includes(usuarioFiltro)) return;
+  
+        if (estadoFiltro === "futuras" && fechaEntrega < ahora) return;
+        if (estadoFiltro === "pasadas" && fechaEntrega >= ahora) return;
+  
+        tabla.innerHTML += `
+          <tr>
+            <td>${data["Nombre Completo"]}</td>
+            <td>${data.Email}</td>
+            <td>${data["Numero de Telefono"]}</td>
+            <td>${data["Recoges en"]}</td>
+            <td>${data.nombreVehiculo}</td>
+            <td>${fechaReserva?.toLocaleString()}</td>
+            <td>${fechaEntrega?.toLocaleString()}</td>
+            <td>
+              <button class="btn btn-sm btn-secondary" onclick="editarReserva('${docu.id}')"><i class="fa fa-pen"></i></button>
+              <button class="btn btn-sm btn-danger" onclick="eliminarReserva('${docu.id}')"><i class="fa fa-trash"></i></button>
+            </td>
+          </tr>
+        `;
+      });
     });
+  }
+
+  document.getElementById("limpiarFiltrosReservas").addEventListener("click", () => {
+    document.getElementById("filtroDesde").value = "";
+    document.getElementById("filtroHasta").value = "";
+    document.getElementById("filtroUsuario").value = "";
+    document.getElementById("filtroEstado").value = "";
+    cargarReservas();
   });
-}
+  
+
+
+  ["filtroDesde", "filtroHasta", "filtroUsuario", "filtroEstado"].forEach(id => {
+    document.getElementById(id).addEventListener("input", cargarReservas);
+  });
+  
 
 function cargarVehiculosParaReservas() {
   const select = document.getElementById("vehiculoReserva");

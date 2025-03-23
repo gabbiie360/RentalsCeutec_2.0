@@ -130,7 +130,7 @@ function actualizarGraficas() {
   if (chartUsuarios) chartUsuarios.destroy();
   chartUsuarios = new Chart(graficaUsuarios, {
     type: "pie",
-    data: {
+      data: {
       labels: Object.keys(usuariosActivos),
       datasets: [{
         data: Object.values(usuariosActivos)

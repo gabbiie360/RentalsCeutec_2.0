@@ -83,7 +83,7 @@
         <h5>Reservas por Fecha</h5>
       </div>
       <div class="card-body">
-        <canvas id="chartReservasFecha" height="120"></canvas>
+        <canvas id="chartReservasFecha" height="50"></canvas>
       </div>
     </div>
   
@@ -92,7 +92,7 @@
         <h5>Vehículos más Utilizados</h5>
       </div>
       <div class="card-body">
-        <canvas id="chartVehiculosTop" height="120"></canvas>
+        <canvas id="chartVehiculosTop" height="50"></canvas>
       </div>
     </div>
   
@@ -101,92 +101,166 @@
         <h5>Usuarios más Activos</h5>
       </div>
       <div class="card-body">
-        <canvas id="chartUsuariosTop" height="120"></canvas>
+        <canvas id="chartUsuariosTop" height="50"></canvas>
       </div>
     </div>
   </section>
   
 
-      <section id="usuarios" class="dashboard-section d-none">
-        <div class="card shadow">
-          <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Gestión de Usuarios</h5>
+   <!-- USUARIOS -->
+<section id="usuarios" class="dashboard-section d-none">
+    <div class="card shadow">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Gestión de Usuarios</h5>
+      </div>
+  
+      <div class="card-body">
+        <!-- Filtros -->
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <input type="text" id="filtroUsuarioCorreo" class="form-control" placeholder="Buscar por correo" />
           </div>
-          <div class="card-body">
+          <div class="col-md-3">
+            <select id="filtroRol" class="form-select">
+              <option value="">Todos</option>
+              <option value="user">Usuario</option>
+              <option value="admin">Administrador</option>
+            </select>
+          </div>
+          <div class="col-md-2 d-flex align-items-end">
+            <button id="limpiarFiltrosUsuarios" class="btn btn-outline-secondary w-100" title="Limpiar Filtros">
+              <i class="fas fa-broom me-1"></i> Limpiar
+            </button>
+          </div>
+        </div>
+      
+            <!-- Tabla de usuarios -->
             <table class="table table-hover">
-              <thead><tr><th>Email</th><th>Rol</th><th>Acciones</th></tr></thead>
+              <thead>
+                <tr>
+                  <th>Email</th>
+                  <th>Rol</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
               <tbody id="tablaUsuarios"></tbody>
             </table>
           </div>
         </div>
       </section>
-
-      <section id="vehiculos" class="dashboard-section d-none">
-        <div class="card shadow">
-          <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Gestión de Vehículos</h5>
-            <div class="row mb-3">
-                <div class="col-md-3">
-                  <input type="text" id="filtroMarca" class="form-control" placeholder="Filtrar por marca" />
-                </div>
-                <div class="col-md-3">
-                  <select id="filtroDisponibilidad" class="form-select">
-                    <option value="">Todos</option>
-                    <option value="true">Disponible</option>
-                    <option value="false">No disponible</option>
-                  </select>
-                </div>
-                <div class="col-md-3">
-                  <input type="number" id="filtroAnio" class="form-control" placeholder="Filtrar por año" />
-                </div>
-                <div class="col-md-3 d-flex gap-2">
-                  <input type="number" id="precioMin" class="form-control" placeholder="Precio mínimo" />
-                  <input type="number" id="precioMax" class="form-control" placeholder="Precio máximo" />
-                </div>
-              </div>
-              
-            <button class="btn btn-primary btn-sm" onclick="abrirModalVehiculo()">+ Agregar Vehículo</button>
+      
+  <!-- VEHÍCULOS -->
+  <section id="vehiculos" class="dashboard-section d-none">
+    <div class="card shadow">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Gestión de Vehículos</h5>
+        <div class="col-md-1 d-flex align-items-end">
+            <button class="btn btn-primary btn-sm" onclick="abrirModalVehiculo()">+ Agregar</button>
           </div>
-          <div class="card-body">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                      <th>Marca</th>
-                      <th>Modelo</th>
-                      <th>Placa</th>
-                      <th>Año</th>
-                      <th>Precio/día</th>
-                      <th>Disponible</th>
-                      <th>Próxima reserva</th>
-                      <th>Acciones</th>
-                    </tr>
-                  </thead>
-                  
-              <tbody id="tablaVehiculos"></tbody>
-            </table>
+      </div>
+  
+      <div class="card-body">
+        <!-- Filtros -->
+        <div class="row mb-3">
+          <div class="col-md-2">
+            <input type="text" id="filtroMarca" class="form-control" placeholder="Filtrar por marca" />
           </div>
+          <div class="col-md-2">
+            <select id="filtroDisponibilidad" class="form-select">
+              <option value="">Todos</option>
+              <option value="true">Disponible</option>
+              <option value="false">No disponible</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <input type="number" id="filtroAnio" class="form-control" placeholder="Filtrar por año" />
+          </div>
+          <div class="col-md-2">
+            <input type="number" id="precioMin" class="form-control" placeholder="Precio mínimo" />
+          </div>
+          <div class="col-md-2">
+            <input type="number" id="precioMax" class="form-control" placeholder="Precio máximo" />
+          </div>
+          <div class="col-md-1 d-flex align-items-end">
+            <button id="limpiarFiltrosVehiculos" class="btn btn-outline-secondary w-100" title="Limpiar filtros">
+              <i class="fas fa-broom"></i>
+            </button>
+          </div>
+          
         </div>
-      </section>
-
-      <section id="reservas" class="dashboard-section d-none">
-        <div class="card shadow">
-          <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Gestión de Reservas</h5>
-            <button class="btn btn-primary btn-sm" onclick="abrirModalReserva()">+ Agregar Reserva</button>
+  
+        <!-- Tabla de vehículos -->
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Marca</th>
+              <th>Modelo</th>
+              <th>Placa</th>
+              <th>Año</th>
+              <th>Precio/día</th>
+              <th>Disponible</th>
+              <th>Próxima reserva</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tablaVehiculos"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  
+  
+  <!-- RESERVAS -->
+  <section id="reservas" class="dashboard-section d-none">
+    <div class="card shadow">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Gestión de Reservas</h5>
+        <button class="btn btn-primary btn-sm" onclick="abrirModalReserva()">+ Agregar Reserva</button>
+      </div>
+  
+      <div class="card-body">
+        <!-- Filtros -->
+        <div class="row mb-3">
+          <div class="col-md-3">
+            <label class="form-label">Desde</label>
+            <input type="date" id="filtroDesde" class="form-control">
           </div>
-          <div class="card-body">
-            <table class="table table-hover">
-              <thead>
-                <tr><th>Nombre</th><th>Email</th><th>Teléfono</th><th>Ubicación</th><th>Vehículo</th><th>Reserva</th><th>Entrega</th><th>Acciones</th></tr>
-              </thead>
-              <tbody id="tablaReservas"></tbody>
-            </table>
+          <div class="col-md-3">
+            <label class="form-label">Hasta</label>
+            <input type="date" id="filtroHasta" class="form-control">
           </div>
+          <div class="col-md-3">
+            <label class="form-label">Usuario (email)</label>
+            <input type="text" id="filtroUsuario" class="form-control" placeholder="Buscar por correo">
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Estado</label>
+            <select id="filtroEstado" class="form-select">
+              <option value="">Todos</option>
+              <option value="futuras">Futuras</option>
+              <option value="pasadas">Pasadas</option>
+            </select>
+          </div>
+          <div class="col-md-1 d-flex align-items-end">
+            <button id="limpiarFiltrosReservas" class="btn btn-outline-secondary w-100" title="Limpiar Filtros">
+              <i class="fas fa-broom"></i>
+            </button>
+          </div>
+          
         </div>
-      </section>
-
-    </main>
-  </div>
+  
+        <!-- Tabla -->
+        <table class="table table-hover">
+          <thead>
+            <tr><th>Nombre</th><th>Email</th><th>Teléfono</th><th>Ubicación</th><th>Vehículo</th><th>Reserva</th><th>Entrega</th><th>Acciones</th></tr>
+          </thead>
+          <tbody id="tablaReservas"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  
+      
 
   <!-- Modal Vehículo -->
   <div class="modal fade" id="modalVehiculo" tabindex="-1">
