@@ -543,7 +543,44 @@ Js TABLE OF CONTENTS
     }
 
     loader();
-   
+
+    document.querySelectorAll('.reservar-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const carData = JSON.parse(this.getAttribute('data-car'));
+            localStorage.setItem('selectedCar', JSON.stringify(carData));
+            window.location.href = 'car-details.html';
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const carData = JSON.parse(localStorage.getItem('selectedCar'));
+        if (carData) {
+            document.getElementById('car-image').src = carData.image;
+            document.getElementById('car-name').textContent = carData.name;
+            document.getElementById('car-price').innerHTML = `${carData.price} <span>/ Día</span>`;
+            document.getElementById('car-body').textContent = carData.features.body;
+            document.getElementById('car-mileage').textContent = carData.features.mileage;
+            document.getElementById('car-year').textContent = carData.features.year;
+            document.getElementById('car-engine').textContent = carData.features.engine;
+            document.getElementById('car-passengers').textContent = carData.features.passengers;
+            document.getElementById('car-gear').textContent = carData.features.gear;
+            document.getElementById('car-fuel').textContent = carData.features.fuel;
+        }
+
+        // Fetch similar cars from CarGrid page
+        fetch('car-grid.html')
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, 'text/html');
+                const similarCars = doc.querySelectorAll('.car-rentals-items');
+                const container = document.getElementById('similar-cars-container');
+                similarCars.forEach(car => {
+                    container.appendChild(car.cloneNode(true));
+                });
+            })
+            .catch(error => console.error('Error fetching similar cars:', error));
+    });
 
 })(jQuery); // End jQuery
 
