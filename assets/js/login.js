@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-=======
-import { auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, googleProvider, githubProvider, microsoftProvider } from "./firebaseConfig.js";
-import { db } from "./firebaseConfig.js";
-import { doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
-
-// Obtener el rol de un usuario
-async function obtenerRol(uid) {
-    const docRef = doc(db, "usuarios", uid);
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-        const data = docSnap.data();
-        return data.rol || null;
-    } else {
-        return null;
-    }
-}
-
-
->>>>>>> ac1e144b460ff64361f127fb0e880be4d00dcf64
 
 console.log("login.js cargado correctamente");
 import { auth, db, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup,
@@ -111,11 +90,9 @@ document.getElementById("btnLogin").addEventListener("click", async function () 
 
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
-<<<<<<< HEAD
         console.log("Usuario autenticado:", userCredential.user);
         alert("Inicio de sesión exitoso");
         window.location.href = "index.html";
-=======
         const user = userCredential.user;
         console.log("Usuario autenticado:", user.email);
 
@@ -129,7 +106,6 @@ document.getElementById("btnLogin").addEventListener("click", async function () 
             alert("Inicio de sesión exitoso");
             window.location.href = "index-2.html";        } else {
             }
->>>>>>> ac1e144b460ff64361f127fb0e880be4d00dcf64
     } catch (error) {
         console.error("Error en el inicio de sesión:", error.message);
         alert("Error: " + error.message);
@@ -188,7 +164,6 @@ document.getElementById("registerEmail").addEventListener("click", async (event)
         // Registro en Firebase Authentication
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-<<<<<<< HEAD
         
         // Enviar correo de verificación
         await sendEmailVerification(user);
@@ -210,7 +185,6 @@ document.getElementById("registerEmail").addEventListener("click", async (event)
         console.error("Error en el registro:", error.message);
         alert("Error: " + error.message);
     }
-=======
 
         // Guardar rol en Firestore
         try {
@@ -228,14 +202,6 @@ document.getElementById("registerEmail").addEventListener("click", async (event)
           }
         
           alert("Registro exitoso. Bienvenido, " + user.email);
-        } catch (error) {
-          console.error("Error en el registro:", error.message);
-          alert("Error: " + error.message);
-        }
-
-
-
-        
->>>>>>> ac1e144b460ff64361f127fb0e880be4d00dcf64
+                
 });
 
