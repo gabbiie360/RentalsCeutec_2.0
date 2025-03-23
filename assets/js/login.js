@@ -92,7 +92,7 @@ document.getElementById("btnLogin").addEventListener("click", async function () 
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         console.log("Usuario autenticado:", userCredential.user);
         alert("Inicio de sesión exitoso");
-        window.location.href = "index-2.html";
+        window.location.href = "index.html";
     } catch (error) {
         console.error("Error en el inicio de sesión:", error.message);
         alert("Error: " + error.message);
@@ -105,7 +105,7 @@ document.getElementById("btnGoogle").addEventListener("click", async function ()
         const result = await signInWithPopup(auth, googleProvider);
         console.log("Usuario autenticado con Google:", result.user);
         alert("Inicio de sesión con Google exitoso");
-        window.location.href = "index-2.html";
+        window.location.href = "index.html";
     } catch (error) {
         console.error("Error con Google:", error.message);
     }
@@ -117,7 +117,7 @@ document.getElementById("btnGitHub").addEventListener("click", async function ()
         const result = await signInWithPopup(auth, githubProvider);
         console.log("Usuario autenticado con GitHub:", result.user);
         alert("Inicio de sesión con GitHub exitoso");
-        window.location.href = "index-2.html";
+        window.location.href = "index.html";
     } catch (error) {
         console.error("Error con GitHub:", error.message);
     }
@@ -129,7 +129,7 @@ document.getElementById("btnMicrosoft").addEventListener("click", async function
         const result = await signInWithPopup(auth, microsoftProvider);
         console.log("Usuario autenticado con Microsoft:", result.user);
         alert("Inicio de sesión con Microsoft exitoso");
-        window.location.href = "index-2.html";
+        window.location.href = "index.html";
     } catch (error) {
         console.error("Error con Microsoft:", error.message);
     }
