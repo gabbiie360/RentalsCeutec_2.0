@@ -83,7 +83,7 @@ function redirigirPorRol(rol) {
         window.location.href = "dashboardAdmin.html";
     } else if (rol === "user") {
         mostrarToast("Inicio de sesión exitoso");
-        window.location.href = "index-2.html";
+        window.location.href = "index.html";
     } else {
         mostrarToast("Rol no asignado. Contacte al administrador.");
     }
@@ -135,7 +135,7 @@ document.getElementById("btnLogin").addEventListener("click", async function () 
         redirigirPorRol(rol);
     } catch (error) {
         console.error("Error en el inicio de sesión:", error.message);
-        mostrarToast("Error: " + error.message);
+        mostrarToast("Invalid Credentials");
     }
 });
 
@@ -151,7 +151,7 @@ document.getElementById("btnGoogle").addEventListener("click", async function ()
         redirigirPorRol(rol);
     } catch (error) {
         console.error("Error con Google:", error.message);
-        mostrarToast("Error: " + error.message);
+        mostrarToast("Invalid Credentials");
     }
 });
 
@@ -167,7 +167,7 @@ document.getElementById("btnGitHub").addEventListener("click", async function ()
         redirigirPorRol(rol);
     } catch (error) {
         console.error("Error con GitHub:", error.message);
-        mostrarToast("Error: " + error.message);
+        mostrarToast("Invalid Credentials");
     }
 });
 
@@ -183,7 +183,7 @@ document.getElementById("btnMicrosoft").addEventListener("click", async function
         redirigirPorRol(rol);
     } catch (error) {
         console.error("Error con Microsoft:", error.message);
-        mostrarToast("Error: " + error.message);
+        mostrarToast("Ivalid Credentials");
     }
 });
 
