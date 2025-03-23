@@ -40,27 +40,68 @@
     <header class="dashboard-header d-flex justify-content-between align-items-center px-4 py-3 shadow">
       <h4 class="m-0">Panel de Administración</h4>
       <button id="logout" class="btn btn-danger btn-sm">Cerrar Sesión</button>
-
+        
     </header>
 
     <main class="p-4">
 
-      <!-- Toast -->
-      <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="toastMensaje" class="toast align-items-center text-bg-primary border-0" role="alert">
-          <div class="d-flex">
-            <div class="toast-body" id="toastTexto"></div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+        <!-- Toast -->
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+          <div id="toastMensaje" class="toast align-items-center text-bg-primary border-0" role="alert">
+            <div class="d-flex">
+              <div class="toast-body" id="toastTexto"></div>
+              <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+          </div>
+        </div>
+      
+       <!-- Sección de Reportes -->
+<section id="reportes" class="dashboard-section">
+
+    <!-- Filtros globales para reportes -->
+    <div class="card shadow mb-4">
+      <div class="card-header">
+        <h5 class="mb-0">Filtros de Reportes</h5>
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-md-2">
+            <label class="form-label">Desde</label>
+            <input type="date" id="filtroDesde" class="form-control" />
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Hasta</label>
+            <input type="date" id="filtroHasta" class="form-control" />
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Email</label>
+            <input type="text" id="filtroEmailReporte" class="form-control" placeholder="Correo del usuario" />
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Marca</label>
+            <input type="text" id="filtroMarcaReporte" class="form-control" placeholder="Marca vehículo" />
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Modelo</label>
+            <input type="text" id="filtroModeloReporte" class="form-control" placeholder="Modelo vehículo" />
+          </div>
+          <div class="col-md-1">
+            <label class="form-label">Año</label>
+            <input type="number" id="filtroAnioReporte" class="form-control" placeholder="Año" />
+          </div>
+          <div class="col-md-1 d-flex align-items-end">
+            <button id="limpiarFiltrosReportes" class="btn btn-outline-secondary w-100" title="Limpiar filtros">
+              <i class="fas fa-broom me-1"></i>
+            </button>
           </div>
         </div>
       </div>
-
-      <!-- Secciones del Dashboard -->
-     
-<section id="reportes" class="dashboard-section">
+    </div>
+  
+    <!-- KPI -->
     <div class="card shadow mb-4">
       <div class="card-header">
-        <h5>Resumen General</h5>
+        <h5>Resumen KPI</h5>
       </div>
       <div class="card-body d-flex flex-wrap gap-3">
         <div class="card kpi-box flex-fill p-3 text-center bg-light">
@@ -78,34 +119,39 @@
       </div>
     </div>
   
+    <!-- Reservas por Fecha -->
     <div class="card shadow mb-4">
       <div class="card-header">
-        <h5>Reservas por Fecha</h5>
+        <h5 class="mb-0">Reservas por Fecha</h5>
       </div>
-      <div class="card-body">
-        <canvas id="chartReservasFecha" height="50"></canvas>
+      <div class="chart-line px-3 pb-3">
+        <canvas id="chartReservasFecha" width="200" height="50"></canvas>
       </div>
     </div>
   
+    <!-- Vehículos más utilizados -->
     <div class="card shadow mb-4">
       <div class="card-header">
         <h5>Vehículos más Utilizados</h5>
       </div>
-      <div class="card-body">
-        <canvas id="chartVehiculosTop" height="50"></canvas>
+      <div class="chart-bar px-3 pb-3">
+        <canvas id="chartVehiculosTop" width="200" height="50"></canvas>
       </div>
     </div>
   
+    <!-- Usuarios más activos -->
     <div class="card shadow mb-4">
       <div class="card-header">
         <h5>Usuarios más Activos</h5>
       </div>
-      <div class="card-body">
-        <canvas id="chartUsuariosTop" height="50"></canvas>
+      <div class="chart-pastel px-3 pb-3">
+        <canvas id="chartUsuariosTop" width="200" height="50"></canvas>
       </div>
     </div>
+  
   </section>
   
+
 
    <!-- USUARIOS -->
 <section id="usuarios" class="dashboard-section d-none">
@@ -251,9 +297,21 @@
   
         <!-- Tabla -->
         <table class="table table-hover">
-          <thead>
-            <tr><th>Nombre</th><th>Email</th><th>Teléfono</th><th>Ubicación</th><th>Vehículo</th><th>Reserva</th><th>Entrega</th><th>Acciones</th></tr>
-          </thead>
+          
+            <thead>
+                <tr>
+                  <th data-sort="Nombre Completo">Nombre</th>
+                  <th data-sort="Email">Email</th>
+                  <th data-sort="Numero de Telefono">Teléfono</th>
+                  <th data-sort="Recoges en">Ubicación</th>
+                  <th data-sort="nombreVehiculo">Vehículo</th>
+                  <th data-sort="Fecha de Reserva">Reserva</th>
+                  <th data-sort="Fecha de entrega">Entrega</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              
+            
           <tbody id="tablaReservas"></tbody>
         </table>
       </div>
@@ -319,12 +377,12 @@
   </div>
 
   <!-- Scripts -->
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script type="module" src="assets/js/firebaseConfig.js"></script>
-  <script type="module" src="assets/js/dashboardAdmin.js"></script>
-  <script type="module" src="assets/js/reportes.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script type="module" src="assets/js/disponibilidad.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="assets/js/firebaseConfig.js"></script>
+    <script type="module" src="assets/js/dashboardAdmin.js"></script>
+    <script type="module" src="assets/js/reportes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="assets/js/disponibilidad.js"></script>
 
 
 </body>
