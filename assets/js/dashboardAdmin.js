@@ -4,15 +4,16 @@ import {
     collection,
     addDoc,
     updateDoc,
-    getDocs,
     query,
     where,
     doc,
     getDoc,
+    getDocs,
     deleteDoc,
     onSnapshot
   } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
   
+  import { mostrarToast } from "./toast.js";
 
 
 
@@ -45,17 +46,6 @@ const reservasRef = collection(db, "reservas");
 
 let vehiculosDisponibles = [];
 let vehiculoAnteriorId = null;
-
-// Mostrar toast
-function mostrarToast(mensaje, tipo = "primary") {
-  const toastElement = document.getElementById("toastMensaje");
-  const toastTexto = document.getElementById("toastTexto");
-  toastTexto.textContent = mensaje;
-  toastElement.className = `toast align-items-center text-bg-${tipo} border-0`;
-  const toast = new bootstrap.Toast(toastElement);
-  toast.show();
-}
-
 
 
 // ==========================
@@ -422,7 +412,7 @@ window.editarReserva = async function (id) {
 };
 
 async function validarSolapamiento(idVehiculo, nuevaInicio, nuevaFin, idReservaActual = null) {
-    const snapshot = await getDocs(query(reservasRef, where("idVehiculo", "==", idVehiculo)));
+    const snapshot = await getDoc(query(reservasRef, where("idVehiculo", "==", idVehiculo)));
   
     for (const docu of snapshot.docs) {
       if (idReservaActual && docu.id === idReservaActual) continue;
