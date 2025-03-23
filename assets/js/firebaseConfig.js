@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
 import { getAuth, GoogleAuthProvider, GithubAuthProvider, OAuthProvider, 
          signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, 
-         signInAnonymously, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+         signInAnonymously, signOut, sendPasswordResetEmail, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
 
@@ -29,4 +29,4 @@ const microsoftProvider = new OAuthProvider('microsoft.com');  // <---- CORREGID
 
 export { auth, db, googleProvider, githubProvider, microsoftProvider, 
          signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, 
-         signInAnonymously, signOut, sendPasswordResetEmail };
+         signInAnonymously, signOut, sendPasswordResetEmail, sendEmailVerification };

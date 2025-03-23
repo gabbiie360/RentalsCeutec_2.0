@@ -1,17 +1,12 @@
-<<<<<<< Updated upstream
+
 console.log("login.js cargado correctamente");
 import { auth, db, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup,
-        googleProvider, githubProvider, microsoftProvider } from "./firebaseConfig.js";
-import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
-=======
-console.log("login.js cargado");
-import { auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, googleProvider,
-    githubProvider, microsoftProvider, signOut, sendPasswordResetEmail } from "./firebaseConfig.js";
-import { db } from "./firebaseConfig.js";
-import { doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+        googleProvider, githubProvider, microsoftProvider, signOut, sendPasswordResetEmail, sendEmailVerification } from "./firebaseConfig.js";
+import { doc, setDoc, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
 //Elementos del DOM
 const headerButton = document.querySelector(".header-button");
+
 
 // Verificar si el usuario está autenticado
 auth.onAuthStateChanged((user) => {
@@ -59,27 +54,35 @@ document.getElementById("forgotPasswordLink").addEventListener("click", function
     event.preventDefault();
     document.getElementById("forgotPasswordForm").style.display = "block";
 });
->>>>>>> Stashed changes
+
 
 // Evento para enviar el correo de restablecimiento de contraseña
 document.getElementById("resetPasswordButton").addEventListener("click", async function () {
-    const email = document.getElementById("resetEmail").value.trim();
+    const resetEmail = document.getElementById("resetEmail").value.trim();
 
-    if (email === "") {
+    if (resetEmail === "") {
         alert("Por favor, ingresa un correo electrónico.");
         return;
     }
 
     try {
-        await sendPasswordResetEmail(auth, email);
-        alert("Se ha enviado un correo para restablecer la contraseña. Revisa tu bandeja de entrada.");
-        document.getElementById("forgotPasswordForm").style.display = "none"; // Ocultar formulario después del envío
+        // Verificar si el correo está registrado en la colección "usuarios"
+        const usersRef = collection(db, "usuarios");
+        const q = query(usersRef, where("email", "==", resetEmail));
+        const querySnapshot = await getDocs(q);
+
+        if (querySnapshot.empty) {
+            alert("El correo ingresado no está registrado en la base de datos.");
+            return; // Detener ejecución si el correo no está en Firestore
+        }
+
+        // Si el correo existe, enviar el restablecimiento de contraseña
+        await sendPasswordResetEmail(auth, resetEmail);
+        alert("Se ha enviado un correo para restablecer tu contraseña.");
     } catch (error) {
-        console.error("Error al restablecer la contraseña:", error.message);
-        alert("Error: " + error.message);
+        console.error("Error al enviar el correo de restablecimiento:", error.message);
     }
 });
-
 // Inicio de sesión con correo
 document.getElementById("btnLogin").addEventListener("click", async function () {
     const email = document.getElementById("email").value.trim();
@@ -149,19 +152,25 @@ document.getElementById("registerEmail").addEventListener("click", async (event)
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
         
-        // Guardar usuario en Firestore
+        // Enviar correo de verificación
+        await sendEmailVerification(user);
+        alert("Se ha enviado un correo de verificación. Por favor, revisa tu bandeja de entrada.");
+
+        // Guardar usuario en Firestore con estado de verificación
         await setDoc(doc(db, "usuarios", user.uid), {
             email: user.email,
             uid: user.uid,
-            password: password,
+            verified: false, // Marcar como no verificado
             createdAt: new Date()
         });
 
-        alert("Registro exitoso. Bienvenido, " + user.email);
-        document.getElementById("userInfo").textContent = "Bienvenido, " + user.email;
-        document.getElementById("logout").style.display = "block";
+        // Cerrar sesión hasta que verifique el correo
+        await signOut(auth);
+        alert("Por favor, verifica tu correo antes de iniciar sesión.");
+        
     } catch (error) {
         console.error("Error en el registro:", error.message);
         alert("Error: " + error.message);
     }
 });
+
