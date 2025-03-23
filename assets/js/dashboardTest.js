@@ -82,3 +82,14 @@ function eliminarReserva(id) {
         throw new Error("Error al eliminar reserva.");
     }
 }
+
+module.exports = {
+    actualizarRol,
+    eliminarUsuario,
+    editarVehiculo,
+    guardarVehiculo,
+    eliminarVehiculo,
+    editarReserva,
+    guardarReserva,
+    eliminarReserva
+};

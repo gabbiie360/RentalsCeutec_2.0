@@ -1,6 +1,16 @@
-const {  eliminarUsuario, editarVehiculo, guardarVehiculo, eliminarVehiculo, editarReserva, guardarReserva, eliminarReserva } = require("./dashboardTest");
+const { actualizarRol, eliminarUsuario, editarVehiculo, guardarVehiculo, eliminarVehiculo, editarReserva, guardarReserva, eliminarReserva } = require("../assets/js/dashboardTest");
 
-
+describe("Pruebas unitarias de dashboard", () => {
+    test("Debería actualizar el rol de un usuario", () => {
+        // Arrange
+        const select = { value: "admin", dataset: { uid: "user123" } };
+        
+        // Act
+        const resultado = actualizarRol(select);
+        
+        // Assert
+        expect(resultado).toEqual({ uid: "user123", rol: "admin", mensaje: "Rol actualizado correctamente." });
+    });
 
     test("Debería eliminar un usuario", () => {
         // Arrange
@@ -98,6 +108,6 @@ const {  eliminarUsuario, editarVehiculo, guardarVehiculo, eliminarVehiculo, edi
         const resultado = eliminarReserva(id);
         
         // Assert
-        expect(resultado).toEqual({ id, mensaje: "Reserva eliminada correctamente." });
-    });
+        expect(resultado).toEqual({ id, mensaje: "Reserva eliminada correctamente." });
+    });
 });
