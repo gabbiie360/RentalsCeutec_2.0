@@ -14,9 +14,6 @@ async function obtenerRol(uid) {
         return null;
     }
 }
-
-
-
 // Inicio de sesión con correo
 document.getElementById("btnLogin").addEventListener("click", async function () {
     const email = document.getElementById("email").value.trim();
@@ -120,4 +117,3 @@ document.getElementById("registerEmail").addEventListener("click", async (event)
 
         
 });
-
