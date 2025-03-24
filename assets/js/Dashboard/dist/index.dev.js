@@ -31,5 +31,11 @@ document.addEventListener("DOMContentLoaded", function () {
   (0, _usuarios.cargarUsuarios)();
   (0, _vehiculos.cargarVehiculos)();
   (0, _reservas.cargarReservas)();
+  (0, _reservas.inicializarEventosReservas)();
 });
+window.editarVehiculo = _vehiculos.editarVehiculo;
+window.guardarVehiculo = _vehiculos.guardarVehiculo;
+window.editarReserva = _reservas.editarReserva;
+window.guardarReserva = _reservas.guardarReserva;
+window.abrirModalReserva = _reservas.abrirModalReserva;
 //# sourceMappingURL=index.dev.js.map

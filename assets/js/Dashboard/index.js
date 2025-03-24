@@ -1,6 +1,7 @@
 import { cargarUsuarios } from "./usuarios.js";
-import { cargarVehiculos } from "./vehiculos.js";
-import { cargarReservas } from "./reservas.js";
+import { cargarVehiculos, editarVehiculo, guardarVehiculo } from "./vehiculos.js";
+import { cargarReservas, editarReserva, guardarReserva, abrirModalReserva, inicializarEventosReservas } from "./reservas.js";
+
 
 document.getElementById("toggleSidebar").addEventListener("click", () => {
   const sidebar = document.getElementById("sidebar");
@@ -26,4 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
   cargarUsuarios();
   cargarVehiculos();
   cargarReservas();
+  inicializarEventosReservas()
 });
+window.editarVehiculo = editarVehiculo;
+window.guardarVehiculo = guardarVehiculo;
+window.editarReserva = editarReserva;
+window.guardarReserva = guardarReserva;
+window.abrirModalReserva = abrirModalReserva;
