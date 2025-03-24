@@ -171,6 +171,7 @@ function cargarVehiculos() {
           <td>${data.MODELO}</td>
           <td>${data.PLACA}</td>
           <td>${data.AÑO}</td>
+          <td>${data.PUERTAS}</td>
           <td>L. ${data.PRECIO_DIA.toFixed(2)}</td>
           <td><span class="badge ${data.DISPONIBLE ? 'bg-success' : 'bg-danger'}">${data.DISPONIBLE ? 'Disponible' : 'No disponible'}</span></td>
           <td id="proximaReserva-${docu.id}">Cargando...</td>
@@ -221,6 +222,7 @@ window.editarVehiculo = async function (id) {
     document.getElementById("modelo").value = data.MODELO;
     document.getElementById("placa").value = data.PLACA;
     document.getElementById("anio").value = data.AÑO;
+    document.getElementById("puertas").value = data.PUERTAS || "";
     document.getElementById("asientos").value = data.ASIENTOS;
     document.getElementById("combustible").value = data.COMBUSTIBLE;
     document.getElementById("transmision").value = data.TRANSMISION;
@@ -241,7 +243,7 @@ window.editarVehiculo = async function (id) {
 };
 
 window.guardarVehiculo = async function () {
-  const campos = ["marca", "modelo", "placa", "anio", "asientos", "combustible", "transmision", "precioDia"];
+  const campos = ["marca", "modelo", "placa", "anio", "asientos", "combustible", "transmision", "precioDia","puertas"];
   for (let id of campos) {
     const valor = document.getElementById(id).value.trim();
     if (!valor) return mostrarToast("Todos los campos del vehículo son obligatorios.", "danger");
@@ -256,6 +258,7 @@ window.guardarVehiculo = async function () {
     COMBUSTIBLE: document.getElementById("combustible").value.trim(),
     TRANSMISION: document.getElementById("transmision").value.trim(),
     PRECIO_DIA: parseFloat(document.getElementById("precioDia").value),
+    PUERTAS: parseInt(document.getElementById("puertas").value),
     DISPONIBLE: document.getElementById("disponible").value === "true",
     updatedAt: new Date()
   };
