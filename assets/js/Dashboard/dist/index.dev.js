@@ -11,8 +11,6 @@ document.getElementById("toggleSidebar").addEventListener("click", function () {
   var main = document.getElementById("mainContent");
   sidebar.classList.toggle("collapsed");
   main.classList.toggle("expanded");
-    secciones.forEach(function (s) {
-      return s.classList.add("d-none");
 }); // Manejo de clics en el menú lateral
 
 document.querySelectorAll('.sidebar-link').forEach(function (link) {
