@@ -27,28 +27,26 @@ import { mostrarToast } from "./toast.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const headerButton = document.querySelector(".header-button");
+    const loginButton = document.getElementById("loginButton");
+    const userIcon = document.getElementById("userIcon");
 
     auth.onAuthStateChanged((user) => {
         if (user) {
             console.log("Usuario autenticado:", user.email);
-            headerButton.innerHTML = `
-                <a href="#" id="userIcon" class="theme-btn">
-                    <i class="fas fa-user"></i>
-                </a>
-            `;
-            document.getElementById("userIcon").addEventListener("click", async () => {
-                await signOut(auth);
-                window.location.reload();
-            });
+            loginButton.style.display = "none";
+            userIcon.style.display = "block";
         } else {
             console.log("No hay usuario autenticado.");
-            headerButton.innerHTML = `
-                <a href="login.html" class="theme-btn">
-                    ¡Inicia Sesión o Regístrate!
-                </a>
-            `;
+            loginButton.style.display = "block";
+            userIcon.style.display = "none";
         }
     });
+
+    userIcon.addEventListener("click", async () => {
+        await signOut(auth);
+        window.location.reload();
+    });
+
 
     async function obtenerRol(uid, userInfo = null) {
         const docRef = doc(db, "usuarios", uid);
@@ -214,6 +212,12 @@ document.addEventListener("DOMContentLoaded", () => {
             mostrarToast("Error: " + error.message);
         }
     });
+
+    logoutButton.addEventListener("click", async () => {
+        await signOut(auth);
+        window.location.reload();
+    });
+
 
     // Mostrar/ocultar contraseña
     const passwordInput = document.getElementById("password");
