@@ -8,7 +8,8 @@ var _require = require("../assets/js/dashboardTest"),
     eliminarVehiculo = _require.eliminarVehiculo,
     editarReserva = _require.editarReserva,
     guardarReserva = _require.guardarReserva,
-    eliminarReserva = _require.eliminarReserva;
+    eliminarReserva = _require.eliminarReserva,
+    validarSolapamiento = _require.validarSolapamiento;
 
 describe("Pruebas unitarias de dashboard", function () {
   test("Debería actualizar el rol de un usuario", function () {
@@ -135,6 +136,42 @@ describe("Pruebas unitarias de dashboard", function () {
     expect(resultado).toEqual({
       id: id,
       mensaje: "Reserva eliminada correctamente."
+    });
+  });
+  test("Debería detectar solapamiento con una reserva existente", function () {
+    // Arrange
+    var resultado = validarSolapamiento("vehiculo123", new Date("2025-04-03T09:00"), new Date("2025-04-04T09:00")); // Assert
+
+    expect(resultado).toEqual({
+      solapado: true,
+      mensaje: "Conflicto de reserva detectado."
+    });
+  });
+  test("No debería detectar solapamiento si las fechas no se cruzan", function () {
+    // Arrange
+    var resultado = validarSolapamiento("vehiculo123", new Date("2025-04-07T09:00"), new Date("2025-04-08T09:00")); // Assert
+
+    expect(resultado).toEqual({
+      solapado: false,
+      mensaje: "No hay solapamiento de reservas."
+    });
+  });
+  test("No debería detectar solapamiento si el ID de vehículo no coincide", function () {
+    // Arrange
+    var resultado = validarSolapamiento("vehiculo999", new Date("2025-04-03T09:00"), new Date("2025-04-04T09:00")); // Assert
+
+    expect(resultado).toEqual({
+      solapado: false,
+      mensaje: "No hay solapamiento de reservas."
+    });
+  });
+  test("Debería ignorar una reserva si es la misma que está siendo editada", function () {
+    // Arrange
+    var resultado = validarSolapamiento("vehiculo123", new Date("2025-04-03T09:00"), new Date("2025-04-04T09:00"), "reserva1"); // Assert
+
+    expect(resultado).toEqual({
+      solapado: false,
+      mensaje: "No hay solapamiento de reservas."
     });
   });
 });
