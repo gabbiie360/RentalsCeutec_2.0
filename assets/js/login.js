@@ -26,7 +26,6 @@ import {
 import { mostrarToast } from "./toast.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const headerButton = document.querySelector(".header-button");
     const loginButton = document.getElementById("loginButton");
     const userIcon = document.getElementById("userIcon");
     const logoutButton = document.getElementById("logoutButton");
