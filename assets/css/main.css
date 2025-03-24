@@ -7221,3 +7221,14 @@ input.main-search-input::placeholder {
   color: white;
 }
 
+.btnGoogle {
+  vertical-align: middle;
+}
+
+.btnGitHub {
+  vertical-align: middle;
+}
+
+.btnMicrosoft {
+  vertical-align: middle;
+}
