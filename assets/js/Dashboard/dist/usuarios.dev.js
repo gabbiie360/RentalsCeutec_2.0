@@ -6,11 +6,11 @@ Object.defineProperty(exports, "__esModule", {
 exports.cargarUsuarios = cargarUsuarios;
 exports.eliminarUsuario = eliminarUsuario;
 
-var _firebaseConfig = require("./asset/js/firebaseConfig.js");
+var _firebaseConfig = require("../firebaseConfig.js");
 
 var _firebaseFirestore = require("https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js");
 
-var _toast = require("./asset/js/toast.js");
+var _toast = require("../toast.js");
 
 var usuariosRef = (0, _firebaseFirestore.collection)(_firebaseConfig.db, "usuarios");
 

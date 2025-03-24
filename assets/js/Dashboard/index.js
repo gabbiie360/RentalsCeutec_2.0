@@ -1,5 +1,5 @@
 import { cargarUsuarios } from "./usuarios.js";
-import { cargarVehiculos, editarVehiculo, guardarVehiculo } from "./dashboard/vehiculos.js";
+import { cargarVehiculos, editarVehiculo, guardarVehiculo } from "./vehiculos.js";
 import { cargarReservas, editarReserva, guardarReserva, abrirModalReserva, inicializarEventosReservas } from "./reservas.js";
 
 
@@ -16,7 +16,6 @@ links.forEach((link, index) => {
   link.addEventListener("click", () => {
     secciones.forEach((s) => s.classList.add("d-none"));
     links.forEach((l) => l.classList.remove("active"));
-
     secciones[index].classList.remove("d-none");
     link.classList.add("active");
   });
