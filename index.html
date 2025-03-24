@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="pixydrops">
         <meta name="description" content="Remons - Booking Rental HTML Template">
-        <title>RentalsCetec</title>
+        <title>RentalsCeutec</title>
         <link rel="shortcut icon" href="assets/img/favicon.png">
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/all.min.css">
@@ -209,17 +209,7 @@
                                 </div>
                             </div>
                             <div class="header-button">
-                                <a href="login.html" id="loginButton" class="theme-btn">
-                                    ¡Inicia Sesión o Regístrate!
-                                </a>
-                                <div id="userIcon" style="display: none;">
-                                    <img src="assets/img/Avatars/avatar-icon.svg" alt="Usuario" width="40px" height="40px">
-                                    <div id="userMenu" class="user-menu">
-                                        <a href="userProfile.html">Mi Perfil</a>
-                                        <a href="reservations.html">Mis Reservas</a>
-                                        <a href="#" id="logoutButton" class="logout-btn">Cerrar Sesión</a>
-                                    </div>
-                                </div>
+                                
                             </div>
                             <div class="header__hamburger d-xl-none my-auto">
                                 <div class="sidebar__toggle">
@@ -1065,7 +1055,7 @@
             </div>
         </footer>
         
-        <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
     <script src="assets/js/viewport.jquery.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/jquery.nice-select.min.js"></script>
@@ -1082,5 +1072,10 @@
     <!-- Firebase & Login -->
     <script type="module" src="assets/js/firebaseConfig.js"></script>
     <script type="module" src="assets/js/login.js"></script>
+    <script type="module" src="assets/js/authHeader.js"></script>
+
+    <!-- Contenedor global para toasts -->
+<div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999;"></div>
+
 </body>
 </html>
