@@ -571,6 +571,57 @@
                     </div>
                 </div>
             </div>
+
+            <!--MODAL ENVIAR SOLICITUD-->
+            <div class="modal fade" id="modalSolicitudReserva" tabindex="-1" aria-labelledby="modalSolicitudReservaLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <form id="formSolicitudReserva">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="modalSolicitudReservaLabel">Solicitud de Reserva</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                      </div>
+                      <div class="modal-body row g-3">
+                        <!-- Usuario -->
+                        <div class="col-md-6">
+                          <label for="nombreUsuario" class="form-label">Nombre</label>
+                          <input type="text" id="nombreUsuario" class="form-control" readonly>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="emailUsuario" class="form-label">Correo</label>
+                          <input type="email" id="emailUsuario" class="form-control" readonly>
+                        </div>
+              
+                        <!-- Vehículo -->
+                        <div class="col-md-6">
+                          <label for="marcaVehiculo" class="form-label">Marca</label>
+                          <input type="text" id="marcaVehiculo" class="form-control" readonly>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="modeloVehiculo" class="form-label">Modelo</label>
+                          <input type="text" id="modeloVehiculo" class="form-control" readonly>
+                        </div>
+              
+                        <!-- Fecha/Hora -->
+                        <div class="col-md-6">
+                          <label for="fechaHoraReserva" class="form-label">Fecha y hora de reserva</label>
+                          <input type="datetime-local" id="fechaHoraReserva" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="fechaHoraEntrega" class="form-label">Fecha y hora de entrega</label>
+                          <input type="datetime-local" id="fechaHoraEntrega" class="form-control" required>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-success w-100">Confirmar Reserva</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              
+
+
         </section>
         <footer class="footer-section fix">
             <div class="container">
@@ -650,6 +701,8 @@
     <script src="assets/js/wow.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script type="module" src="assets/js/authHeader.js"></script>
+    <script type="module" src="assets/js/car-details.js"></script>
+
 
     </body>
 </html>
