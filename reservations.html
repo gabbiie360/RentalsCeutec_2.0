@@ -83,10 +83,52 @@
     <div class="row justify-content-center">
       <div class="col-12 bg-white p-4 shadow">
         <h2 class="mb-4 text-center">Mis Reservas</h2>
+
+        <!--Filtros Reservas-->
+       <!-- Botón limpiar filtros alineado a la derecha -->
+<div class="d-flex justify-content-end mb-2">
+  <button id="btnLimpiarFiltros" class="btn btn-outline-secondary btn-sm">
+    Limpiar filtros
+  </button>
+</div>
+
+<!-- Filtros distribuidos a lo ancho de la tabla -->
+<div class="row g-3 mb-4">
+  <div class="col-md-2">
+    <label for="filtroEstado" class="form-label fw-semibold mb-1">Estado</label>
+    <select id="filtroEstado" class="form-select form-select-sm">
+      <option value="todas">Todas</option>
+      <option value="activas">Activas</option>
+      <option value="pasadas">Pasadas</option>
+    </select>
+  </div>
+
+  <div class="col-md-2">
+    <label for="filtroMarca" class="form-label fw-semibold mb-1">Marca</label>
+    <input type="text" id="filtroMarca" class="form-control form-control-sm" placeholder="Ej. Toyota">
+  </div>
+
+  <div class="col-md-2">
+    <label for="filtroModelo" class="form-label fw-semibold mb-1">Modelo</label>
+    <input type="text" id="filtroModelo" class="form-control form-control-sm" placeholder="Ej. Yaris">
+  </div>
+
+  <div class="col-md-3">
+    <label for="filtroDesde" class="form-label fw-semibold mb-1">Desde</label>
+    <input type="date" id="filtroDesde" class="form-control form-control-sm">
+  </div>
+
+  <div class="col-md-3">
+    <label for="filtroHasta" class="form-label fw-semibold mb-1">Hasta</label>
+    <input type="date" id="filtroHasta" class="form-control form-control-sm">
+  </div>
+</div>
+
+
+        
         <table class="table table-striped">
           <thead>
             <tr>
-             
               <th>Marca</th>
               <th>Modelo</th>
               <th>Placa</th>
@@ -94,16 +136,66 @@
               <th>Precio/Día</th>
               <th>Fecha Reservado</th>
               <th>Fecha de Entrega</th>
+              <th>Estado</th> 
+              <th>Acciones</th>
             </tr>
           </thead>
+          
           <tbody id="reservationsTableBody">
             <!-- Las reservas se cargarán aquí dinámicamente -->
           </tbody>
+          
         </table>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Modal para editar reserva -->
+<div class="modal fade" id="modalEditarReserva" tabindex="-1" aria-labelledby="modalEditarReservaLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalEditarReservaLabel">Reprogramar Reserva</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formEditarReserva">
+          <input type="hidden" id="reservaIdEditar">
+          <div class="mb-3">
+            <label for="nuevaFechaReserva" class="form-label">Nueva Fecha de Reserva</label>
+            <input type="date" class="form-control" id="nuevaFechaReserva" required>
+          </div>
+          <div class="mb-3">
+            <label for="nuevaFechaEntrega" class="form-label">Nueva Fecha de Entrega</label>
+            <input type="date" class="form-control" id="nuevaFechaEntrega" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Guardar Cambios</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para confirmar cancelación -->
+<div class="modal fade" id="modalConfirmarCancelacion" tabindex="-1" aria-labelledby="modalConfirmarCancelacionLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="modalConfirmarCancelacionLabel">Cancelar Reserva</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro de que deseas cancelar esta reserva?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-danger" id="btnConfirmarCancelacion">Sí, cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- Footer -->
 <footer class="footer-section fix">
