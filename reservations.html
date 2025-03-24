@@ -1,161 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <!-- ========== Meta Tags ========== -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="pixydrops">
-    <meta name="description" content="Remons - Booking Rental HTML Template">
-    <!-- ======== Page title ============ -->
-    <title>RentalsCeutec - Mis Reservas</title>
-    <!--<< Favcion >>-->
-    <link rel="shortcut icon" href="assets/img/favicon.png">
-    <!--<< Bootstrap min.css >>-->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <!--<< All Min Css >>-->
-    <link rel="stylesheet" href="assets/css/all.min.css">
-    <!--<< Animate.css >>-->
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <!--<< Magnific Popup.css >>-->
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
-    <!--<< MeanMenu.css >>-->
-    <link rel="stylesheet" href="assets/css/meanmenu.css">
-    <!--<< DatePicker.css >>-->
-    <link rel="stylesheet" href="assets/css/datepickerboot.css">
-    <!--<< Swiper Bundle.css >>-->
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
-    <!--<< Nice Select.css >>-->
-    <link rel="stylesheet" href="assets/css/nice-select.css">
-    <!--<< Main.css >>-->
-    <link rel="stylesheet" href="assets/css/main.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="pixydrops">
+  <meta name="description" content="Remons - Mis Reservas">
+  <title>RentalsCeutec - Mis Reservas</title>
+
+  <link rel="shortcut icon" href="assets/img/favicon.png">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/animate.css">
+  <link rel="stylesheet" href="assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="assets/css/meanmenu.css">
+  <link rel="stylesheet" href="assets/css/datepickerboot.css">
+  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="assets/css/nice-select.css">
+  <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
 
-    <!-- Preloader Start -->
-    <div id="preloader" class="preloader">
-        <div class="animation-preloader">
-            <div class="spinner"></div>
-            <div class="txt-loading">
-                <span data-text-preloader="R" class="letters-loading">R</span>
-                <span data-text-preloader="E" class="letters-loading">E</span>
-                <span data-text-preloader="M" class="letters-loading">M</span>
-                <span data-text-preloader="O" class="letters-loading">O</span>
-                <span data-text-preloader="N" class="letters-loading">N</span>
-                <span data-text-preloader="S" class="letters-loading">S</span>
-            </div>
-            <p class="text-center">Loading</p>
-        </div>
+<!-- Preloader -->
+<div id="preloader" class="preloader">
+  <div class="animation-preloader">
+    <div class="spinner"></div>
+    <div class="txt-loading">
+      <span data-text-preloader="R" class="letters-loading">R</span>
+      <span data-text-preloader="E" class="letters-loading">E</span>
+      <span data-text-preloader="N" class="letters-loading">N</span>
+      <span data-text-preloader="T" class="letters-loading">T</span>
+      <span data-text-preloader="A" class="letters-loading">A</span>
+      <span data-text-preloader="L" class="letters-loading">L</span>
+      <span data-text-preloader="S" class="letters-loading">S</span>
+      <span data-text-preloader="C" class="letters-loading">C</span>
+      <span data-text-preloader="E" class="letters-loading">E</span>
+      <span data-text-preloader="U" class="letters-loading">U</span>
+      <span data-text-preloader="T" class="letters-loading">T</span>
+      <span data-text-preloader="E" class="letters-loading">E</span>
+      <span data-text-preloader="C" class="letters-loading">C</span>
     </div>
-    <!-- Preloader End -->
+    <p class="text-center">Cargando</p>
+  </div>
+</div>
 
-    <!-- Header Section Start -->
-    <header id="header-sticky" class="header-2">
-        <div class="container-fluid">
-            <div class="mega-menu-wrapper">
-                <div class="header-main">
-                    <div class="header-left">
-                        <div class="logo">
-                            <a href="index.html" class="header-logo">
-                                <img src="assets/img/logo/black-logo.svg" alt="logo-img">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="mean__menu-wrapper">
-                        <div class="main-menu">
-                            <nav id="mobile-menu">
-                                <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="car-list.html">Cars</a></li>
-                                    <li><a href="news.html">Blog</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                    <div class="header-right d-flex justify-content-end align-items-center">
-                        <div class="header-button">
-                            <a href="login.html" id="loginButton" class="theme-btn">
-                                ¡Inicia Sesión o Regístrate!
-                            </a>
-                            <div id="userIcon" style="display: none; position: relative;">
-                                <img src="user-icon.png" alt="Usuario" width="40px" height="40px">
-                                <div id="userMenu" class="user-menu">
-                                    <a href="profile.html">Mi Perfil</a>
-                                    <a href="reservations.html">Mis Reservas</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- Header -->
+<header id="header-sticky" class="header-2">
+  <div class="container-fluid">
+    <div class="mega-menu-wrapper">
+      <div class="header-main">
+        <div class="header-left">
+          <div class="logo">
+            <a href="index.html" class="header-logo">
+              <img src="assets/img/logo/black-logo.svg" alt="logo-img">
+            </a>
+          </div>
         </div>
-    </header>
-    <!-- Header Section End -->
-
-    <!-- Reservations Section Start -->
-    <section class="section-padding" style="min-height:vh;">
-        <div class="container reservations-container">
-            <div class="row justify-content-center">
-                <div class="col-12 bg-white p-4 shadow">
-                    <h2 class="mb-4 text-center">Mis Reservas</h2>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Usuario</th>
-                                <th>Marca</th>
-                                <th>Modelo</th>
-                                <th>Placa</th>
-                                <th>Año</th>
-                                <th>Precio/Día</th>
-                                <th>Fecha Reservado</th>
-                                <th>Fecha de Entrega</th>
-
-                                
-                            </tr>
-                        </thead>
-                        <tbody id="reservationsTableBody">
-                            <!-- Las reservas se cargarán aquí dinámicamente -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <div class="mean__menu-wrapper">
+          <div class="main-menu">
+            <nav id="mobile-menu">
+              <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="about.html">Sobre Nosotros</a></li>
+                <li><a href="car-list.html">Autos</a></li>
+                <li><a href="news.html">Blog</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+              </ul>
+            </nav>
+          </div>
         </div>
-    </section>
-    <!-- Reservations Section End -->
-
-    <!-- Footer Section Start -->
-    <footer class="footer-section fix">
-        <div class="container">
-            <div class="footer-bottom">
-                <div class="footer-wrapper">
-                    <p>© Copyright 
-                        <a href="index.html">Remons.com</a>
-                    </p>
-                </div>
-            </div>
+        <div class="header-right d-flex justify-content-end align-items-center">
+          <div class="header-button"><!-- authHeader.js insertará aquí el menú de usuario --></div>
         </div>
-    </footer>
-    <!-- Footer Section End -->
+      </div>
+    </div>
+  </div>
+</header>
 
-    <!-- << All JS Plugins >> -->
-    <script src="assets/js/jquery-3.7.1.min.js"></script>
-    <script src="assets/js/viewport.jquery.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/jquery.nice-select.min.js"></script>
-    <script src="assets/js/jquery.waypoints.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/bootstrap-datepicker.js"></script>
-    <script src="assets/js/swiper-bundle.min.js"></script>
-    <script src="assets/js/jquery.meanmenu.min.js"></script>
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="assets/js/animation.js"></script>
-    <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/main.js"></script>
+<!-- Reservas -->
+<section class="section-padding" style="min-height: 60vh;">
+  <div class="container reservations-container">
+    <div class="row justify-content-center">
+      <div class="col-12 bg-white p-4 shadow">
+        <h2 class="mb-4 text-center">Mis Reservas</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+             
+              <th>Marca</th>
+              <th>Modelo</th>
+              <th>Placa</th>
+              <th>Año</th>
+              <th>Precio/Día</th>
+              <th>Fecha Reservado</th>
+              <th>Fecha de Entrega</th>
+            </tr>
+          </thead>
+          <tbody id="reservationsTableBody">
+            <!-- Las reservas se cargarán aquí dinámicamente -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script type="module" src="assets/js/firebaseConfig.js"></script>
-    <script type="module" src="assets/js/reservations.js"></script>
+<!-- Footer -->
+<footer class="footer-section fix">
+  <div class="container">
+    <div class="footer-bottom">
+      <div class="footer-wrapper text-center">
+        <p>© Copyright <a href="index.html">RentalsCeutec</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="assets/js/jquery-3.7.1.min.js"></script>
+<script src="assets/js/viewport.jquery.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/jquery.nice-select.min.js"></script>
+<script src="assets/js/jquery.waypoints.js"></script>
+<script src="assets/js/jquery.counterup.min.js"></script>
+<script src="assets/js/bootstrap-datepicker.js"></script>
+<script src="assets/js/swiper-bundle.min.js"></script>
+<script src="assets/js/jquery.meanmenu.min.js"></script>
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<script src="assets/js/animation.js"></script>
+<script src="assets/js/wow.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+<!-- Firebase y lógica -->
+<script type="module" src="assets/js/firebaseConfig.js"></script>
+<script type="module" src="assets/js/reservations.js"></script>
+<script type="module" src="assets/js/authHeader.js"></script>
 
 </body>
 </html>

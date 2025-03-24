@@ -7299,3 +7299,33 @@ input.main-search-input::placeholder {
 .btnMicrosoft {
   vertical-align: middle;
 }
+
+.user-dropdown {
+  position: relative;
+}
+
+.user-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  z-index: 10;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+.user-menu a,
+.user-menu button {
+  display: block;
+  padding: 5px 10px;
+  color: #333;
+  text-align: left;
+  background: none;
+  border: none;
+  width: 100%;
+}
+
+.dropdown-logout {
+  color: red;
+}

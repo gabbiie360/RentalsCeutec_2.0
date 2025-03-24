@@ -1,8 +1,12 @@
-export function mostrarToast(mensaje, tipo = "primary") {
-  // Eliminar cualquier toast previo
-  const toastAnterior = document.getElementById("toastMensaje");
-  if (toastAnterior) {
-    toastAnterior.remove();
+export function mostrarToast(mensaje, tipo = "primary", duracion = 4000) {
+  // Crear contenedor si no existe
+  let container = document.getElementById("toastContainer");
+  if (!container) {
+    container = document.createElement("div");
+    container.id = "toastContainer";
+    container.className = "toast-container position-fixed bottom-0 end-0 p-3";
+    container.style.zIndex = "9999";
+    document.body.appendChild(container);
   }
 
   // Elegir el ícono según el tipo
@@ -18,16 +22,10 @@ export function mostrarToast(mensaje, tipo = "primary") {
 
   // Crear estructura del toast
   const toastElement = document.createElement("div");
-  toastElement.id = "toastMensaje";
-  toastElement.className = `toast align-items-center text-bg-${tipo} border-0`;
+  toastElement.className = `toast align-items-center text-bg-${tipo} border-0 mb-2`;
   toastElement.setAttribute("role", "alert");
   toastElement.setAttribute("aria-live", "assertive");
   toastElement.setAttribute("aria-atomic", "true");
-  toastElement.style.position = "fixed";
-  toastElement.style.bottom = "20px";
-  toastElement.style.right = "20px";
-  toastElement.style.zIndex = "9999";
-  toastElement.style.minWidth = "300px";
 
   const toastBody = document.createElement("div");
   toastBody.className = "toast-body d-flex justify-content-between align-items-center";
@@ -37,14 +35,19 @@ export function mostrarToast(mensaje, tipo = "primary") {
   `;
 
   toastElement.appendChild(toastBody);
-  document.body.appendChild(toastElement);
+  container.appendChild(toastElement);
 
-  // Activar el toast
+  // Activar el toast con la duración personalizada
   const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastElement, {
     animation: true,
     autohide: true,
-    delay: 4000,
+    delay: duracion,
   });
 
   toastBootstrap.show();
+
+  // Remover el toast del DOM cuando termine
+  toastElement.addEventListener("hidden.bs.toast", () => {
+    toastElement.remove();
+  });
 }
