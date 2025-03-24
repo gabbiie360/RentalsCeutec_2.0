@@ -410,38 +410,17 @@
   
   
   <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
-<script type="module" src="assets/js/firebaseConfig.js"></script>
-<script type="module" src="assets/js/dashboardAdmin.js"></script>
-<script type="module" src="assets/js/reportes.js"></script>
-<script type="module" src="assets/js/disponibilidad.js"></script>
-
-
-<script type="module">
-  import { auth, db } from "./assets/js/firebaseConfig.js";
-  import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
-
-  document.body.style.display = "none";
-
-  auth.onAuthStateChanged(async (user) => {
-    if (!user) return (window.location.href = "login.html");
-
-    const docSnap = await getDoc(doc(db, "usuarios", user.uid));
-    if (!docSnap.exists() || docSnap.data().rol !== "admin") {
-      return (window.location.href = "index.html");
-    }
-
-    document.body.style.display = "block";
-  });
-</script>
-
-
-
+  <!-- Firebase y módulos -->
+  <script type="module" src="assets/js/firebaseConfig.js"></script>
+  <script type="module" src="assets/js/authAdmin.js"></script>
+  <script type="module" src="assets/js/usuarios.js"></script>
+  <script type="module" src="assets/js/vehiculos.js"></script>
+  <script type="module" src="assets/js/reservas.js"></script>
+  <script type="module" src="assets/js/dashboardAdmin.js"></script>
+  <script type="module" src="assets/js/reportes.js"></script>
+  <script type="module" src="assets/js/disponibilidad.js"></script>
+  
 </body>
 </html>
