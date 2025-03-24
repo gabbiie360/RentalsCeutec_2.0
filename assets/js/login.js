@@ -25,216 +25,206 @@ import {
 
 import { mostrarToast } from "./toast.js";
 
+document.addEventListener("DOMContentLoaded", () => {
+    const headerButton = document.querySelector(".header-button");
 
-// Elementos del DOM
-const headerButton = document.querySelector(".header-button");
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            console.log("Usuario autenticado:", user.email);
+            headerButton.innerHTML = `
+                <a href="#" id="userIcon" class="theme-btn">
+                    <i class="fas fa-user"></i>
+                </a>
+            `;
+            document.getElementById("userIcon").addEventListener("click", async () => {
+                await signOut(auth);
+                window.location.reload();
+            });
+        } else {
+            console.log("No hay usuario autenticado.");
+            headerButton.innerHTML = `
+                <a href="login.html" class="theme-btn">
+                    ¡Inicia Sesión o Regístrate!
+                </a>
+            `;
+        }
+    });
 
-// Verificar si el usuario está autenticado
-auth.onAuthStateChanged((user) => {
-    if (user) {
-        console.log("Usuario autenticado:", user.email);
-        headerButton.innerHTML = `
-            <a href="#" id="userIcon" class="theme-btn">
-                <i class="fas fa-user"></i>
-            </a>
-        `;
-        document.getElementById("userIcon").addEventListener("click", async () => {
-            await signOut(auth);
-            window.location.reload();
-        });
-    } else {
-        console.log("No hay usuario autenticado.");
-        headerButton.innerHTML = `
-            <a href="login.html" class="theme-btn">
-                ¡Inicia Sesión o Regístrate!
-            </a>
-        `;
-    }
-});
+    async function obtenerRol(uid, userInfo = null) {
+        const docRef = doc(db, "usuarios", uid);
+        const docSnap = await getDoc(docRef);
 
-// Obtener o crear el rol de un usuario
-async function obtenerRol(uid, userInfo = null) {
-    const docRef = doc(db, "usuarios", uid);
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-        const data = docSnap.data();
-        return data.rol || null;
-    } else if (userInfo) {
-        // Crear usuario automáticamente si no existe
-        await setDoc(docRef, {
-            email: userInfo.email || "",
-            firstName: userInfo.displayName || "Usuario",
-            photoURL: userInfo.photoURL || "",
-            rol: "user",
-            uid: userInfo.uid,
-            createdAt: new Date()
-        });
-        console.warn("Usuario creado en Firestore con rol 'user'");
-        return "user";
-    } else {
-        return null;
-    }
-}
-
-function redirigirPorRol(rol) {
-    if (rol === "admin") {
-        mostrarToast("Bienvenido administrador");
-        window.location.href = "dashboardAdmin.html";
-    } else if (rol === "user") {
-        mostrarToast("Inicio de sesión exitoso");
-        window.location.href = "index.html";
-    } else {
-        mostrarToast("Rol no asignado. Contacte al administrador.");
-    }
-}
-
-// Restablecimiento de contraseña
-document.getElementById("forgotPasswordLink").addEventListener("click", function (event) {
-    event.preventDefault();
-    document.getElementById("forgotPasswordForm").style.display = "block";
-});
-
-document.getElementById("resetPasswordButton").addEventListener("click", async function () {
-    const resetEmail = document.getElementById("resetEmail").value.trim();
-
-    if (resetEmail === "") {
-        mostrarToast("Por favor, ingresa un correo electrónico.");
-        return;
+        if (docSnap.exists()) {
+            const data = docSnap.data();
+            return data.rol || null;
+        } else if (userInfo) {
+            await setDoc(docRef, {
+                email: userInfo.email || "",
+                firstName: userInfo.displayName || "Usuario",
+                photoURL: userInfo.photoURL || "",
+                rol: "user",
+                uid: userInfo.uid,
+                createdAt: new Date()
+            });
+            console.warn("Usuario creado en Firestore con rol 'user'");
+            return "user";
+        } else {
+            return null;
+        }
     }
 
-    try {
-        const usersRef = collection(db, "usuarios");
-        const q = query(usersRef, where("email", "==", resetEmail));
-        const querySnapshot = await getDocs(q);
+    function redirigirPorRol(rol) {
+        if (rol === "admin") {
+            mostrarToast("Bienvenido administrador");
+            window.location.href = "dashboardAdmin.html";
+        } else if (rol === "user") {
+            mostrarToast("Inicio de sesión exitoso");
+            window.location.href = "index.html";
+        } else {
+            mostrarToast("Rol no asignado. Contacte al administrador.");
+        }
+    }
 
-        if (querySnapshot.empty) {
-            mostrarToast("El correo ingresado no está registrado en la base de datos.");
+    // Restablecer contraseña
+    document.getElementById("forgotPasswordLink").addEventListener("click", function (event) {
+        event.preventDefault();
+        document.getElementById("forgotPasswordForm").style.display = "block";
+    });
+
+    document.getElementById("resetPasswordButton").addEventListener("click", async function () {
+        const resetEmail = document.getElementById("resetEmail").value.trim();
+
+        if (resetEmail === "") {
+            mostrarToast("Por favor, ingresa un correo electrónico.");
             return;
         }
 
-        await sendPasswordResetEmail(auth, resetEmail);
-        mostrarToast("Se ha enviado un correo para restablecer tu contraseña.");
-    } catch (error) {
-        console.error("Error al enviar el correo de restablecimiento:", error.message);
-    }
-});
+        try {
+            const usersRef = collection(db, "usuarios");
+            const q = query(usersRef, where("email", "==", resetEmail));
+            const querySnapshot = await getDocs(q);
 
-// Inicio de sesión con correo
-document.getElementById("btnLogin").addEventListener("click", async function () {
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+            if (querySnapshot.empty) {
+                mostrarToast("El correo ingresado no está registrado en la base de datos.");
+                return;
+            }
 
-    try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-        console.log("Usuario autenticado:", user);
+            await sendPasswordResetEmail(auth, resetEmail);
+            mostrarToast("Se ha enviado un correo para restablecer tu contraseña.");
+        } catch (error) {
+            console.error("Error al enviar el correo de restablecimiento:", error.message);
+        }
+    });
 
-        const rol = await obtenerRol(user.uid);
-        console.log("Rol:", rol);
-        redirigirPorRol(rol);
-    } catch (error) {
-        console.error("Error en el inicio de sesión:", error.message);
-        mostrarToast("Invalid Credentials");
-    }
-});
+    // Iniciar sesión con correo
+    document.getElementById("btnLogin").addEventListener("click", async function () {
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
 
-// Login con Google
-document.getElementById("btnGoogle").addEventListener("click", async function () {
-    try {
-        const result = await signInWithPopup(auth, googleProvider);
-        const user = result.user;
-        console.log("Usuario autenticado con Google:", user);
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            console.log("Usuario autenticado:", user);
 
-        const rol = await obtenerRol(user.uid, user);
-        console.log("Rol:", rol);
-        redirigirPorRol(rol);
-    } catch (error) {
-        console.error("Error con Google:", error.message);
-        mostrarToast("Invalid Credentials");
-    }
-});
+            const rol = await obtenerRol(user.uid);
+            console.log("Rol:", rol);
+            redirigirPorRol(rol);
+        } catch (error) {
+            console.error("Error en el inicio de sesión:", error.message);
+            mostrarToast("Credenciales inválidas");
+        }
+    });
 
-// Login con GitHub
-document.getElementById("btnGitHub").addEventListener("click", async function () {
-    try {
-        const result = await signInWithPopup(auth, githubProvider);
-        const user = result.user;
-        console.log("Usuario autenticado con GitHub:", user);
+    // Login con Google
+    document.getElementById("btnGoogle").addEventListener("click", async function () {
+        try {
+            const result = await signInWithPopup(auth, googleProvider);
+            const user = result.user;
+            console.log("Usuario autenticado con Google:", user);
 
-        const rol = await obtenerRol(user.uid, user);
-        console.log("Rol:", rol);
-        redirigirPorRol(rol);
-    } catch (error) {
-        console.error("Error con GitHub:", error.message);
-        mostrarToast("Invalid Credentials");
-    }
-});
+            const rol = await obtenerRol(user.uid, user);
+            redirigirPorRol(rol);
+        } catch (error) {
+            console.error("Error con Google:", error.message);
+            mostrarToast("Credenciales inválidas");
+        }
+    });
 
-// Login con Microsoft
-document.getElementById("btnMicrosoft").addEventListener("click", async function () {
-    try {
-        const result = await signInWithPopup(auth, microsoftProvider);
-        const user = result.user;
-        console.log("Usuario autenticado con Microsoft:", user);
+    // Login con GitHub
+    document.getElementById("btnGitHub").addEventListener("click", async function () {
+        try {
+            const result = await signInWithPopup(auth, githubProvider);
+            const user = result.user;
+            console.log("Usuario autenticado con GitHub:", user);
 
-        const rol = await obtenerRol(user.uid, user);
-        console.log("Rol:", rol);
-        redirigirPorRol(rol);
-    } catch (error) {
-        console.error("Error con Microsoft:", error.message);
-        mostrarToast("Ivalid Credentials");
-    }
-});
+            const rol = await obtenerRol(user.uid, user);
+            redirigirPorRol(rol);
+        } catch (error) {
+            console.error("Error con GitHub:", error.message);
+            mostrarToast("Credenciales inválidas");
+        }
+    });
 
-// Registro con correo
-document.getElementById("registerEmail").addEventListener("click", async (event) => {
-    event.preventDefault();
+    // Login con Microsoft
+    document.getElementById("btnMicrosoft").addEventListener("click", async function () {
+        try {
+            const result = await signInWithPopup(auth, microsoftProvider);
+            const user = result.user;
+            console.log("Usuario autenticado con Microsoft:", user);
 
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+            const rol = await obtenerRol(user.uid, user);
+            redirigirPorRol(rol);
+        } catch (error) {
+            console.error("Error con Microsoft:", error.message);
+            mostrarToast("Credenciales inválidas");
+        }
+    });
 
-    if (email === "" || password === "") {
-        mostrarToast("Por favor, ingresa un correo y una contraseña.");
-        return;
-    }
+    // Registro
+    document.getElementById("registerEmail").addEventListener("click", async (event) => {
+        event.preventDefault();
 
-    try {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
 
-        await sendEmailVerification(user);
-        mostrarToast("Se ha enviado un correo de verificación. Por favor, revisa tu bandeja de entrada.");
+        if (email === "" || password === "") {
+            mostrarToast("Por favor, ingresa un correo y una contraseña.");
+            return;
+        }
 
-        await setDoc(doc(db, "usuarios", user.uid), {
-            email: user.email,
-            rol: "user",
-            verified: false,
-            uid: user.uid,
-            createdAt: new Date()
-        });
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
 
-        await signOut(auth);
-        mostrarToast("Por favor, verifica tu correo antes de iniciar sesión.");
-    } catch (error) {
-        console.error("Error en el registro:", error.message);
-        mostrarToast("Error: " + error.message);
-    }
-});
+            await sendEmailVerification(user);
+            mostrarToast("Se ha enviado un correo de verificación. Revisa tu bandeja de entrada.");
 
-// Alternar visibilidad de la contraseña
-document.addEventListener("DOMContentLoaded", function () {
+            await setDoc(doc(db, "usuarios", user.uid), {
+                email: user.email,
+                rol: "user",
+                verified: false,
+                uid: user.uid,
+                createdAt: new Date()
+            });
+
+            await signOut(auth);
+            mostrarToast("Por favor, verifica tu correo antes de iniciar sesión.");
+        } catch (error) {
+            console.error("Error en el registro:", error.message);
+            mostrarToast("Error: " + error.message);
+        }
+    });
+
+    // Mostrar/ocultar contraseña
     const passwordInput = document.getElementById("password");
     const togglePassword = document.getElementById("togglePassword");
 
-    togglePassword.addEventListener("click", function () {
-        const isPasswordHidden = passwordInput.type === "password";
-        passwordInput.type = isPasswordHidden ? "text" : "password";
-
-        // Alternar las clases sin necesidad de remover/agregar manualmente
-        togglePassword.classList.toggle("fa-eye");
-        togglePassword.classList.toggle("fa-eye-slash");
-    });
+    if (togglePassword) {
+        togglePassword.addEventListener("click", function () {
+            const isPasswordHidden = passwordInput.type === "password";
+            passwordInput.type = isPasswordHidden ? "text" : "password";
+            togglePassword.classList.toggle("fa-eye");
+            togglePassword.classList.toggle("fa-eye-slash");
+        });
+    }
 });
-
-
