@@ -39,10 +39,17 @@
             <div class="txt-loading">
                 <span data-text-preloader="R" class="letters-loading">R</span>
                 <span data-text-preloader="E" class="letters-loading">E</span>
-                <span data-text-preloader="M" class="letters-loading">M</span>
-                <span data-text-preloader="O" class="letters-loading">O</span>
                 <span data-text-preloader="N" class="letters-loading">N</span>
+                <span data-text-preloader="T" class="letters-loading">T</span>
+                <span data-text-preloader="A" class="letters-loading">A</span>
+                <span data-text-preloader="L" class="letters-loading">L</span>
                 <span data-text-preloader="S" class="letters-loading">S</span>
+                <span data-text-preloader="C" class="letters-loading">C</span>
+                <span data-text-preloader="E" class="letters-loading">E</span>
+                <span data-text-preloader="U" class="letters-loading">U</span>
+                <span data-text-preloader="T" class="letters-loading">T</span>
+                <span data-text-preloader="L" class="letters-loading">E</span>
+                <span data-text-preloader="L" class="letters-loading">C</span>
             </div>
             <p class="text-center">Loading</p>
         </div>
@@ -65,25 +72,25 @@
                         <div class="main-menu">
                             <nav id="mobile-menu">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="car-list.html">Cars</a></li>
-                                    <li><a href="news.html">Blog</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="index.html">Inicio</a></li>
+                                    <li><a href="about.html">Sobre Nosotros</a></li>
+                                    <li><a href="car-grid.html">Autos</a></li>
+                                    <li><a href="contact.html">Contacto</a></li>
+                                    <li><a href="faq.html">Faq's</a></li>
                                 </ul>
                             </nav>
                         </div>
                     </div>
                     <div class="header-right d-flex justify-content-end align-items-center">
-                        <div class="header-button">
-                            <a href="login.html" id="loginButton" class="theme-btn">
-                                ¡Inicia Sesión o Regístrate!
-                            </a>
-                            <div id="userIcon" style="display: none; position: relative;">
-                                <img src="user-icon.png" alt="Usuario" width="40px" height="40px">
-                                <div id="userMenu" class="user-menu">
-                                    <a href="profile.html">Mi Perfil</a>
-                                    <a href="reservations.html">Mis Reservas</a>
+                        <a href="login.html" id="loginButton" class="theme-btn">
+                            ¡Inicia Sesión o Regístrate!
+                        </a>
+                        <div id="userIcon" style="display: none;">
+                            <img src="assets/img/Avatars/avatar-icon.svg" alt="Usuario" width="40px" height="40px">
+                            <div id="userMenu" class="user-menu">
+                                <a href="userProfile.html">Mi Perfil</a>
+                                <a href="reservations.html">Mis Reservas</a>
+                                <a href="#" id="logoutButton" class="logout-btn">Cerrar Sesión</a>
                                 </div>
                             </div>
                         </div>
@@ -156,6 +163,7 @@
 
     <script type="module" src="assets/js/firebaseConfig.js"></script>
     <script type="module" src="assets/js/reservations.js"></script>
+    <script type="module" src="assets/js/login.js"></script>
 
 </body>
 </html>
