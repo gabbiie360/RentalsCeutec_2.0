@@ -5,6 +5,8 @@ import { getAuth, GoogleAuthProvider, GithubAuthProvider, OAuthProvider,
          signInAnonymously, signOut, sendPasswordResetEmail, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
+
 
 // Configuración de Firebase
 const firebaseConfig = {
@@ -21,6 +23,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage(app);
 
 // Proveedores de autenticación
 const googleProvider = new GoogleAuthProvider();
@@ -29,4 +32,5 @@ const microsoftProvider = new OAuthProvider('microsoft.com');  // <---- CORREGID
 
 export { auth, db, googleProvider, githubProvider, microsoftProvider, 
          signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, 
-         signInAnonymously, signOut, sendPasswordResetEmail, sendEmailVerification };
+         signInAnonymously, signOut, sendPasswordResetEmail, sendEmailVerification,
+         storage, ref, uploadBytes, getDownloadURL};
