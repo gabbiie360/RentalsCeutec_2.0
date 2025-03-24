@@ -1,61 +1,29 @@
 import { auth, db } from "./firebaseConfig.js";
 import {
-    collection,
-    addDoc,
-    updateDoc,
-    query,
-    where,
-    doc,
-    getDoc,
-    getDocs,
-    deleteDoc,
-    onSnapshot
-  } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
-  
-  import { mostrarToast } from "./toast.js";
+  collection,
+  addDoc,
+  updateDoc,
+  query,
+  where,
+  doc,
+  getDoc,
+  getDocs,
+  deleteDoc,
+  onSnapshot
+} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
-// Verifica autenticación y rol de administrador
-auth.onAuthStateChanged(async (user) => {
-  if (!user) {
-    // No autenticado
-    window.location.href = "login.html";
-    return;
-  }
+import {
+  getStorage,
+  ref as storageRef,
+  uploadBytes,
+  getDownloadURL
+} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
 
-  const docRef = doc(db, "usuarios", user.uid);
-  const docSnap = await getDoc(docRef);
+import { mostrarToast } from "./toast.js";
 
-  if (!docSnap.exists() || docSnap.data().rol !== "admin") {
-    // No es admin
-    window.location.href = "index.html"; 
-  }
-  dashboard.style.display = "block";
+const storage = getStorage();
 
-});
-
-// Sidebar toggle
-document.getElementById("toggleSidebar").addEventListener("click", () => {
-  const sidebar = document.getElementById("sidebar");
-  const main = document.getElementById("mainContent");
-  sidebar.classList.toggle("collapsed");
-  main.classList.toggle("expanded");
-});
-
-// Secciones del dashboard
-const links = document.querySelectorAll(".sidebar-link");
-const secciones = document.querySelectorAll(".dashboard-section");
-
-links.forEach((link, index) => {
-  link.addEventListener("click", () => {
-    secciones.forEach(s => s.classList.add("d-none"));
-    links.forEach(l => l.classList.remove("active"));
-
-    secciones[index].classList.remove("d-none");
-    link.classList.add("active");
-  });
-});
-
-// Referencias a Firestore
+// Firestore References
 const usuariosRef = collection(db, "usuarios");
 const vehiculosRef = collection(db, "vehiculos");
 const reservasRef = collection(db, "reservas");
@@ -63,14 +31,49 @@ const reservasRef = collection(db, "reservas");
 let vehiculosDisponibles = [];
 let vehiculoAnteriorId = null;
 
+// ==========================
+// AUTENTICACIÓN Y ACCESO
+// ==========================
+auth.onAuthStateChanged(async (user) => {
+  if (!user) return (window.location.href = "index.html");
+
+  const docSnap = await getDoc(doc(db, "usuarios", user.uid));
+  if (!docSnap.exists() || docSnap.data().rol !== "admin") {
+    return (window.location.href = "index.html");
+  }
+
+  document.body.style.display = "block";
+  const nombre = docSnap.data().firstName || user.email;
+  document.getElementById("nombreTexto").textContent = nombre;
+
+  document.getElementById("toggleSidebar").addEventListener("click", () => {
+    document.getElementById("sidebar").classList.toggle("collapsed");
+    document.getElementById("mainContent").classList.toggle("expanded");
+  });
+
+  const links = document.querySelectorAll(".sidebar-link");
+  const secciones = document.querySelectorAll(".dashboard-section");
+
+  links.forEach((link, index) => {
+    link.addEventListener("click", () => {
+      secciones.forEach(s => s.classList.add("d-none"));
+      links.forEach(l => l.classList.remove("active"));
+      secciones[index].classList.remove("d-none");
+      link.classList.add("active");
+    });
+  });
+
+  // Cargar datos
+  cargarUsuarios();
+  cargarVehiculos();
+  cargarReservas();
+});
 
 // ==========================
 // USUARIOS
 // ==========================
 function cargarUsuarios() {
   const tabla = document.getElementById("tablaUsuarios");
-  tabla.innerHTML = "";
-
   const filtroCorreo = document.getElementById("filtroUsuarioCorreo").value.toLowerCase();
   const filtroRol = document.getElementById("filtroRol").value;
 
@@ -131,8 +134,7 @@ window.eliminarUsuario = async function (uid) {
     }
   }
 };
-cargarUsuarios();
-// === FILTROS USUARIOS ===
+
 document.getElementById("filtroUsuarioCorreo").addEventListener("input", cargarUsuarios);
 document.getElementById("filtroRol").addEventListener("change", cargarUsuarios);
 document.getElementById("limpiarFiltrosUsuarios").addEventListener("click", () => {
@@ -141,85 +143,73 @@ document.getElementById("limpiarFiltrosUsuarios").addEventListener("click", () =
   cargarUsuarios();
 });
 
-
-
 // ==========================
 // VEHÍCULOS
 // ==========================
-    
+function cargarVehiculos() {
+  const tabla = document.getElementById("tablaVehiculos");
+  const marcaFiltro = document.getElementById("filtroMarca").value.toLowerCase();
+  const dispoFiltro = document.getElementById("filtroDisponibilidad").value;
+  const anioFiltro = document.getElementById("filtroAnio").value;
+  const precioMin = parseFloat(document.getElementById("precioMin").value);
+  const precioMax = parseFloat(document.getElementById("precioMax").value);
 
-    function cargarVehiculos() {
-    const tabla = document.getElementById("tablaVehiculos");
+  onSnapshot(vehiculosRef, (snapshot) => {
     tabla.innerHTML = "";
-  
-    onSnapshot(vehiculosRef, (snapshot) => {
-      tabla.innerHTML = "";
-  
-      const marcaFiltro = document.getElementById("filtroMarca").value.toLowerCase();
-      const dispoFiltro = document.getElementById("filtroDisponibilidad").value;
-      const anioFiltro = document.getElementById("filtroAnio").value;
-      const precioMin = parseFloat(document.getElementById("precioMin").value);
-      const precioMax = parseFloat(document.getElementById("precioMax").value);
-  
-      snapshot.forEach((docu) => {
-        const data = docu.data();
-  
-        const cumpleMarca = !marcaFiltro || data.MARCA.toLowerCase().includes(marcaFiltro);
-        const cumpleDispo = dispoFiltro === "" || data.DISPONIBLE.toString() === dispoFiltro;
-        const cumpleAnio = !anioFiltro || data.AÑO.toString() === anioFiltro;
-        const cumplePrecio = (!precioMin || data.PRECIO_DIA >= precioMin) &&
-                             (!precioMax || data.PRECIO_DIA <= precioMax);
-  
-        if (cumpleMarca && cumpleDispo && cumpleAnio && cumplePrecio) {
-          tabla.innerHTML += `
-          <tr>
-            <td>${data.MARCA}</td>
-            <td>${data.MODELO}</td>
-            <td>${data.PLACA}</td>
-            <td>${data.AÑO}</td>
-            <td>L. ${data.PRECIO_DIA.toFixed(2)}</td>
-            <td><span class="badge ${data.DISPONIBLE ? 'bg-success' : 'bg-danger'}">${data.DISPONIBLE ? 'Disponible' : 'No disponible'}</span></td>
-            <td id="proximaReserva-${docu.id}">Cargando...</td>
-            <td>
-              <button class="btn btn-sm btn-secondary" onclick="editarVehiculo('${docu.id}')"><i class="fa fa-pen"></i></button>
-              <button class="btn btn-sm btn-danger" onclick="eliminarVehiculo('${docu.id}')"><i class="fa fa-trash"></i></button>
-            </td>
-          </tr>
-          `;
-          mostrarProximaReserva(docu.id);
-        }
-      });
-    });
-  }
+    snapshot.forEach((docu) => {
+      const data = docu.data();
+      const cumpleMarca = !marcaFiltro || data.MARCA.toLowerCase().includes(marcaFiltro);
+      const cumpleDispo = dispoFiltro === "" || data.DISPONIBLE.toString() === dispoFiltro;
+      const cumpleAnio = !anioFiltro || data.AÑO.toString() === anioFiltro;
+      const cumplePrecio = (!precioMin || data.PRECIO_DIA >= precioMin) &&
+                           (!precioMax || data.PRECIO_DIA <= precioMax);
 
-  
-
-async function mostrarProximaReserva(idVehiculo) {
-    const reservasSnap = await getDocs(query(reservasRef, where("idVehiculo", "==", idVehiculo)));
-    const ahora = new Date();
-  
-    let proxima = null;
-  
-    reservasSnap.forEach((doc) => {
-      const data = doc.data();
-      const inicio = data["Fecha de Reserva"]?.toDate();
-      if (inicio && inicio > ahora) {
-        if (!proxima || inicio < proxima) {
-          proxima = inicio;
-        }
+      if (cumpleMarca && cumpleDispo && cumpleAnio && cumplePrecio) {
+        tabla.innerHTML += `
+        <tr>
+          <td>${data.MARCA}</td>
+          <td>${data.MODELO}</td>
+          <td>${data.PLACA}</td>
+          <td>${data.AÑO}</td>
+          <td>L. ${data.PRECIO_DIA.toFixed(2)}</td>
+          <td><span class="badge ${data.DISPONIBLE ? 'bg-success' : 'bg-danger'}">${data.DISPONIBLE ? 'Disponible' : 'No disponible'}</span></td>
+          <td id="proximaReserva-${docu.id}">Cargando...</td>
+          <td>
+            <button class="btn btn-sm btn-secondary" onclick="editarVehiculo('${docu.id}')"><i class="fa fa-pen"></i></button>
+            <button class="btn btn-sm btn-danger" onclick="eliminarVehiculo('${docu.id}')"><i class="fa fa-trash"></i></button>
+          </td>
+        </tr>
+        `;
+        mostrarProximaReserva(docu.id);
       }
     });
-  
-    const celda = document.getElementById(`proximaReserva-${idVehiculo}`);
-    celda.textContent = proxima ? proxima.toLocaleString() : "Sin próximas";
-  }
-  
+  });
+}
 
+async function mostrarProximaReserva(idVehiculo) {
+  const reservasSnap = await getDocs(query(reservasRef, where("idVehiculo", "==", idVehiculo)));
+  const ahora = new Date();
+  let proxima = null;
+
+  reservasSnap.forEach((doc) => {
+    const data = doc.data();
+    const inicio = data["Fecha de Reserva"]?.toDate();
+    if (inicio && inicio > ahora && (!proxima || inicio < proxima)) {
+      proxima = inicio;
+    }
+  });
+
+  const celda = document.getElementById(`proximaReserva-${idVehiculo}`);
+  if (celda) celda.textContent = proxima ? proxima.toLocaleString() : "Sin próximas";
+}
 
 window.abrirModalVehiculo = function () {
   document.querySelectorAll("#modalVehiculo input, #modalVehiculo select").forEach(e => e.value = "");
   document.getElementById("disponible").value = "true";
-  new bootstrap.Modal(document.getElementById("modalVehiculo")).show();
+  document.getElementById("previewFotoVehiculo").style.display = "none";
+
+  const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById("modalVehiculo"));
+  modal.show();
 };
 
 window.editarVehiculo = async function (id) {
@@ -236,7 +226,17 @@ window.editarVehiculo = async function (id) {
     document.getElementById("transmision").value = data.TRANSMISION;
     document.getElementById("precioDia").value = data.PRECIO_DIA;
     document.getElementById("disponible").value = data.DISPONIBLE ? "true" : "false";
-    new bootstrap.Modal(document.getElementById("modalVehiculo")).show();
+
+    const preview = document.getElementById("previewFotoVehiculo");
+    if (data.FOTO) {
+      preview.src = data.FOTO;
+      preview.style.display = "block";
+    } else {
+      preview.style.display = "none";
+    }
+
+    const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById("modalVehiculo"));
+    modal.show();
   }
 };
 
@@ -261,7 +261,16 @@ window.guardarVehiculo = async function () {
   };
 
   const id = document.getElementById("vehiculoId").value;
+  const archivoImagen = document.getElementById("fotoVehiculo").files[0];
+
   try {
+    if (archivoImagen) {
+      const refImg = storageRef(storage, `vehiculos/${Date.now()}_${archivoImagen.name}`);
+      await uploadBytes(refImg, archivoImagen);
+      const url = await getDownloadURL(refImg);
+      vehiculo.FOTO = url;
+    }
+
     if (id) {
       await updateDoc(doc(db, "vehiculos", id), vehiculo);
       mostrarToast("Vehículo actualizado.", "success");
@@ -270,8 +279,10 @@ window.guardarVehiculo = async function () {
       await addDoc(vehiculosRef, vehiculo);
       mostrarToast("Vehículo agregado.", "success");
     }
+
     bootstrap.Modal.getInstance(document.getElementById("modalVehiculo")).hide();
   } catch (error) {
+    console.error(error);
     mostrarToast("Error al guardar vehículo.", "danger");
   }
 };
@@ -287,25 +298,37 @@ window.eliminarVehiculo = async function (id) {
   }
 };
 
-cargarVehiculos();
-
 document.getElementById("limpiarFiltrosVehiculos").addEventListener("click", () => {
-    document.getElementById("filtroMarca").value = "";
-    document.getElementById("filtroDisponibilidad").value = "";
-    document.getElementById("filtroAnio").value = "";
-    document.getElementById("precioMin").value = "";
-    document.getElementById("precioMax").value = "";
-    cargarVehiculos();
-  });
-  
+  document.getElementById("filtroMarca").value = "";
+  document.getElementById("filtroDisponibilidad").value = "";
+  document.getElementById("filtroAnio").value = "";
+  document.getElementById("precioMin").value = "";
+  document.getElementById("precioMax").value = "";
+  cargarVehiculos();
+});
 
-// Escuchar cambios en los filtros
 document.getElementById("filtroMarca").addEventListener("input", cargarVehiculos);
 document.getElementById("filtroAnio").addEventListener("input", cargarVehiculos);
 document.getElementById("precioMin").addEventListener("input", cargarVehiculos);
 document.getElementById("precioMax").addEventListener("input", cargarVehiculos);
 document.getElementById("filtroDisponibilidad").addEventListener("change", cargarVehiculos);
 
+document.getElementById("fotoVehiculo").addEventListener("change", function () {
+  const file = this.files[0];
+  const preview = document.getElementById("previewFotoVehiculo");
+
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      preview.src = e.target.result;
+      preview.style.display = "block";
+    };
+    reader.readAsDataURL(file);
+  } else {
+    preview.src = "";
+    preview.style.display = "none";
+  }
+});
 
 // ==========================
 // RESERVAS
@@ -339,10 +362,8 @@ function cargarReservas() {
       reservas.push({ id: docu.id, ...data, fechaReserva, fechaEntrega });
     });
 
-    // Ordenar por Fecha de Reserva descendente
     reservas.sort((a, b) => b.fechaReserva - a.fechaReserva);
 
-    // Renderizar
     reservas.forEach((data) => {
       tabla.innerHTML += `
         <tr>
@@ -362,24 +383,21 @@ function cargarReservas() {
     });
   });
 }
+cargarReservas();
 
+document.getElementById("limpiarFiltrosReservas").addEventListener("click", () => {
+  document.getElementById("filtroDesde").value = "";
+  document.getElementById("filtroHasta").value = "";
+  document.getElementById("filtroUsuario").value = "";
+  document.getElementById("filtroEstado").value = "";
   cargarReservas();
-    document.getElementById("limpiarFiltrosReservas").addEventListener("click", () => {
-    document.getElementById("filtroDesde").value = "";
-    document.getElementById("filtroHasta").value = "";
-    document.getElementById("filtroUsuario").value = "";
-    document.getElementById("filtroEstado").value = "";
-    cargarReservas();
-  });
-  
-  
+});
 
-  ["filtroDesde", "filtroHasta", "filtroUsuario", "filtroEstado"].forEach(id => {
-    document.getElementById(id).addEventListener("input", cargarReservas);
-  });
-  
-  
-function cargarVehiculosParaReservas() {
+["filtroDesde", "filtroHasta", "filtroUsuario", "filtroEstado"].forEach(id => {
+  document.getElementById(id).addEventListener("input", cargarReservas);
+});
+
+function cargarVehiculosParaReservas(callback = null) {
   const select = document.getElementById("vehiculoReserva");
   select.innerHTML = '<option value="">Selecciona un vehículo</option>';
 
@@ -395,14 +413,19 @@ function cargarVehiculosParaReservas() {
         select.appendChild(option);
       }
     });
+
+    if (callback) callback();
   });
 }
 
 window.abrirModalReserva = function () {
   document.querySelectorAll("#modalReserva input").forEach(e => e.value = "");
   vehiculoAnteriorId = null;
-  cargarVehiculosParaReservas();
-  new bootstrap.Modal(document.getElementById("modalReserva")).show();
+  cargarVehiculosParaReservas(() => {
+    const modalEl = document.getElementById("modalReserva");
+    const modalInstance = bootstrap.Modal.getOrCreateInstance(modalEl);
+    modalInstance.show();
+  });
 };
 
 window.editarReserva = async function (id) {
@@ -418,32 +441,30 @@ window.editarReserva = async function (id) {
     document.getElementById("fechaEntrega").value = data["Fecha de entrega"]?.toDate().toISOString().slice(0, 16);
     vehiculoAnteriorId = data.idVehiculo;
 
-    cargarVehiculosParaReservas();
-    setTimeout(() => {
+    cargarVehiculosParaReservas(() => {
       document.getElementById("vehiculoReserva").value = vehiculoAnteriorId;
-    }, 400);
-
-    new bootstrap.Modal(document.getElementById("modalReserva")).show();
+      const modalEl = document.getElementById("modalReserva");
+      const modalInstance = bootstrap.Modal.getOrCreateInstance(modalEl);
+      modalInstance.show();
+    });
   }
 };
 
 async function validarSolapamiento(idVehiculo, nuevaInicio, nuevaFin, idReservaActual = null) {
-    const snapshot = await getDoc(query(reservasRef, where("idVehiculo", "==", idVehiculo)));
-  
-    for (const docu of snapshot.docs) {
-      if (idReservaActual && docu.id === idReservaActual) continue;
-  
-      const data = docu.data();
-      const inicio = data["Fecha de Reserva"]?.toDate();
-      const fin = data["Fecha de entrega"]?.toDate();
-  
-      const solapa = (nuevaInicio < fin) && (nuevaFin > inicio);
-      if (solapa) return true;
-    }
-  
-    return false;
+  const snapshot = await getDocs(query(reservasRef, where("idVehiculo", "==", idVehiculo)));
+
+  for (const docu of snapshot.docs) {
+    if (idReservaActual && docu.id === idReservaActual) continue;
+
+    const data = docu.data();
+    const inicio = data["Fecha de Reserva"]?.toDate();
+    const fin = data["Fecha de entrega"]?.toDate();
+
+    if ((nuevaInicio < fin) && (nuevaFin > inicio)) return true;
   }
-  
+
+  return false;
+}
 
 window.guardarReserva = async function () {
   const campos = ["nombreCompleto", "emailReserva", "telefono", "ubicacion", "fechaReserva", "fechaEntrega"];
@@ -477,27 +498,23 @@ window.guardarReserva = async function () {
   };
 
   try {
-    // Validar solapamiento de fechas con reservas existentes del mismo vehículo
     const solapamiento = await validarSolapamiento(idVehiculoNuevo, fechaReserva, fechaEntrega, id);
-    if (solapamiento) {
-      return mostrarToast("El vehículo ya está reservado en ese rango de fechas.", "danger");
-    }
-  
+    if (solapamiento) return mostrarToast("El vehículo ya está reservado en ese rango de fechas.", "danger");
+
     if (id) {
       await updateDoc(doc(db, "reservas", id), reserva);
     } else {
       await addDoc(reservasRef, reserva);
     }
-  
-    // Solo marcar como no disponible si la reserva es inmediata
+
     bootstrap.Modal.getInstance(document.getElementById("modalReserva")).hide();
     mostrarToast("Reserva guardada correctamente.", "success");
   } catch (error) {
     console.error(error);
     mostrarToast("Error al guardar reserva.", "danger");
   }
-  
-}
+};
+
 window.eliminarReserva = async function (id) {
   if (confirm("¿Deseas eliminar esta reserva?")) {
     try {
@@ -514,13 +531,10 @@ window.eliminarReserva = async function (id) {
   }
 };
 
-cargarReservas();
-
 // ==========================
 // CERRAR SESIÓN
 // ==========================
 document.getElementById("logout").addEventListener("click", () => {
-    localStorage.clear();
-    window.location.href = "login.html";
-  });
-  
+  localStorage.clear();
+  window.location.href = "login.html";
+});
