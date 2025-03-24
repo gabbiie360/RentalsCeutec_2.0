@@ -1,6 +1,6 @@
-import { db } from "./asset/js/firebaseConfig.js";
-import { collection, doc, addDoc, updateDoc, deleteDoc, onSnapshot, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
-import { mostrarToast } from "./asset/js/toast.js";
+import { db } from "../firebaseConfig.js";
+import { collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, getDoc, query, where } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+import { mostrarToast } from "../toast.js";
 
 const reservasRef = collection(db, "reservas");
 
@@ -54,128 +54,76 @@ export function cargarReservas() {
     });
   });
 }
-// Cargar vehículos disponibles para asignar a una reserva
-export function cargarVehiculosParaReservas() {
-    const select = document.getElementById("vehiculoReserva");
-    select.innerHTML = '<option value="">Selecciona un vehículo</option>';
-  
-    onSnapshot(collection(db, "vehiculos"), (snapshot) => {
-      snapshot.forEach((doc) => {
-        const data = doc.data();
-        if (data.DISPONIBLE) {
-          const option = document.createElement("option");
-          option.value = doc.id;
-          option.textContent = `${data.MARCA} ${data.MODELO} - ${data.PLACA}`;
-          select.appendChild(option);
-        }
-      });
-    });
+
+export async function guardarReserva() {
+  const campos = ["nombreCompleto", "emailReserva", "telefono", "ubicacion", "fechaReserva", "fechaEntrega"];
+  for (let id of campos) {
+    const valor = document.getElementById(id).value.trim();
+    if (!valor) return mostrarToast("Todos los campos son obligatorios.", "danger");
   }
-  
-  // Abrir modal para crear o editar una reserva
-  export function abrirModalReserva() {
-    document.querySelectorAll("#modalReserva input").forEach((e) => (e.value = ""));
-    cargarVehiculosParaReservas();
+
+  const id = document.getElementById("reservaId").value;
+  const idVehiculoNuevo = document.getElementById("vehiculoReserva").value;
+  const fechaReserva = new Date(document.getElementById("fechaReserva").value);
+  const fechaEntrega = new Date(document.getElementById("fechaEntrega").value);
+
+  if (fechaEntrega <= fechaReserva) return mostrarToast("La fecha de entrega debe ser posterior a la fecha de reserva.", "warning");
+
+  const reserva = {
+    "Nombre Completo": document.getElementById("nombreCompleto").value.trim(),
+    Email: document.getElementById("emailReserva").value.trim(),
+    "Numero de Telefono": document.getElementById("telefono").value.trim(),
+    "Recoges en": document.getElementById("ubicacion").value.trim(),
+    "Fecha de Reserva": fechaReserva,
+    "Fecha de entrega": fechaEntrega,
+    idVehiculo: idVehiculoNuevo,
+    nombreVehiculo: document.getElementById("vehiculoReserva").selectedOptions[0].textContent
+  };
+
+  try {
+    if (id) {
+      await updateDoc(doc(db, "reservas", id), reserva);
+      mostrarToast("Reserva actualizada correctamente.", "success");
+    } else {
+      await addDoc(reservasRef, reserva);
+      mostrarToast("Reserva creada correctamente.", "success");
+    }
+    bootstrap.Modal.getInstance(document.getElementById("modalReserva")).hide();
+  } catch (error) {
+    mostrarToast("Error al guardar la reserva.", "danger");
+  }
+}
+
+export async function editarReserva(id) {
+  const docSnap = await getDoc(doc(db, "reservas", id));
+  if (docSnap.exists()) {
+    const data = docSnap.data();
+    document.getElementById("reservaId").value = id;
+    document.getElementById("nombreCompleto").value = data["Nombre Completo"];
+    document.getElementById("emailReserva").value = data.Email;
+    document.getElementById("telefono").value = data["Numero de Telefono"];
+    document.getElementById("ubicacion").value = data["Recoges en"];
+    document.getElementById("fechaReserva").value = data["Fecha de Reserva"]?.toDate().toISOString().slice(0, 16);
+    document.getElementById("fechaEntrega").value = data["Fecha de entrega"]?.toDate().toISOString().slice(0, 16);
+    document.getElementById("vehiculoReserva").value = data.idVehiculo;
+
     new bootstrap.Modal(document.getElementById("modalReserva")).show();
   }
-  
-  // Editar una reserva existente
-  export async function editarReserva(id) {
-    const docSnap = await getDoc(doc(db, "reservas", id));
-    if (docSnap.exists()) {
-      const data = docSnap.data();
-      document.getElementById("reservaId").value = id;
-      document.getElementById("nombreCompleto").value = data["Nombre Completo"];
-      document.getElementById("emailReserva").value = data.Email;
-      document.getElementById("telefono").value = data["Numero de Telefono"];
-      document.getElementById("ubicacion").value = data["Recoges en"];
-      document.getElementById("fechaReserva").value = data["Fecha de Reserva"]?.toDate().toISOString().slice(0, 16);
-      document.getElementById("fechaEntrega").value = data["Fecha de entrega"]?.toDate().toISOString().slice(0, 16);
-  
-      cargarVehiculosParaReservas();
-      setTimeout(() => {
-        document.getElementById("vehiculoReserva").value = data.idVehiculo;
-      }, 400);
-  
-      new bootstrap.Modal(document.getElementById("modalReserva")).show();
-    }
-  }
-  
-  // Validar solapamiento de fechas para una nueva reserva
-  async function validarSolapamiento(idVehiculo, nuevaInicio, nuevaFin, idReservaActual = null) {
-    const snapshot = await getDocs(query(reservasRef, where("idVehiculo", "==", idVehiculo)));
-  
-    for (const docu of snapshot.docs) {
-      if (idReservaActual && docu.id === idReservaActual) continue;
-  
-      const data = docu.data();
-      const inicio = data["Fecha de Reserva"]?.toDate();
-      const fin = data["Fecha de entrega"]?.toDate();
-  
-      const solapa = nuevaInicio < fin && nuevaFin > inicio;
-      if (solapa) return true;
-    }
-  
-    return false;
-  }
-  
-  // Guardar una nueva reserva o actualizar una existente
-  export async function guardarReserva() {
-    const campos = ["nombreCompleto", "emailReserva", "telefono", "ubicacion", "fechaReserva", "fechaEntrega"];
-    for (let id of campos) {
-      const valor = document.getElementById(id).value.trim();
-      if (!valor) return mostrarToast("Todos los campos son obligatorios.", "danger");
-    }
-  
-    const id = document.getElementById("reservaId").value;
-    const idVehiculoNuevo = document.getElementById("vehiculoReserva").value;
-    const fechaReserva = new Date(document.getElementById("fechaReserva").value);
-    const fechaEntrega = new Date(document.getElementById("fechaEntrega").value);
-  
-    if (fechaEntrega <= fechaReserva) return mostrarToast("La fecha de entrega debe ser posterior a la de reserva.", "warning");
-  
-    const reserva = {
-      "Nombre Completo": document.getElementById("nombreCompleto").value.trim(),
-      Email: document.getElementById("emailReserva").value.trim(),
-      "Numero de Telefono": document.getElementById("telefono").value.trim(),
-      "Recoges en": document.getElementById("ubicacion").value.trim(),
-      "Fecha de Reserva": fechaReserva,
-      "Fecha de entrega": fechaEntrega,
-      idVehiculo: idVehiculoNuevo,
-    };
-  
+}
+
+export async function eliminarReserva(id) {
+  if (confirm("¿Deseas eliminar esta reserva?")) {
     try {
-      const solapamiento = await validarSolapamiento(idVehiculoNuevo, fechaReserva, fechaEntrega, id);
-      if (solapamiento) {
-        return mostrarToast("El vehículo ya está reservado en ese rango de fechas.", "danger");
-      }
-  
-      if (id) {
-        await updateDoc(doc(db, "reservas", id), reserva);
-      } else {
-        await addDoc(reservasRef, reserva);
-      }
-  
-      bootstrap.Modal.getInstance(document.getElementById("modalReserva")).hide();
-      mostrarToast("Reserva guardada correctamente.", "success");
+      await deleteDoc(doc(db, "reservas", id));
+      mostrarToast("Reserva eliminada correctamente.", "success");
     } catch (error) {
-      mostrarToast("Error al guardar la reserva.", "danger");
+      mostrarToast("Error al eliminar la reserva.", "danger");
     }
   }
-  
-  // Eliminar una reserva
-  export async function eliminarReserva(id) {
-    if (confirm("¿Deseas eliminar esta reserva?")) {
-      try {
-        const docSnap = await getDoc(doc(db, "reservas", id));
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          await updateDoc(doc(db, "vehiculos", data.idVehiculo), { DISPONIBLE: true });
-        }
-        await deleteDoc(doc(db, "reservas", id));
-        mostrarToast("Reserva eliminada correctamente.", "success");
-      } catch (error) {
-        mostrarToast("Error al eliminar la reserva.", "danger");
-      }
-    }
-  }
+}
+export function abrirModalReserva() {
+  document.querySelectorAll("#modalReserva input").forEach((input) => (input.value = ""));
+  document.getElementById("vehiculoReserva").innerHTML = '<option value="">Selecciona un vehículo</option>';
+  new bootstrap.Modal(document.getElementById("modalReserva")).show();
+}
+window.abrirModalReserva = abrirModalReserva;

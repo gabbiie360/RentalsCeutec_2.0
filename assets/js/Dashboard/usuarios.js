@@ -1,6 +1,6 @@
-import { db } from "./asset/js/firebaseConfig.js";
-import { collection, doc, updateDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
-import { mostrarToast } from "./asset/js/toast.js";
+import { db } from "../firebaseConfig.js";
+import { collection, onSnapshot, updateDoc, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+import { mostrarToast } from "../toast.js";
 
 const usuariosRef = collection(db, "usuarios");
 
