@@ -342,7 +342,15 @@
           <option value="true">Disponible</option>
           <option value="false">No disponible</option>
         </select>
-      </div>
+      
+        <!-- Imagen y subida -->
+        <div class="mb-2">
+          <label for="fotoVehiculo" class="form-label">Fotografía del Vehículo</label>
+          <input type="file" class="form-control" id="fotoVehiculo" accept="image/*" />
+          <img id="previewFotoVehiculo" src="" alt="Vista previa" class="img-thumbnail mt-2 rounded shadow-sm" style="display: none; max-height: 150px;" />
+        </div>
+        
+      
       <div class="modal-footer">
         <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
         <button class="btn btn-success" onclick="guardarVehiculo()">Guardar</button>

@@ -11,14 +11,23 @@ import {
     deleteDoc,
     onSnapshot
   } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+  import {
+    getStorage,
+    ref as storageRef,
+    uploadBytes,
+    getDownloadURL
+  } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
   
+  const storage = getStorage();
+
+
   import { mostrarToast } from "./toast.js";
 
 // Verifica autenticación y rol de administrador
 auth.onAuthStateChanged(async (user) => {
   if (!user) {
     // No autenticado
-    window.location.href = "login.html";
+    window.location.href = "index.html";
     return;
   }
 
@@ -216,11 +225,18 @@ async function mostrarProximaReserva(idVehiculo) {
   
 
 
-window.abrirModalVehiculo = function () {
-  document.querySelectorAll("#modalVehiculo input, #modalVehiculo select").forEach(e => e.value = "");
-  document.getElementById("disponible").value = "true";
-  new bootstrap.Modal(document.getElementById("modalVehiculo")).show();
-};
+  window.abrirModalVehiculo = function () {
+    document.querySelectorAll("#modalVehiculo input, #modalVehiculo select").forEach(e => e.value = "");
+    document.getElementById("disponible").value = "true";
+  
+    // Limpiar imagen previa
+    const preview = document.getElementById("previewFotoVehiculo");
+    preview.src = "";
+    preview.style.display = "none";
+  
+    new bootstrap.Modal(document.getElementById("modalVehiculo")).show();
+  };
+  
 
 window.editarVehiculo = async function (id) {
   const docSnap = await getDoc(doc(db, "vehiculos", id));
@@ -236,6 +252,18 @@ window.editarVehiculo = async function (id) {
     document.getElementById("transmision").value = data.TRANSMISION;
     document.getElementById("precioDia").value = data.PRECIO_DIA;
     document.getElementById("disponible").value = data.DISPONIBLE ? "true" : "false";
+    
+    const preview = document.getElementById("previewFotoVehiculo");
+    if (data.FOTO) {
+      preview.src = data.FOTO;
+      preview.style.display = "block";
+    } else {
+      preview.src = "";
+      preview.style.display = "none";
+    }
+    
+    
+
     new bootstrap.Modal(document.getElementById("modalVehiculo")).show();
   }
 };
@@ -261,7 +289,17 @@ window.guardarVehiculo = async function () {
   };
 
   const id = document.getElementById("vehiculoId").value;
+  const archivoImagen = document.getElementById("fotoVehiculo").files[0];
+
   try {
+    // Subir imagen si se seleccionó una
+    if (archivoImagen) {
+      const refImg = storageRef(storage, `vehiculos/${Date.now()}_${archivoImagen.name}`);
+      await uploadBytes(refImg, archivoImagen);
+      const url = await getDownloadURL(refImg);
+      vehiculo.FOTO = url;
+    }
+
     if (id) {
       await updateDoc(doc(db, "vehiculos", id), vehiculo);
       mostrarToast("Vehículo actualizado.", "success");
@@ -270,11 +308,14 @@ window.guardarVehiculo = async function () {
       await addDoc(vehiculosRef, vehiculo);
       mostrarToast("Vehículo agregado.", "success");
     }
+
     bootstrap.Modal.getInstance(document.getElementById("modalVehiculo")).hide();
   } catch (error) {
+    console.error(error);
     mostrarToast("Error al guardar vehículo.", "danger");
   }
 };
+
 
 window.eliminarVehiculo = async function (id) {
   if (confirm("¿Seguro que deseas eliminar este vehículo?")) {
@@ -305,6 +346,24 @@ document.getElementById("filtroAnio").addEventListener("input", cargarVehiculos)
 document.getElementById("precioMin").addEventListener("input", cargarVehiculos);
 document.getElementById("precioMax").addEventListener("input", cargarVehiculos);
 document.getElementById("filtroDisponibilidad").addEventListener("change", cargarVehiculos);
+
+// Subir foto de vehículo
+document.getElementById("fotoVehiculo").addEventListener("change", function () {
+  const file = this.files[0];
+  const preview = document.getElementById("previewFotoVehiculo");
+
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      preview.src = e.target.result;
+      preview.style.display = "block";
+    };
+    reader.readAsDataURL(file);
+  } else {
+    preview.src = "";
+    preview.style.display = "none";
+  }
+});
 
 
 // ==========================
