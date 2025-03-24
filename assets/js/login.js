@@ -27,28 +27,37 @@ import { mostrarToast } from "./toast.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const headerButton = document.querySelector(".header-button");
+    const loginButton = document.getElementById("loginButton");
+    const userIcon = document.getElementById("userIcon");
+    const logoutButton = document.getElementById("logoutButton");
+
+if (logoutButton) {
+    logoutButton.addEventListener("click", async (e) => {
+        e.preventDefault();
+
+        try {
+            await signOut(auth);
+            mostrarToast("Has cerrado sesión correctamente.");
+            window.location.href = "login.html"; // Redirige a la pantalla de login
+        } catch (error) {
+            console.error("Error al cerrar sesión:", error);
+            mostrarToast("Hubo un problema al cerrar sesión.");
+        }
+    });
+}
 
     auth.onAuthStateChanged((user) => {
         if (user) {
             console.log("Usuario autenticado:", user.email);
-            headerButton.innerHTML = `
-                <a href="#" id="userIcon" class="theme-btn">
-                    <i class="fas fa-user"></i>
-                </a>
-            `;
-            document.getElementById("userIcon").addEventListener("click", async () => {
-                await signOut(auth);
-                window.location.reload();
-            });
+            loginButton.style.display = "none";
+            userIcon.style.display = "block";
         } else {
             console.log("No hay usuario autenticado.");
-            headerButton.innerHTML = `
-                <a href="login.html" class="theme-btn">
-                    ¡Inicia Sesión o Regístrate!
-                </a>
-            `;
+            loginButton.style.display = "block";
+            userIcon.style.display = "none";
         }
     });
+
 
     async function obtenerRol(uid, userInfo = null) {
         const docRef = doc(db, "usuarios", uid);

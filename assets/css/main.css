@@ -7189,3 +7189,113 @@ input.main-search-input::placeholder {
 .table-striped tbody tr:nth-of-type(even) {
   background-color: rgba(0, 123, 255, 0.05);
 }
+
+#userIcon {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  padding: 20px;
+  border-radius: 100%;
+  transition: all 0.1s ease-in-out;
+}
+
+#userIcon img {
+  border-radius: 300%;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease-in-out;
+}
+
+#userIcon:hover img {
+  border-color: #007bff;
+  transform: scale(1.1);
+}
+
+/* Estilo del menú desplegable */
+.user-menu {
+  display: none;
+  position: absolute;
+  top: 55px;
+  right: -50px; /* Ajuste para moverlo más a la derecha */
+  background: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  width: 180px;
+  z-index: 1000;
+  text-align: center;
+  padding: 10px 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Mostrar el menú cuando se pasa el mouse sobre el icono o el menú */
+#userIcon:hover .user-menu,
+.user-menu:hover {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enlaces dentro del menú */
+.user-menu a {
+  display: block;
+  padding: 10px;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out;
+}
+
+.user-menu a:hover {
+  background: #007bff;
+  color: white;
+}
+
+.user-menu {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 180px;
+  display: none;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.user-menu a {
+  display: block;
+  padding: 12px;
+  color: #333;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* 🔴 Estilo del botón de Cerrar Sesión */
+.user-menu a.logout-btn {
+  color: white;
+  background: #ff4d4d;
+  font-weight: bold;
+  border-radius: 0 0 8px 8px; /* Redondeado solo en la parte inferior */
+  text-align: center;
+}
+
+.user-menu a.logout-btn:hover {
+  background: #cc0000; /* Color más oscuro al pasar el cursor */
+  color: white;
+}
+
+.btnGoogle {
+  vertical-align: middle;
+}
+
+.btnGitHub {
+  vertical-align: middle;
+}
+
+.btnMicrosoft {
+  vertical-align: middle;
+}

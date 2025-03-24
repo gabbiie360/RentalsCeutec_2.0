@@ -42,6 +42,26 @@
                     <span data-text-preloader="L" class="letters-loading">
                         L
                     </span>
+                    <span data-text-preloader="S" class="letters-loading">
+                        S
+                    </span>
+                    <span data-text-preloader="C" class="letters-loading">
+                        C
+                    </span><span data-text-preloader="E" class="letters-loading">
+                        E
+                    </span>
+                    <span data-text-preloader="U" class="letters-loading">
+                        U
+                    </span>
+                    <span data-text-preloader="T" class="letters-loading">
+                        T
+                    </span>
+                    <span data-text-preloader="E" class="letters-loading">
+                        E
+                    </span>
+                    <span data-text-preloader="C" class="letters-loading">
+                        C
+                    </span>
                 </div>
                 <p class="text-center">Cargando</p>
             </div>
@@ -222,9 +242,18 @@
                             </div>
                             <a href="#0" class="search-trigger search-icon"><i class="fa-regular fa-magnifying-glass"></i></a>
                             <div class="header-button">
-                                <a href="car-details.html" class="header-btn">
-                                    Buscar Auto
+                                <a href="login.html" id="loginButton" class="theme-btn">
+                                    ¡Inicia Sesión o Regístrate!
                                 </a>
+                                <div id="userIcon" style="display: none;">
+                                    <img src="assets/img/Avatars/avatar-icon.svg" alt="Usuario" width="40px" height="40px">
+                                    <div id="userMenu" class="user-menu">
+                                        <a href="userProfile.html">Mi Perfil</a>
+                                        <a href="reservations.html">Mis Reservas</a>
+                                        <a href="#" id="logoutButton" class="logout-btn">Cerrar Sesión</a>
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                             <div class="header__hamburger d-xl-none my-auto">
                                 <div class="sidebar__toggle">
@@ -490,5 +519,9 @@
         <script src="assets/js/wow.min.js"></script>
         <!--<< Main.js >>-->
         <script src="assets/js/main.js"></script>
+
+        <!-- Firebase & Login -->
+    <script type="module" src="assets/js/firebaseConfig.js"></script>
+    <script type="module" src="assets/js/login.js"></script>
     </body>
 </html>
