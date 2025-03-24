@@ -29,6 +29,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const headerButton = document.querySelector(".header-button");
     const loginButton = document.getElementById("loginButton");
     const userIcon = document.getElementById("userIcon");
+    const logoutButton = document.getElementById("logoutButton");
+
+if (logoutButton) {
+    logoutButton.addEventListener("click", async (e) => {
+        e.preventDefault();
+
+        try {
+            await signOut(auth);
+            mostrarToast("Has cerrado sesión correctamente.");
+            window.location.href = "login.html"; // Redirige a la pantalla de login
+        } catch (error) {
+            console.error("Error al cerrar sesión:", error);
+            mostrarToast("Hubo un problema al cerrar sesión.");
+        }
+    });
+}
 
     auth.onAuthStateChanged((user) => {
         if (user) {
@@ -40,11 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
             loginButton.style.display = "block";
             userIcon.style.display = "none";
         }
-    });
-
-    userIcon.addEventListener("click", async () => {
-        await signOut(auth);
-        window.location.reload();
     });
 
 
@@ -212,12 +223,6 @@ document.addEventListener("DOMContentLoaded", () => {
             mostrarToast("Error: " + error.message);
         }
     });
-
-    logoutButton.addEventListener("click", async () => {
-        await signOut(auth);
-        window.location.reload();
-    });
-
 
     // Mostrar/ocultar contraseña
     const passwordInput = document.getElementById("password");
