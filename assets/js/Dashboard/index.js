@@ -1,5 +1,5 @@
 import { cargarUsuarios } from "./usuarios.js";
-import { cargarVehiculos, editarVehiculo, guardarVehiculo } from "./vehiculos.js";
+import { cargarVehiculos, editarVehiculo, guardarVehiculo } from "./dashboard/vehiculos.js";
 import { cargarReservas, editarReserva, guardarReserva, abrirModalReserva, inicializarEventosReservas } from "./reservas.js";
 
 

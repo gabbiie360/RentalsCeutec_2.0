@@ -152,7 +152,7 @@ export async function guardarReserva() {
 
 // Editar una reserva existente
 export async function editarReserva(id) {
-  const docSnap = await getDoc(doc(db, "reservas", id));
+  const docSnap = await getDocs(doc(db, "reservas", id));
   if (docSnap.exists()) {
     const data = docSnap.data();
     document.getElementById("reservaId").value = id;
@@ -177,7 +177,7 @@ export async function editarReserva(id) {
 export async function eliminarReserva(id) {
   if (confirm("¿Deseas eliminar esta reserva?")) {
     try {
-      const docSnap = await getDoc(doc(db, "reservas", id));
+      const docSnap = await getDocs(doc(db, "reservas", id));
       if (docSnap.exists()) {
         const data = docSnap.data();
         await updateDoc(doc(db, "vehiculos", data.idVehiculo), { DISPONIBLE: true });

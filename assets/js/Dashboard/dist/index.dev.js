@@ -2,7 +2,7 @@
 
 var _usuarios = require("./usuarios.js");
 
-var _vehiculos = require("./vehiculos.js");
+var _vehiculos = require("./dashboard/vehiculos.js");
 
 var _reservas = require("./reservas.js");
 
