@@ -1,8 +1,9 @@
 import { db } from "../firebaseConfig.js";
-import { collection, onSnapshot, updateDoc, deleteDoc, doc, addDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+import { collection, onSnapshot, updateDoc, deleteDoc, doc, addDoc, getDoc,getDocs,query, where } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 import { mostrarToast } from "../toast.js";
 
 const vehiculosRef = collection(db, "vehiculos");
+const reservasRef = collection(db, "reservas");
 
 export function cargarVehiculos() {
   const tabla = document.getElementById("tablaVehiculos");

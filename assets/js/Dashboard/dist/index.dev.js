@@ -11,19 +11,25 @@ document.getElementById("toggleSidebar").addEventListener("click", function () {
   var main = document.getElementById("mainContent");
   sidebar.classList.toggle("collapsed");
   main.classList.toggle("expanded");
-});
-var links = document.querySelectorAll(".sidebar-link");
-var secciones = document.querySelectorAll(".dashboard-section");
-links.forEach(function (link, index) {
-  link.addEventListener("click", function () {
     secciones.forEach(function (s) {
       return s.classList.add("d-none");
-    });
-    links.forEach(function (l) {
-      return l.classList.remove("active");
-    });
-    secciones[index].classList.remove("d-none");
-    link.classList.add("active");
+}); // Manejo de clics en el menú lateral
+
+document.querySelectorAll('.sidebar-link').forEach(function (link) {
+  link.addEventListener('click', function () {
+    // Remover la clase 'active' de todos los enlaces
+    document.querySelectorAll('.sidebar-link').forEach(function (item) {
+      return item.classList.remove('active');
+    }); // Agregar la clase 'active' al enlace clicado
+
+    link.classList.add('active'); // Ocultar todas las secciones
+
+    document.querySelectorAll('.dashboard-section').forEach(function (section) {
+      return section.classList.add('d-none');
+    }); // Mostrar la sección correspondiente
+
+    var sectionId = link.getAttribute('data-section');
+    document.getElementById(sectionId).classList.remove('d-none');
   });
 }); // Inicializar funcionalidades específicas
 
@@ -31,8 +37,8 @@ document.addEventListener("DOMContentLoaded", function () {
   (0, _usuarios.cargarUsuarios)();
   (0, _vehiculos.cargarVehiculos)();
   (0, _reservas.cargarReservas)();
-  (0, _reservas.inicializarEventosReservas)();
-});
+}); // Exponer funciones globalmente
+
 window.editarVehiculo = _vehiculos.editarVehiculo;
 window.guardarVehiculo = _vehiculos.guardarVehiculo;
 window.editarReserva = _reservas.editarReserva;
