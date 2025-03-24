@@ -1,5 +1,4 @@
-import { db } from "./firebaseConfig.js";
-
+import { auth, db } from "./firebaseConfig.js";
 import {
     collection,
     addDoc,
@@ -15,7 +14,24 @@ import {
   
   import { mostrarToast } from "./toast.js";
 
+// Verifica autenticación y rol de administrador
+auth.onAuthStateChanged(async (user) => {
+  if (!user) {
+    // No autenticado
+    window.location.href = "login.html";
+    return;
+  }
 
+  const docRef = doc(db, "usuarios", user.uid);
+  const docSnap = await getDoc(docRef);
+
+  if (!docSnap.exists() || docSnap.data().rol !== "admin") {
+    // No es admin
+    window.location.href = "index.html"; 
+  }
+  dashboard.style.display = "block";
+
+});
 
 // Sidebar toggle
 document.getElementById("toggleSidebar").addEventListener("click", () => {
