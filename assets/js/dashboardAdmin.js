@@ -14,9 +14,6 @@ import {
   } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
   
   import { mostrarToast } from "./toast.js";
-
-
-
 // Sidebar toggle
 document.getElementById("toggleSidebar").addEventListener("click", () => {
   const sidebar = document.getElementById("sidebar");

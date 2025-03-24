@@ -11,9 +11,6 @@
         $name = str_replace(array("\r","\n"),array(" "," "),$name);
         $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
         $message = trim($_POST["message"]);
-
-        
-
         // Set the recipient email address.
         // FIXME: Update this to your desired email address.
         $recipient = "example@example.com";
