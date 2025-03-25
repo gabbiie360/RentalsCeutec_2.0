@@ -78,6 +78,24 @@ export async function guardarReservaDesdeCliente(e) {
     return mostrarToast('Las fechas deben ser futuras y la entrega posterior a la reserva (mínimo 1h desde ahora).', 'warning');
   }
 
+  // Validar horario y días permitidos
+  const diasPermitidos = [1, 2, 3, 4, 5, 6]; // Lunes a sábado
+  const horaMin = 9;
+  const horaMax = 17;
+
+  const diaReserva = fechaReserva.getDay();
+  const horaReserva = fechaReserva.getHours();
+  const diaEntrega = fechaEntrega.getDay();
+  const horaEntrega = fechaEntrega.getHours();
+
+  if (!diasPermitidos.includes(diaReserva) || !diasPermitidos.includes(diaEntrega)) {
+    return mostrarToast('Las reservas solo se pueden realizar o entregar de lunes a sábado.', 'warning');
+  }
+
+  if (horaReserva < horaMin || horaReserva >= horaMax || horaEntrega < horaMin || horaEntrega >= horaMax) {
+    return mostrarToast('El horario permitido es de 09:00 AM a 05:00 PM.', 'warning');
+  }
+
   try {
     const solapado = await validarSolapamiento(idVehiculo, fechaReserva, fechaEntrega);
     if (solapado) {
