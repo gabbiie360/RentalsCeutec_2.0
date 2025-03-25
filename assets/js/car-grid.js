@@ -1,9 +1,11 @@
 // car-grid.js
 import { db } from './firebaseConfig.js';
 import { collection, getDocs } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
+import { verificarSesionYMostrarModal, guardarReservaDesdeCliente } from './reservaCliente.js';
 
 const contenedor = document.getElementById('contenedor-vehiculos');
 
+// Función para cargar vehículos desde Firestore
 async function cargarVehiculos() {
   try {
     const vehiculosRef = collection(db, 'vehiculos');
@@ -29,7 +31,7 @@ async function cargarVehiculos() {
               <i class="fa-solid fa-star"></i>
               <span>${vehiculo.reseñas || 0} Reseñas</span>
             </div>
-            <h4><a href="car-details.html?id=${id}">${vehiculo.MARCA} ${vehiculo.MODELO}</a></h4>
+            <h4>${vehiculo.MARCA} ${vehiculo.MODELO}</h4>
 
             <h6>HNL. ${vehiculo.PRECIO_DIA || 0} <span>/ Día</span></h6>
             <div class="icon-items">
@@ -42,16 +44,24 @@ async function cargarVehiculos() {
                 <li><img src="assets/img/car/petrol.svg" class="me-1"> ${vehiculo.COMBUSTIBLE || 'N/A'}</li>
               </ul>
             </div>
-            <button class="theme-btn bg-color w-100 text-center btn-reservar" type="button">
-            Reservar <i class="fa-solid fa-arrow-right ps-1"></i>
-          </button>
-
+            <button class="theme-btn bg-color w-100 text-center btn-reservar" 
+              type="button" 
+              data-id="${id}">
+              Reservar <i class="fa-solid fa-arrow-right ps-1"></i>
+            </button>
           </div>
         </div>
       `;
+
+      // Guardamos la data del vehículo directamente como propiedad del botón
+      const btnReservar = card.querySelector('.btn-reservar');
+      btnReservar.vehiculo = {
+        ...vehiculo,
+        id: id
+      };
+
       contenedor.appendChild(card);
     });
-
   } catch (error) {
     console.error("Error al cargar los vehículos:", error);
     contenedor.innerHTML = `<p class="text-danger text-center">Error al cargar vehículos. Intenta más tarde.</p>`;
@@ -60,33 +70,17 @@ async function cargarVehiculos() {
 
 document.addEventListener('DOMContentLoaded', cargarVehiculos);
 
-//////////////////////
-/////Modal para reservar
-///////////////////////
-
-import { auth } from './firebaseConfig.js';
-import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js';
-import { mostrarToast } from './toast.js';
-
-document.addEventListener('click', async (e) => {
+// Evento para capturar clics en los botones de reservar
+document.addEventListener('click', (e) => {
   if (e.target.classList.contains('btn-reservar')) {
-    const btn = e.target;
-    const card = btn.closest('.car-rentals-items');
-    const marca = card.querySelector('h4').textContent.split(' ')[0];
-    const modelo = card.querySelector('h4').textContent.split(' ')[1];
-
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        document.getElementById('nombreUsuario').value = user.displayName || 'Usuario';
-        document.getElementById('emailUsuario').value = user.email;
-        document.getElementById('marcaVehiculo').value = marca;
-        document.getElementById('modeloVehiculo').value = modelo;
-
-        const modal = new bootstrap.Modal(document.getElementById('modalSolicitudReserva'));
-        modal.show();
-      } else {
-        window.location.href = 'login.html';
-      }
-    });
+    const vehiculo = e.target.vehiculo;
+    if (vehiculo) {
+      verificarSesionYMostrarModal(vehiculo);
+    } else {
+      console.warn('No se encontró el objeto del vehículo.');
+    }
   }
 });
+
+// Captura del submit del formulario
+document.getElementById('formReservaCliente').addEventListener('submit', guardarReservaDesdeCliente);

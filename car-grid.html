@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body>
+
   <!-- Preloader -->
   <div id="preloader" class="preloader">
     <div class="animation-preloader">
@@ -38,7 +39,7 @@
     </div>
   </div>
 
-  <!-- Header y navegación dinámico desde authHeader.js -->
+  <!-- Header -->
   <header id="main-header"></header>
 
   <!-- Banner -->
@@ -64,27 +65,56 @@
         <h2 class="wow fadeInUp" data-wow-delay=".4s">Vehículos en Renta</h2>
       </div>
       <div class="row g-4" id="contenedor-vehiculos">
-        <!-- Tarjetas generadas dinámicamente por car-grid.js -->
+        <!-- Las tarjetas se insertan dinámicamente aquí -->
       </div>
     </div>
   </section>
 
-<!-- Modal Solicitud de Reserva -->
-<div class="modal fade" id="modalSolicitudReserva" tabindex="-1" aria-labelledby="modalSolicitudReservaLabel" aria-hidden="true">
+  <!-- Modal de Reserva -->
+  <div class="modal fade" id="modalReserva" tabindex="-1" aria-labelledby="modalReservaLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <form id="formSolicitudReserva">
+        <form id="formReservaCliente">
           <div class="modal-header">
-            <h5 class="modal-title" id="modalSolicitudReservaLabel">Solicitud de Reserva</h5>
+            <h5 class="modal-title" id="modalReservaLabel">Solicitud de Reserva</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
           </div>
           <div class="modal-body row g-3">
-            <div class="col-md-6"><label for="nombreUsuario" class="form-label">Nombre</label><input type="text" id="nombreUsuario" class="form-control" readonly></div>
-            <div class="col-md-6"><label for="emailUsuario" class="form-label">Correo</label><input type="email" id="emailUsuario" class="form-control" readonly></div>
-            <div class="col-md-6"><label for="marcaVehiculo" class="form-label">Marca</label><input type="text" id="marcaVehiculo" class="form-control" readonly></div>
-            <div class="col-md-6"><label for="modeloVehiculo" class="form-label">Modelo</label><input type="text" id="modeloVehiculo" class="form-control" readonly></div>
-            <div class="col-md-6"><label for="fechaHoraReserva" class="form-label">Fecha y hora de reserva</label><input type="datetime-local" id="fechaHoraReserva" class="form-control" required></div>
-            <div class="col-md-6"><label for="fechaHoraEntrega" class="form-label">Fecha y hora de entrega</label><input type="datetime-local" id="fechaHoraEntrega" class="form-control" required></div>
+            <div class="col-md-6">
+              <label for="nombreCompleto" class="form-label">Nombre Completo</label>
+              <input type="text" id="nombreCompleto" class="form-control" readonly>
+            </div>
+            <div class="col-md-6">
+              <label for="emailReserva" class="form-label">Correo</label>
+              <input type="email" id="emailReserva" class="form-control" readonly>
+            </div>
+            <div class="col-md-6">
+              <label for="telefono" class="form-label">Número de Teléfono</label>
+              <input type="text" id="telefono" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label for="ubicacion" class="form-label">Recoges en</label>
+              <select id="ubicacion" class="form-select" required>
+                <option value="San Pedro Sula">San Pedro Sula</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="marcaVehiculo" class="form-label">Marca</label>
+              <input type="text" id="marcaVehiculo" class="form-control" readonly>
+            </div>
+            <div class="col-md-6">
+              <label for="modeloVehiculo" class="form-label">Modelo</label>
+              <input type="text" id="modeloVehiculo" class="form-control" readonly>
+            </div>
+            <div class="col-md-6">
+              <label for="fechaReserva" class="form-label">Fecha y hora de reserva</label>
+              <input type="datetime-local" id="fechaReserva" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label for="fechaEntrega" class="form-label">Fecha y hora de entrega</label>
+              <input type="datetime-local" id="fechaEntrega" class="form-control" required>
+            </div>
+            <input type="hidden" id="idVehiculoSeleccionado">
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-success w-100">Confirmar Reserva</button>
@@ -93,7 +123,6 @@
       </div>
     </div>
   </div>
-  
 
   <!-- Footer -->
   <footer class="footer-section fix">
@@ -120,5 +149,6 @@
   <script type="module" src="assets/js/firebaseConfig.js"></script>
   <script type="module" src="assets/js/authHeader.js"></script>
   <script type="module" src="assets/js/car-grid.js"></script>
+  <script type="module" src="assets/js/reservaCliente.js"></script>
 </body>
 </html>
