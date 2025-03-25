@@ -94,7 +94,7 @@
                         <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
                             <div class="offcanvas__logo">
                                 <a href="index.html">
-                                    <img src="assets/img/logo/black-logo.svg" alt="logo-img">
+                                    <img src="assets/img/about/RentalsCBR.png" alt="logo-img" style="width: 120px;">
                                 </a>
                             </div>
                             <div class="offcanvas__close">
@@ -166,10 +166,10 @@
                         <div class="header-left">
                             <div class="logo">
                                 <a href="index.html" class="header-logo">
-                                    <img src="assets/img/logo/black-logo.svg" alt="logo-img">
+                                    <img src="assets/img/about/RentalsCBR.png" alt="logo-img" style="width: 120px;">
                                 </a>
                             </div>
-                            <a href="#0" class="search-trigger search-icon"><i class="fa-regular fa-magnifying-glass"></i></a>
+                            <a href= "#0" class="search-trigger search-icon"><i class="fa-regular fa-magnifying-glass"></i></a>
                         </div>
                         <div class="mean__menu-wrapper">
                             <div class="main-menu">
@@ -208,11 +208,20 @@
                                     <h6><a href="tel:+9288009850">+504 0000 - 0000</a></h6>
                                 </div>
                             </div>
-                            <div class="header-right d-flex justify-content-end align-items-center">
-                                <div class="header-button">
-                                  <!-- authHeader.js insertará aquí el botón de login o el menú del usuario -->
+                              <div class="header-button">
+                                    <a href="login.html" id="loginButton" class="theme-btn">
+                                        ¡Inicia Sesión o Regístrate!
+                                    </a>
+                                    <div id="userIcon" style="display: none;">
+                                        <img src="assets/img/Avatars/avatar-icon.svg" alt="Usuario" width="40px" height="40px">
+                                        <div id="userMenu" class="user-menu">
+                                            <a href="userProfile.html">Mi Perfil</a>
+                                            <a href="reservations.html">Mis Reservas</a>
+                                            <a href="#" id="logoutButton" class="logout-btn">Cerrar Sesión</a>
+                                        </div>
+                                    </div>
                                 </div>
-                              </div>
+                            </div>
                             <div class="header__hamburger d-xl-none my-auto">
                                 <div class="sidebar__toggle">
                                     <i class="fas fa-bars"></i>
@@ -314,74 +323,6 @@
                 </div>
             </div>
         </section>
-        <div class="pickup-loaction-area-2">
-            <div class="container">
-                <div class="pickup-wrapper style-2 wow fadeInUp" data-wow-delay=".4s">
-                    <div class="pickup-items">
-                        <label class="field-label">Ubicación de recepción</label>
-                    <div class="category-oneadjust">
-                        <select name="cate" class="category">
-                            <option value="1">
-                                Marcar Ubicación
-                            </option>
-                            <option value="1">
-                                Ceutec, Sede Central, San Pedro Sula
-                            </option>
-                            <option value="1">
-                                Ceutec, Sede Norte, San Pedro Sula
-                            </option>
-                            <option value="1">
-                                Otra Ubicación
-                            </option>
-                        </select>
-                    </div>
-                    </div>
-                    <div class="pickup-items">
-                        <label class="field-label">Fecha de recogida</label>
-                        <div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy">
-                            <input class="form-control" type="text" placeholder="Check in" readonly>
-                            <span class="input-group-addon"> <i class="fa-solid fa-calendar-days"></i></span>
-                        </div>
-                    </div>
-                    <div class="pickup-items">
-                        <label class="field-label">Fecha de Devolución</label>
-                        <div id="datepicker2" class="input-group date" data-date-format="dd-mm-yyyy">
-                            <input class="form-control" type="text" placeholder="Check in" readonly>
-                            <span class="input-group-addon"> <i class="fa-solid fa-calendar-days"></i></span>
-                        </div>
-                    </div>
-                    <div class="pickup-items">
-                        <label class="field-label">Tipo de Auto</label>
-                        <div class="category-oneadjust">
-                            <select name="cate" class="category">
-                                <option value="1">
-                                    Sedan
-                                </option>
-                                <option value="1">
-                                    SUV
-                                </option>
-                                <option value="1">
-                                    Coupé
-                                </option>
-                                <option value="1">
-                                    Pickup
-                                </option>
-                                <option value="1">
-                                    Compacto
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="pickup-items">
-                        <label class="field-label style-2">button</label>
-                    <button class="pickup-btn" type="submit">
-                            Buscar
-                    </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Select Car Section Start -->
         <section class="select-car-section section-padding fix">
             <div class="container">
@@ -406,7 +347,6 @@
                             <div class="content">
                                 <h5><a href="car-details.html">Sedan</a></h5>
                             </div>
-                            <a href="car-details.html" class="arrow-icon"><i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".3s">
@@ -421,7 +361,6 @@
                             <div class="content">
                                 <h5><a href="car-details.html">SUV</a></h5>
                             </div>
-                            <a href="car-details.html" class="arrow-icon"><i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>                
                     <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".5s">
@@ -436,7 +375,6 @@
                             <div class="content">
                                 <h5><a href="car-details.html">Coupé</a></h5>
                             </div>
-                            <a href="car-details.html" class="arrow-icon"><i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".6s">
@@ -451,7 +389,6 @@
                             <div class="content">
                                 <h5><a href="car-details.html">Pickup</a></h5>
                             </div>
-                            <a href="car-details.html" class="arrow-icon"><i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".7s">
@@ -466,7 +403,6 @@
                             <div class="content">
                                 <h5><a href="car-details.html">Compacto</a></h5>
                             </div>
-                            <a href="car-details.html" class="arrow-icon"><i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -478,7 +414,7 @@
                     <div class="row g-4">
                         <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
                             <div class="about-image">
-                                <img src="assets/img/about/01.png" alt="about-image">
+                                <img src="assets/img/about/ImagenRentar.png" alt="about-image">
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -1074,7 +1010,7 @@
     <!-- Firebase & Login -->
     <script type="module" src="assets/js/firebaseConfig.js"></script>
     <script type="module" src="assets/js/login.js"></script>
-    <script type="module" src="assets/js/authHeader.js"></script>
+    
 
     <!-- Contenedor global para toasts -->
 <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999;"></div>
