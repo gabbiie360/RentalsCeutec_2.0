@@ -28,7 +28,7 @@ const storage = getStorage();
 export function inicializarVehiculos() {
   cargarVehiculos();
 
-  document.getElementById("limpiarFiltrosVehiculos").addEventListener("click", () => {
+    document.getElementById("limpiarFiltrosVehiculos").addEventListener("click", () => {
     document.getElementById("filtroMarca").value = "";
     document.getElementById("filtroDisponibilidad").value = "";
     document.getElementById("filtroAnio").value = "";

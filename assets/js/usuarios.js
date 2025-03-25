@@ -14,9 +14,9 @@ const usuariosRef = collection(db, "usuarios");
 export function inicializarUsuarios() {
   cargarUsuarios();
 
-  document.getElementById("filtroUsuarioCorreo").addEventListener("input", cargarUsuarios);
-  document.getElementById("filtroRol").addEventListener("change", cargarUsuarios);
-  document.getElementById("limpiarFiltrosUsuarios").addEventListener("click", () => {
+    document.getElementById("filtroUsuarioCorreo").addEventListener("input", cargarUsuarios);
+    document.getElementById("filtroRol").addEventListener("change", cargarUsuarios);
+    document.getElementById("limpiarFiltrosUsuarios").addEventListener("click", () => {
     document.getElementById("filtroUsuarioCorreo").value = "";
     document.getElementById("filtroRol").value = "";
     cargarUsuarios();
