@@ -6,7 +6,9 @@ import {
   query,
   where,
   getDocs,
-  Timestamp
+  Timestamp,
+  getDoc,
+  doc
 } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js';
 import { mostrarToast } from './toast.js';
@@ -27,8 +29,6 @@ export function verificarSesionYMostrarModal(vehiculo) {
 }
 
 // Precargar datos en el modal
-import { getDoc, doc } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js'; // asegúrate de tener esta importación también
-
 async function precargarDatosModal(user, vehiculo) {
   try {
     const userDoc = await getDoc(doc(db, 'usuarios', user.uid));
@@ -47,11 +47,9 @@ async function precargarDatosModal(user, vehiculo) {
       `${vehiculo.MARCA} ${vehiculo.MODELO} - ${vehiculo.PLACA || ''}`;
   } catch (error) {
     console.error('Error al obtener datos del usuario:', error);
-    mostrarToast('error', 'No se pudieron cargar los datos del usuario');
+    mostrarToast('No se pudieron cargar los datos del usuario', 'error');
   }
 }
-
-  
 
 // Guardar reserva en Firestore
 export async function guardarReservaDesdeCliente(e) {
@@ -68,20 +66,23 @@ export async function guardarReservaDesdeCliente(e) {
   const fechaReserva = new Date(document.getElementById('fechaReserva').value);
   const fechaEntrega = new Date(document.getElementById('fechaEntrega').value);
 
-  // Validación de campos
+  // Validación de campos obligatorios
   if (!nombre || !email || !telefono || !ubicacion || !marca || !modelo || !idVehiculo) {
-    return mostrarToast('error', 'Todos los campos son obligatorios.');
+    return mostrarToast('Todos los campos son obligatorios.', 'error');
   }
 
   const ahora = new Date();
-  if (!fechaReserva || !fechaEntrega || fechaEntrega <= fechaReserva || fechaReserva < ahora || fechaEntrega < ahora) {
-  return mostrarToast('warning', 'Las fechas deben ser futuras y la entrega posterior a la reserva.');
-  }
+  const ahoraMasUnaHora = new Date(ahora.getTime() + 60 * 60 * 1000);
 
+  if (!fechaReserva || !fechaEntrega || fechaReserva < ahoraMasUnaHora || fechaEntrega <= fechaReserva) {
+    return mostrarToast('Las fechas deben ser futuras y la entrega posterior a la reserva (mínimo 1h desde ahora).', 'warning');
+  }
 
   try {
     const solapado = await validarSolapamiento(idVehiculo, fechaReserva, fechaEntrega);
-    if (solapado) return mostrarToast('error', 'Este vehículo ya está reservado en esas fechas.');
+    if (solapado) {
+      return mostrarToast('Este vehículo ya está reservado en esas fechas.', 'error');
+    }
 
     await addDoc(reservasRef, {
       Email: email,
@@ -95,16 +96,15 @@ export async function guardarReservaDesdeCliente(e) {
     });
 
     bootstrap.Modal.getInstance(document.getElementById('modalReserva')).hide();
-    mostrarToast('success', '¡Reserva guardada correctamente!');
     document.getElementById('formReservaCliente').reset();
-
+    mostrarToast('¡Reserva guardada correctamente!', 'success');
   } catch (error) {
     console.error('Error al guardar la reserva:', error);
-    mostrarToast('error', 'No se pudo guardar la reserva.');
+    mostrarToast('No se pudo guardar la reserva.', 'error');
   }
 }
 
-// Validación de solapamiento de fechas
+// Validar solapamiento de fechas para el vehículo
 async function validarSolapamiento(idVehiculo, nuevaInicio, nuevaFin) {
   const q = query(reservasRef, where('idVehiculo', '==', idVehiculo));
   const snapshot = await getDocs(q);
@@ -113,21 +113,18 @@ async function validarSolapamiento(idVehiculo, nuevaInicio, nuevaFin) {
     const data = doc.data();
     const inicio = data['Fecha de Reserva']?.toDate();
     const fin = data['Fecha de entrega']?.toDate();
-
     if ((nuevaInicio < fin) && (nuevaFin > inicio)) {
       return true;
     }
   }
+
   return false;
 }
 
-// Asociar evento submit al formulario del cliente
+// Asociar evento al formulario
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('formReservaCliente');
-    if (form) {
-      form.addEventListener('submit', guardarReservaDesdeCliente);
-    }
-  });
-  
- 
-  
+  const form = document.getElementById('formReservaCliente');
+  if (form) {
+    form.addEventListener('submit', guardarReservaDesdeCliente);
+  }
+});
