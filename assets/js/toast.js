@@ -1,4 +1,6 @@
 export function mostrarToast(mensaje, tipo = "primary", duracion = 4000) {
+  if (!mensaje || mensaje.trim() === "") return; // Evitar toasts vacíos
+
   // Crear contenedor si no existe
   let container = document.getElementById("toastContainer");
   if (!container) {
