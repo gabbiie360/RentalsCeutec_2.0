@@ -37,6 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (error) {
         console.warn('Fallo el envío real, pero el toast se mostró igual:', error);
       }
-    });
-  }
+    });
+  }
 });
