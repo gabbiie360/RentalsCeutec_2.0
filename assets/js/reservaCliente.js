@@ -73,9 +73,11 @@ export async function guardarReservaDesdeCliente(e) {
     return mostrarToast('error', 'Todos los campos son obligatorios.');
   }
 
-  if (!fechaReserva || !fechaEntrega || fechaEntrega <= fechaReserva) {
-    return mostrarToast('warning', 'Las fechas son inválidas.');
+  const ahora = new Date();
+  if (!fechaReserva || !fechaEntrega || fechaEntrega <= fechaReserva || fechaReserva < ahora || fechaEntrega < ahora) {
+  return mostrarToast('warning', 'Las fechas deben ser futuras y la entrega posterior a la reserva.');
   }
+
 
   try {
     const solapado = await validarSolapamiento(idVehiculo, fechaReserva, fechaEntrega);

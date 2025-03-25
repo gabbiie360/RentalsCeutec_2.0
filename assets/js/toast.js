@@ -37,6 +37,13 @@ export function mostrarToast(mensaje, tipo = "primary", duracion = 4000) {
   `;
 
   toastElement.appendChild(toastBody);
+
+  // Limitar el número de toasts visibles a 5
+  const toastsVisibles = container.querySelectorAll(".toast");
+  if (toastsVisibles.length >= 5) {
+    toastsVisibles[0].remove(); // Eliminar el más antiguo
+  }
+
   container.appendChild(toastElement);
 
   // Activar el toast con la duración personalizada
