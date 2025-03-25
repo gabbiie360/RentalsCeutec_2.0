@@ -21,56 +21,73 @@
 </head>
 <body>
 
-<!-- Preloader -->
-<div id="preloader" class="preloader">
-  <div class="animation-preloader">
-    <div class="spinner"></div>
-    <div class="txt-loading">
-      <span data-text-preloader="R" class="letters-loading">R</span>
-      <span data-text-preloader="E" class="letters-loading">E</span>
-      <span data-text-preloader="N" class="letters-loading">N</span>
-      <span data-text-preloader="T" class="letters-loading">T</span>
-      <span data-text-preloader="A" class="letters-loading">A</span>
-      <span data-text-preloader="L" class="letters-loading">L</span>
-      <span data-text-preloader="S" class="letters-loading">S</span>
-      <span data-text-preloader="C" class="letters-loading">C</span>
-      <span data-text-preloader="E" class="letters-loading">E</span>
-      <span data-text-preloader="U" class="letters-loading">U</span>
-      <span data-text-preloader="T" class="letters-loading">T</span>
-      <span data-text-preloader="E" class="letters-loading">E</span>
-      <span data-text-preloader="C" class="letters-loading">C</span>
+    <!-- Preloader Start -->
+    <div id="preloader" class="preloader">
+        <div class="animation-preloader">
+            <div class="spinner"></div>
+            <div class="txt-loading">
+                <span data-text-preloader="R" class="letters-loading">R</span>
+                <span data-text-preloader="E" class="letters-loading">E</span>
+                <span data-text-preloader="N" class="letters-loading">N</span>
+                <span data-text-preloader="T" class="letters-loading">T</span>
+                <span data-text-preloader="A" class="letters-loading">A</span>
+                <span data-text-preloader="L" class="letters-loading">L</span>
+                <span data-text-preloader="S" class="letters-loading">S</span>
+                <span data-text-preloader="C" class="letters-loading">C</span>
+                <span data-text-preloader="E" class="letters-loading">E</span>
+                <span data-text-preloader="U" class="letters-loading">U</span>
+                <span data-text-preloader="T" class="letters-loading">T</span>
+                <span data-text-preloader="L" class="letters-loading">E</span>
+                <span data-text-preloader="L" class="letters-loading">C</span>
+            </div>
+            <p class="text-center">Loading</p>
+        </div>
     </div>
-    <p class="text-center">Cargando</p>
   </div>
 </div>
 
-<!-- Header -->
-<header id="header-sticky" class="header-2">
-  <div class="container-fluid">
-    <div class="mega-menu-wrapper">
-      <div class="header-main">
-        <div class="header-left">
-          <div class="logo">
-            <a href="index.html" class="header-logo">
-              <img src="assets/img/logo/black-logo.svg" alt="logo-img">
-            </a>
-          </div>
-        </div>
-        <div class="mean__menu-wrapper">
-          <div class="main-menu">
-            <nav id="mobile-menu">
-              <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="about.html">Sobre Nosotros</a></li>
-                <li><a href="car-list.html">Autos</a></li>
-                <li><a href="news.html">Blog</a></li>
-                <li><a href="contact.html">Contacto</a></li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-        <div class="header-right d-flex justify-content-end align-items-center">
-          <div class="header-button"><!-- authHeader.js insertará aquí el menú de usuario --></div>
+    <!-- Header Section Start -->
+    <header id="header-sticky" class="header-2">
+        <div class="container-fluid">
+            <div class="mega-menu-wrapper">
+                <div class="header-main">
+                    <div class="header-left">
+                        <div class="logo">
+                            <a href="index.html" class="header-logo">
+                              <img src="assets/img/about/RentalsCBR.png" alt="logo-img" style="width: 120px;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mean__menu-wrapper">
+                        <div class="main-menu">
+                            <nav id="mobile-menu">
+                                <ul>
+                                    <li><a href="index.html">Inicio</a></li>
+                                    <li><a href="about.html">Sobre Nosotros</a></li>
+                                    <li><a href="car-grid.html">Autos</a></li>
+                                    <li><a href="contact.html">Contacto</a></li>
+                                    <li><a href="faq.html">Faq's</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="header-right d-flex justify-content-end align-items-center">
+                        <a href="login.html" id="loginButton" class="theme-btn">
+                            ¡Inicia Sesión o Regístrate!
+                        </a>
+                        <div id="userIcon" style="display: none;">
+                            <img src="assets/img/Avatars/avatar-icon.svg" alt="Usuario" width="40px" height="40px">
+                            <div id="userMenu" class="user-menu">
+                                <a href="userProfile.html">Mi Perfil</a>
+                                <a href="reservations.html">Mis Reservas</a>
+                                <a href="#" id="logoutButton" class="logout-btn">Cerrar Sesión</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>        
         </div>
       </div>
     </div>
@@ -200,11 +217,38 @@
 <!-- Footer -->
 <footer class="footer-section fix">
   <div class="container">
-    <div class="footer-bottom">
-      <div class="footer-wrapper text-center">
-        <p>© Copyright <a href="index.html">RentalsCeutec</a></p>
+      <div class="footer-widgets-wrapper">
+          <div class="row justify-content-between">
+              <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+                  <div class="single-footer-widget shape-map">
+                      <div class="widget-head">
+                          <h4>Contacto</h4>
+                      </div>
+                      <div class="footer-content">
+                          <p>
+                              Ceutec, San Pedro Sula, Honduras
+                          </p>
+                          <ul class="contact-info">
+                              <li>
+                                  <i class="fa-regular fa-envelope"></i>
+                                  <a href="mailto:needhelp@company.com">rentalsceutec@gmail.com</a>
+                              </li>
+                              <li>
+                                  <i class="fa-solid fa-phone-volume"></i>
+                                  <a href="tel:926668880000">+504 0000 - 0000</a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+                                 
+      <div class="footer-bottom">
+          <div class="footer-wrapper">
+              <p class="wow fadeInUp" data-wow-delay=".4s">
+                  © Copyright 2024 by <a href="index.html">RentalsCeutec.com</a>
+              </p>
+          </div>
       </div>
-    </div>
   </div>
 </footer>
 
@@ -227,6 +271,7 @@
 <script type="module" src="assets/js/firebaseConfig.js"></script>
 <script type="module" src="assets/js/reservations.js"></script>
 <script type="module" src="assets/js/authHeader.js"></script>
+<script type="module" src="assets/js/login.js"></script>
 
 </body>
 </html>
