@@ -48,6 +48,15 @@ export function inicializarVehiculos() {
     const preview = document.getElementById("previewFotoVehiculo");
 
     if (file) {
+      const extension = file.name.split('.').pop().toLowerCase();
+      if (!["jpg", "jpeg", "png", "webp"].includes(extension)) {
+        mostrarToast("Formato de imagen no permitido.", "warning");
+        this.value = "";
+        preview.src = "";
+        preview.style.display = "none";
+        return;
+      }
+
       const reader = new FileReader();
       reader.onload = function (e) {
         preview.src = e.target.result;
@@ -97,6 +106,7 @@ function cargarVehiculos() {
           <td><span class="badge ${data.DISPONIBLE ? 'bg-success' : 'bg-danger'}">${data.DISPONIBLE ? 'Disponible' : 'No disponible'}</span></td>
           <td id="proximaReserva-${docu.id}">Cargando...</td>
           <td>
+            ${data.FOTO ? `<img src="${data.FOTO}" alt="foto" style="height:40px;border-radius:5px;margin-right:5px;">` : ""}
             <button class="btn btn-sm btn-secondary" onclick="editarVehiculo('${docu.id}')"><i class="fa fa-pen"></i></button>
             <button class="btn btn-sm btn-danger" onclick="eliminarVehiculo('${docu.id}')"><i class="fa fa-trash"></i></button>
           </td>
@@ -189,6 +199,11 @@ async function guardarVehiculo() {
 
   try {
     if (archivoImagen) {
+      const extension = archivoImagen.name.split('.').pop().toLowerCase();
+      if (!["jpg", "jpeg", "png", "webp"].includes(extension)) {
+        return mostrarToast("Formato de imagen no permitido.", "warning");
+      }
+
       const refImg = storageRef(storage, `vehiculos/${Date.now()}_${archivoImagen.name}`);
       await uploadBytes(refImg, archivoImagen);
       const url = await getDownloadURL(refImg);
@@ -212,12 +227,18 @@ async function guardarVehiculo() {
 }
 
 async function eliminarVehiculo(id) {
-  if (confirm("¿Seguro que deseas eliminar este vehículo?")) {
-    try {
-      await deleteDoc(doc(db, "vehiculos", id));
-      mostrarToast("Vehículo eliminado correctamente.");
-    } catch (error) {
-      mostrarToast("No se pudo eliminar.");
+  try {
+    const reservasSnap = await getDocs(query(reservasRef, where("idVehiculo", "==", id)));
+    if (!reservasSnap.empty) {
+      return mostrarToast("No se puede eliminar el vehículo porque tiene reservas activas.", "warning");
     }
+
+    if (confirm("¿Seguro que deseas eliminar este vehículo?")) {
+      await deleteDoc(doc(db, "vehiculos", id));
+      mostrarToast("Vehículo eliminado correctamente.", "success");
+    }
+  } catch (error) {
+    console.error("Error al eliminar vehículo:", error);
+    mostrarToast("No se pudo eliminar el vehículo.", "danger");
   }
 }

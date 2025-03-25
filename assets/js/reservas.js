@@ -135,7 +135,7 @@ async function editarReserva(id) {
     document.getElementById("fechaEntrega").value = data["Fecha de entrega"]?.toDate().toISOString().slice(0, 16);
     vehiculoAnteriorId = data.idVehiculo;
 
-    cargarVehiculosParaReservas(() => {
+      cargarVehiculosParaReservas(() => {
       document.getElementById("vehiculoReserva").value = vehiculoAnteriorId;
       const modalEl = document.getElementById("modalReserva");
       const modalInstance = bootstrap.Modal.getOrCreateInstance(modalEl);
