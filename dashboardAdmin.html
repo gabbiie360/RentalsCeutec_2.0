@@ -8,32 +8,52 @@
   <!-- Estilos -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="assets/css/animate.css" />
-  <link rel="stylesheet" href="assets/css/fontawesome.min.css" />
   <link rel="stylesheet" href="assets/css/main.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-</head>
-<body class="dashboard-body">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
 
-  <!-- Sidebar -->
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-toggle" id="toggleSidebar">
+</head>
+<body class="dashboard-body" style="display: none;">
+
+
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+
+    <!-- Botón para colapsar -->
+    <button id="toggleSidebar" class="btn btn-sm sidebar-toggle">
       <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Info del usuario (centro) -->
+    <div class="sidebar-user-info">
+      <div class="sidebar-user-bienvenida">Bienvenido,</div>
+      <div class="sidebar-user-email" id="nombreTexto">correo@email.com</div>
     </div>
-    <ul class="sidebar-menu">
-      <li class="sidebar-link active" data-section="reportes">
-        <i class="fas fa-chart-bar"></i> <span>Reportes</span>
-      </li>
-      <li class="sidebar-link" data-section="usuarios">
-        <i class="fas fa-users"></i> <span>Usuarios</span>
-      </li>
-      <li class="sidebar-link" data-section="vehiculos">
-        <i class="fas fa-car"></i> <span>Vehículos</span>
-      </li>
-      <li class="sidebar-link" data-section="reservas">
-        <i class="fas fa-calendar-check"></i> <span>Reservas</span>
-      </li>
-    </ul>
-  </aside>
+
+    <!-- Ícono de usuario (derecha) -->
+    <i class="fas fa-user-circle sidebar-user-icon"></i>
+    
+  </div>
+
+  <!-- Menú -->
+  <ul class="sidebar-menu mt-3">
+    <li class="sidebar-link active" data-section="reportes">
+      <i class="fas fa-chart-bar"></i> <span>Reportes</span>
+    </li>
+    <li class="sidebar-link" data-section="usuarios">
+      <i class="fas fa-users"></i> <span>Usuarios</span>
+    </li>
+    <li class="sidebar-link" data-section="vehiculos">
+      <i class="fas fa-car"></i> <span>Vehículos</span>
+    </li>
+    <li class="sidebar-link" data-section="reservas">
+      <i class="fas fa-calendar-check"></i> <span>Reservas</span>
+    </li>
+  </ul>
+</aside>
+
+
 
   <!-- Contenido Principal -->
   <div class="main-content" id="mainContent">
@@ -152,97 +172,99 @@
   </section>
   
 
-
-   <!-- USUARIOS -->
+<!-- USUARIOS -->
 <section id="usuarios" class="dashboard-section d-none">
-    <div class="card shadow">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">Gestión de Usuarios</h5>
+  <div class="card shadow">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Gestión de Usuarios</h5>
+    </div>
+
+    <div class="card-body">
+      <!-- Filtros -->
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <input type="text" id="filtroUsuarioCorreo" class="form-control" placeholder="Buscar por correo" />
+        </div>
+        <div class="col-md-3">
+          <select id="filtroRol" class="form-select">
+            <option value="">Todos</option>
+            <option value="user">Usuario</option>
+            <option value="admin">Administrador</option>
+          </select>
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+          <button id="limpiarFiltrosUsuarios" class="btn btn-outline-secondary w-100" title="Limpiar Filtros">
+            <i class="fas fa-broom me-1"></i> Limpiar
+          </button>
+        </div>
       </div>
-  
-      <div class="card-body">
-        <!-- Filtros -->
-        <div class="row mb-3">
-          <div class="col-md-4">
-            <input type="text" id="filtroUsuarioCorreo" class="form-control" placeholder="Buscar por correo" />
-          </div>
-          <div class="col-md-3">
-            <select id="filtroRol" class="form-select">
-              <option value="">Todos</option>
-              <option value="user">Usuario</option>
-              <option value="admin">Administrador</option>
-            </select>
-          </div>
-          <div class="col-md-2 d-flex align-items-end">
-            <button id="limpiarFiltrosUsuarios" class="btn btn-outline-secondary w-100" title="Limpiar Filtros">
-              <i class="fas fa-broom me-1"></i> Limpiar
-            </button>
-          </div>
-        </div>
-      
-            <!-- Tabla de usuarios -->
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th>Email</th>
-                  <th>Rol</th>
-                  <th>Acciones</th>
-                </tr>
-              </thead>
-              <tbody id="tablaUsuarios"></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-      
-  <!-- VEHÍCULOS -->
-  <section id="vehiculos" class="dashboard-section d-none">
-    <div class="card shadow">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">Gestión de Vehículos</h5>
-        <div class="col-md-1 d-flex align-items-end">
-            <button class="btn btn-primary btn-sm" onclick="abrirModalVehiculo()">+ Agregar</button>
-          </div>
-      </div>
-  
-      <div class="card-body">
-        <!-- Filtros -->
-        <div class="row mb-3">
-          <div class="col-md-2">
-            <input type="text" id="filtroMarca" class="form-control" placeholder="Filtrar por marca" />
-          </div>
-          <div class="col-md-2">
-            <select id="filtroDisponibilidad" class="form-select">
-              <option value="">Todos</option>
-              <option value="true">Disponible</option>
-              <option value="false">No disponible</option>
-            </select>
-          </div>
-          <div class="col-md-2">
-            <input type="number" id="filtroAnio" class="form-control" placeholder="Filtrar por año" />
-          </div>
-          <div class="col-md-2">
-            <input type="number" id="precioMin" class="form-control" placeholder="Precio mínimo" />
-          </div>
-          <div class="col-md-2">
-            <input type="number" id="precioMax" class="form-control" placeholder="Precio máximo" />
-          </div>
-          <div class="col-md-1 d-flex align-items-end">
-            <button id="limpiarFiltrosVehiculos" class="btn btn-outline-secondary w-100" title="Limpiar filtros">
-              <i class="fas fa-broom"></i>
-            </button>
-          </div>
-          
-        </div>
-  
-        <!-- Tabla de vehículos -->
+
+      <!-- Tabla responsive -->
+      <div class="table-responsive">
         <table class="table table-hover">
-          <thead>
+          <thead class="table-primary">
+            <tr>
+              <th>Email</th>
+              <th>Rol</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tablaUsuarios"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- VEHÍCULOS -->
+<section id="vehiculos" class="dashboard-section d-none">
+  <div class="card shadow">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Gestión de Vehículos</h5>
+      <div class="col-md-1 d-flex align-items-end">
+        <button class="btn btn-primary btn-sm" onclick="abrirModalVehiculo()">+ Agregar</button>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <!-- Filtros -->
+      <div class="row mb-3">
+        <div class="col-md-2">
+          <input type="text" id="filtroMarca" class="form-control" placeholder="Filtrar por marca" />
+        </div>
+        <div class="col-md-2">
+          <select id="filtroDisponibilidad" class="form-select">
+            <option value="">Todos</option>
+            <option value="true">Disponible</option>
+            <option value="false">No disponible</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <input type="number" id="filtroAnio" class="form-control" placeholder="Filtrar por año" />
+        </div>
+        <div class="col-md-2">
+          <input type="number" id="precioMin" class="form-control" placeholder="Precio mínimo" />
+        </div>
+        <div class="col-md-2">
+          <input type="number" id="precioMax" class="form-control" placeholder="Precio máximo" />
+        </div>
+        <div class="col-md-1 d-flex align-items-end">
+          <button id="limpiarFiltrosVehiculos" class="btn btn-outline-secondary w-100" title="Limpiar filtros">
+            <i class="fas fa-broom"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tabla responsive -->
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead class="table-primary">
             <tr>
               <th>Marca</th>
               <th>Modelo</th>
               <th>Placa</th>
               <th>Año</th>
+              <th>Puertas</th>
               <th>Precio/día</th>
               <th>Disponible</th>
               <th>Próxima reserva</th>
@@ -253,101 +275,70 @@
         </table>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
   
   
-  <!-- RESERVAS -->
-  <section id="reservas" class="dashboard-section d-none">
-    <div class="card shadow">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">Gestión de Reservas</h5>
-        <button class="btn btn-primary btn-sm" onclick="abrirModalReserva()">+ Agregar Reserva</button>
-      </div>
-  
-      <div class="card-body">
-        <!-- Filtros -->
-        <div class="row mb-3">
-          <div class="col-md-3">
-            <label class="form-label">Desde</label>
-            <input type="date" id="filtroDesde" class="form-control">
-          </div>
-          <div class="col-md-3">
-            <label class="form-label">Hasta</label>
-            <input type="date" id="filtroHasta" class="form-control">
-          </div>
-          <div class="col-md-3">
-            <label class="form-label">Usuario (email)</label>
-            <input type="text" id="filtroUsuario" class="form-control" placeholder="Buscar por correo">
-          </div>
-          <div class="col-md-2">
-            <label class="form-label">Estado</label>
-            <select id="filtroEstado" class="form-select">
-              <option value="">Todos</option>
-              <option value="futuras">Futuras</option>
-              <option value="pasadas">Pasadas</option>
-            </select>
-          </div>
-          <div class="col-md-1 d-flex align-items-end">
-            <button id="limpiarFiltrosReservas" class="btn btn-outline-secondary w-100" title="Limpiar Filtros">
-              <i class="fas fa-broom"></i>
-            </button>
-          </div>
-          
+ <!-- RESERVAS -->
+<section id="reservas" class="dashboard-section d-none">
+  <div class="card shadow">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Gestión de Reservas</h5>
+      <button class="btn btn-primary btn-sm" onclick="abrirModalReserva()">+ Agregar Reserva</button>
+    </div>
+
+    <div class="card-body">
+      <!-- Filtros -->
+      <div class="row mb-3">
+        <div class="col-md-3">
+          <label class="form-label">Desde</label>
+          <input type="date" id="filtroDesde" class="form-control" />
         </div>
-  
-        <!-- Tabla -->
+        <div class="col-md-3">
+          <label class="form-label">Hasta</label>
+          <input type="date" id="filtroHasta" class="form-control" />
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Usuario (email)</label>
+          <input type="text" id="filtroUsuario" class="form-control" placeholder="Buscar por correo" />
+        </div>
+        <div class="col-md-2">
+          <label class="form-label">Estado</label>
+          <select id="filtroEstado" class="form-select">
+            <option value="">Todos</option>
+            <option value="futuras">Futuras</option>
+            <option value="pasadas">Pasadas</option>
+          </select>
+        </div>
+        <div class="col-md-1 d-flex align-items-end">
+          <button id="limpiarFiltrosReservas" class="btn btn-outline-secondary w-100" title="Limpiar Filtros">
+            <i class="fas fa-broom"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tabla responsiva -->
+      <div class="table-responsive">
         <table class="table table-hover">
-          
-            <thead>
-                <tr>
-                  <th data-sort="Nombre Completo">Nombre</th>
-                  <th data-sort="Email">Email</th>
-                  <th data-sort="Numero de Telefono">Teléfono</th>
-                  <th data-sort="Recoges en">Ubicación</th>
-                  <th data-sort="nombreVehiculo">Vehículo</th>
-                  <th data-sort="Fecha de Reserva">Reserva</th>
-                  <th data-sort="Fecha de entrega">Entrega</th>
-                  <th>Acciones</th>
-                </tr>
-              </thead>
-              
-            
+          <thead class="table-primary">
+            <tr>
+              <th data-sort="Nombre Completo">Nombre</th>
+              <th data-sort="Email">Email</th>
+              <th data-sort="Numero de Telefono">Teléfono</th>
+              <th data-sort="Recoges en">Ubicación</th>
+              <th data-sort="nombreVehiculo">Vehículo</th>
+              <th data-sort="Fecha de Reserva">Reserva</th>
+              <th data-sort="Fecha de entrega">Entrega</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
           <tbody id="tablaReservas"></tbody>
         </table>
       </div>
     </div>
-  </section>
-  
-      
-
-  <!-- Modal Vehículo -->
-  <div class="modal fade" id="modalVehiculo" tabindex="-1">
-    <div class="modal-dialog"><div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Agregar / Editar Vehículo</h5>
-        <button class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <input type="hidden" id="vehiculoId" />
-        <input id="marca" class="form-control mb-2" placeholder="Marca" />
-        <input id="modelo" class="form-control mb-2" placeholder="Modelo" />
-        <input id="placa" class="form-control mb-2" placeholder="Placa" />
-        <input id="anio" type="number" class="form-control mb-2" placeholder="Año" />
-        <input id="asientos" type="number" class="form-control mb-2" placeholder="Asientos" />
-        <input id="combustible" class="form-control mb-2" placeholder="Combustible" />
-        <input id="transmision" class="form-control mb-2" placeholder="Transmisión" />
-        <input id="precioDia" type="number" class="form-control mb-2" placeholder="Precio por día" />
-        <select id="disponible" class="form-select mb-2">
-          <option value="true">Disponible</option>
-          <option value="false">No disponible</option>
-        </select>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button class="btn btn-success" onclick="guardarVehiculo()">Guardar</button>
-      </div>
-    </div></div>
   </div>
+</section>
 
   <!-- Modal Reserva -->
   <div class="modal fade" id="modalReserva" tabindex="-1">
@@ -376,14 +367,60 @@
     </div></div>
   </div>
 
+      
+
+  <!-- Modal Vehículo -->
+  <div class="modal fade" id="modalVehiculo" tabindex="-1">
+    <div class="modal-dialog"><div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Agregar / Editar Vehículo</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="vehiculoId" />
+        <input id="marca" class="form-control mb-2" placeholder="Marca" />
+        <input id="modelo" class="form-control mb-2" placeholder="Modelo" />
+        <input id="placa" class="form-control mb-2" placeholder="Placa" />
+        <input id="anio" type="number" class="form-control mb-2" placeholder="Año" />
+        <input id="asientos" type="number" class="form-control mb-2" placeholder="Asientos" />
+        <input id="puertas" type="number" class="form-control mb-2" placeholder="Puertas" />
+        <input id="combustible" class="form-control mb-2" placeholder="Combustible" />
+        <input id="transmision" class="form-control mb-2" placeholder="Transmisión" />
+        <input id="precioDia" type="number" class="form-control mb-2" placeholder="Precio por día" />
+        <select id="disponible" class="form-select mb-2">
+          <option value="true">Disponible</option>
+          <option value="false">No disponible</option>
+        </select>
+      
+        <!-- Imagen y subida -->
+        <div class="mb-2">
+          <label for="fotoVehiculo" class="form-label">Fotografía del Vehículo</label>
+          <input type="file" class="form-control" id="fotoVehiculo" accept="image/*" />
+          <img id="previewFotoVehiculo" src="" alt="Vista previa" class="img-thumbnail mt-2 rounded shadow-sm" style="display: none; max-height: 150px;" />
+        </div>
+        
+      
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn btn-success" onclick="guardarVehiculo()">Guardar</button>
+      </div>
+    </div></div>
+  </div>
+
+  
+  
   <!-- Scripts -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script type="module" src="assets/js/firebaseConfig.js"></script>
-    <script type="module" src="assets/js/dashboardAdmin.js"></script>
-    <script type="module" src="assets/js/reportes.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="module" src="assets/js/disponibilidad.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-
+  <!-- Firebase y módulos -->
+  <script type="module" src="assets/js/firebaseConfig.js"></script>
+  <script type="module" src="assets/js/authAdmin.js"></script>
+  <script type="module" src="assets/js/usuarios.js"></script>
+  <script type="module" src="assets/js/vehiculos.js"></script>
+  <script type="module" src="assets/js/reservas.js"></script>
+  <script type="module" src="assets/js/dashboardAdmin.js"></script>
+  <script type="module" src="assets/js/reportes.js"></script>
+  <script type="module" src="assets/js/disponibilidad.js"></script>
+  
 </body>
 </html>
