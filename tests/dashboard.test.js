@@ -1,4 +1,4 @@
-const { actualizarRol, eliminarUsuario, editarVehiculo, guardarVehiculo, eliminarVehiculo, editarReserva, guardarReserva, eliminarReserva } = require("../assets/js/dashboardTest");
+const { actualizarRol, eliminarUsuario, editarVehiculo, guardarVehiculo, eliminarVehiculo, editarReserva, guardarReserva, eliminarReserva, validarSolapamiento } = require("../assets/js/dashboardTest");
 
 describe("Pruebas unitarias de dashboard", () => {
     test("Debería actualizar el rol de un usuario", () => {
@@ -109,5 +109,36 @@ describe("Pruebas unitarias de dashboard", () => {
         
       
         expect(resultado).toEqual({ id, mensaje: "Reserva eliminada correctamente." });
+    });
+    test("Debería detectar solapamiento con una reserva existente", () => {
+        // Arrange
+        const resultado = validarSolapamiento("vehiculo123", new Date("2025-04-03T09:00"), new Date("2025-04-04T09:00"));
+        
+        // Assert
+        expect(resultado).toEqual({ solapado: true, mensaje: "Conflicto de reserva detectado." });
+    });
+
+    test("No debería detectar solapamiento si las fechas no se cruzan", () => {
+        // Arrange
+        const resultado = validarSolapamiento("vehiculo123", new Date("2025-04-07T09:00"), new Date("2025-04-08T09:00"));
+        
+        // Assert
+        expect(resultado).toEqual({ solapado: false, mensaje: "No hay solapamiento de reservas." });
+    });
+
+    test("No debería detectar solapamiento si el ID de vehículo no coincide", () => {
+        // Arrange
+        const resultado = validarSolapamiento("vehiculo999", new Date("2025-04-03T09:00"), new Date("2025-04-04T09:00"));
+        
+        // Assert
+        expect(resultado).toEqual({ solapado: false, mensaje: "No hay solapamiento de reservas." });
+    });
+
+    test("Debería ignorar una reserva si es la misma que está siendo editada", () => {
+        // Arrange
+        const resultado = validarSolapamiento("vehiculo123", new Date("2025-04-03T09:00"), new Date("2025-04-04T09:00"), "reserva1");
+        
+        // Assert
+        expect(resultado).toEqual({ solapado: false, mensaje: "No hay solapamiento de reservas." });
     });
 });
