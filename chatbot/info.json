@@ -1,0 +1,235 @@
+{
+    "intents": [
+      {
+        "tag": "saludo",
+        "patterns": ["hola", "buenos días", "buenas tardes", "buenas noches"],
+        "responses": ["Hola, soy CarLitos, puedes llamarme Litos. ¿En qué puedo ayudarte hoy?"]
+      },
+      {
+        "tag": "precio",
+        "patterns": ["precio", "costo", "tarifa"],
+        "responses": ["Nuestros precios varían según el tipo de vehículo y la duración del alquiler. Por ejemplo, un sedán comienza desde L.500 diarios. ¿Qué tipo de vehículo necesitas?"]
+      },
+      {
+        "tag": "ubicacion",
+        "patterns": ["ubicación", "dirección", "dónde están"],
+        "responses": ["Estamos ubicados en San Pedro Sula, en el campus de CEUTEC. Nuestra dirección exacta es: Boulevard UNAH, San Pedro Sula, Honduras."]
+      },
+      {
+        "tag": "horario",
+        "patterns": ["horario", "horas", "atención"],
+        "responses": ["Nuestro horario de atención es de lunes a sábados de 9:00 AM a 7:00 PM."]
+      },
+      {
+        "tag": "requisitos",
+        "patterns": ["requisitos", "documentos", "alquilar"],
+        "responses": ["Para alquilar un vehículo necesitas: Licencia de conducir vigente, identificación oficial, tarjeta de crédito, ser mayor de 21 años y comprobante de domicilio."]
+      },
+      {
+        "tag": "seguro",
+        "patterns": ["seguro", "cobertura", "protección"],
+        "responses": ["Todos nuestros vehículos incluyen seguro básico. También ofrecemos coberturas adicionales opcionales para mayor tranquilidad."]
+      },
+      {
+        "tag": "reserva",
+        "patterns": ["reserva", "reservación", "reservar"],
+        "responses": ["Puedes hacer tu reserva en línea a través de nuestra página web, llamando al +504 0000-0000 o visitando nuestra oficina. Puedes enviarnos un correo a rentalsceutec@gmail.com, nos pondremos en contacto contigo lo más pronto posible."]
+      },
+      {
+        "tag": "pago",
+        "patterns": ["pago", "método", "formas de pago"],
+        "responses": ["El pago se realiza de forma física al adquirir el vehículo. Aceptamos tarjetas de débito Visa y Mastercard, tarjetas de crédito Visa y Mastercard, efectivo y transferencias bancarias."]
+      },
+      {
+        "tag": "cancelacion",
+        "patterns": ["cancelación", "cancelar", "cambios"],
+        "responses": ["Las cancelaciones con 24 horas de anticipación no tienen cargo. Cancelaciones posteriores pueden tener una penalización del 50%."]
+      },
+      {
+        "tag": "vehiculos",
+        "patterns": ["vehículos", "modelos", "tipos"],
+        "responses": ["Ofrecemos sedanes, SUVs, pick-ups y minivans. Todas nuestras unidades son modelos recientes con menos de 3 años de antigüedad."]
+      },
+      {
+        "tag": "combustible",
+        "patterns": ["combustible", "gasolina", "tanque"],
+        "responses": ["Los vehículos se entregan con tanque lleno y deben devolverse de la misma manera. Caso contrario, se cobra el combustible faltante."]
+      },
+      {
+        "tag": "descuento",
+        "patterns": ["descuento", "promociones", "ofertas"],
+        "responses": ["Actualmente ofrecemos un 15% de descuento para estudiantes de CEUTEC y promociones especiales para alquileres semanales y mensuales."]
+      },
+      {
+        "tag": "kilometraje",
+        "patterns": ["kilometraje", "kilómetros", "distancia"],
+        "responses": ["Nuestros alquileres incluyen kilometraje ilimitado dentro de Honduras."]
+      },
+      {
+        "tag": "danos",
+        "patterns": ["daños", "accidente", "incidente"],
+        "responses": ["En caso de accidente, contacta inmediatamente al número de emergencia proporcionado y sigue el protocolo del seguro."]
+      },
+      {
+        "tag": "gps",
+        "patterns": ["GPS", "navegación", "mapa"],
+        "responses": ["Ofrecemos servicio de GPS por un costo adicional de L.100 por día."]
+      },
+      {
+        "tag": "conductor_adicional",
+        "patterns": ["conductor adicional", "segundo conductor", "conductores"],
+        "responses": ["Puedes agregar un conductor adicional por L.150 diarios, cumpliendo los mismos requisitos del titular."]
+      },
+      {
+        "tag": "deposito",
+        "patterns": ["depósito", "garantía", "fianza"],
+        "responses": ["Se requiere un depósito en garantía de L.5,000 que se devuelve al entregar el vehículo en buenas condiciones."]
+      },
+      {
+        "tag": "devolucion",
+        "patterns": ["devolución", "retorno", "entregar"],
+        "responses": ["La devolución debe realizarse en nuestra oficina en el horario acordado. Retrasos tienen cargo adicional."]
+      },
+      {
+        "tag": "edad",
+        "patterns": ["edad", "años", "menor"],
+        "responses": ["La edad mínima para alquilar es 21 años. Conductores entre 21-25 años tienen un cargo adicional de seguro."]
+      },
+      {
+        "tag": "frontera",
+        "patterns": ["frontera", "internacional", "país"],
+        "responses": ["No está permitido sacar los vehículos de Honduras sin autorización previa por escrito."]
+      },
+      {
+        "tag": "temporada_alta",
+        "patterns": ["temporada alta", "diciembre", "Semana Santa"],
+        "responses": ["Las tarifas pueden variar en temporada alta (diciembre-enero, Semana Santa y feriados nacionales)."]
+      },
+      {
+        "tag": "experiencia",
+        "patterns": ["experiencia", "trayectoria", "años"],
+        "responses": ["RentalsCeutec tiene 6 meses de experiencia brindando servicio de calidad en San Pedro Sula. Son 6 meses de experiencia brindando servicio pero nuestra calidad es inigualable."]
+      },
+      {
+        "tag": "default",
+        "patterns": ["default"],
+        "responses": ["Lo siento, no entendí tu pregunta. Por favor, intenta ser más específico o contáctanos directamente para más ayuda."]
+      },
+      {
+        "tag": "seguridad",
+        "patterns": ["seguridad", "características de seguridad", "airbags"],
+        "responses": ["Todos nuestros vehículos están equipados con airbags, frenos ABS y otras características de seguridad modernas."]
+      },
+      {
+        "tag": "revision_tecnica",
+        "patterns": ["revisión técnica", "estado del vehículo", "mantenimiento"],
+        "responses": ["Todos nuestros vehículos pasan por revisiones técnicas regulares para garantizar su óptimo funcionamiento."]
+      },
+      {
+        "tag": "viaje_familiar",
+        "patterns": ["viaje familiar", "familia", "niños"],
+        "responses": ["Para viajes familiares, recomendamos nuestras minivans o SUVs, que ofrecen espacio adicional y comodidad."]
+      },
+      {
+        "tag": "viaje_negocios",
+        "patterns": ["viaje de negocios", "corporativo", "ejecutivo"],
+        "responses": ["Para viajes de negocios, recomendamos nuestros sedanes ejecutivos, que combinan comodidad y estilo."]
+      },
+      {
+        "tag": "entrega_domicilio",
+        "patterns": ["entrega a domicilio", "entrega", "recogida"],
+        "responses": ["Ofrecemos servicio de entrega y recogida a domicilio por un costo adicional. Contáctanos para más detalles."]
+      },
+      {
+        "tag": "temporada_baja",
+        "patterns": ["temporada baja", "descuento temporada baja", "ofertas especiales"],
+        "responses": ["En temporada baja, ofrecemos descuentos adicionales en alquileres semanales y mensuales. ¡Aprovecha nuestras ofertas!"]
+      },
+      {
+        "tag": "vehiculo_automatico",
+        "patterns": ["vehículo automático", "automático", "manual"],
+        "responses": ["Contamos con vehículos de transmisión automática y manual. Por favor, indícanos tu preferencia al momento de la reserva."]
+      },
+      {
+        "tag": "emergencia",
+        "patterns": ["emergencia", "problema", "asistencia"],
+        "responses": ["En caso de emergencia, contáctanos al +504 0000-0000. Nuestro equipo de asistencia está disponible 24/7."]
+      },
+      {
+        "tag": "viaje_internacional",
+        "patterns": ["viaje internacional", "cruzar frontera", "país vecino"],
+        "responses": ["No está permitido cruzar las fronteras de Honduras con nuestros vehículos. Por favor, contáctanos si necesitas más información."]
+      },
+      {
+        "tag": "vehiculo_lujo",
+        "patterns": ["vehículo de lujo", "lujo", "premium"],
+        "responses": ["Para una experiencia premium, ofrecemos sedanes de lujo como el BMW Serie 5. Contáctanos para disponibilidad."]
+      },
+      {
+        "tag": "vehiculo_economico",
+        "patterns": ["vehículo económico", "económico", "barato"],
+        "responses": ["Si buscas una opción económica, te recomendamos nuestros sedanes compactos como el Toyota Yaris."]
+      },
+      {
+        "tag": "vehiculo_trabajo",
+        "patterns": ["vehículo para trabajo", "trabajo", "carga"],
+        "responses": ["Para trabajos pesados o transporte de carga, recomendamos nuestras pick-ups como la Toyota Hilux."]
+      },
+      {
+        "tag": "vehiculo_grupos",
+        "patterns": ["vehículo para grupos grandes", "grupos", "familias grandes"],
+        "responses": ["Para grupos grandes, nuestras minivans como la Toyota Hiace son ideales. Contáctanos para más detalles."]
+      },
+      {
+        "tag": "revision_contrato",
+        "patterns": ["revisión de contrato", "contrato", "términos"],
+        "responses": ["Puedes revisar los términos y condiciones de nuestro contrato en nuestra página web o solicitarlos en nuestra oficina."]
+      },
+      {
+        "tag": "vehiculo_aire",
+        "patterns": ["vehículo con aire acondicionado", "aire acondicionado", "clima"],
+        "responses": ["Todos nuestros vehículos están equipados con aire acondicionado para tu comodidad."]
+      },
+      {
+        "tag": "vehiculo_wifi",
+        "patterns": ["vehículo con WiFi", "WiFi", "internet"],
+        "responses": ["Ofrecemos dispositivos WiFi portátiles por un costo adicional de L.150 diarios. Contáctanos para más información."]
+      },
+      {
+        "tag": "vehiculo_turismo",
+        "patterns": ["vehículo para turismo", "turismo", "viaje turístico"],
+        "responses": ["Para turismo, recomendamos nuestras SUVs, que ofrecen comodidad y espacio para equipaje."]
+      },
+      {
+        "tag": "vehiculo_ciudad",
+        "patterns": ["vehículo para ciudad", "ciudad", "compacto"],
+        "responses": ["Para moverte por la ciudad, recomendamos nuestros vehículos compactos como el Hyundai Accent."]
+      },
+      {
+        "tag": "vehiculo_montana",
+        "patterns": ["vehículo para montaña", "montaña", "terreno difícil"],
+        "responses": ["Para terrenos difíciles, nuestras pick-ups 4x4 como la Toyota Hilux son ideales."]
+      },
+      {
+        "tag": "vehiculo_eventos",
+        "patterns": ["vehículo para eventos", "eventos", "ocasiones especiales"],
+        "responses": ["Para eventos especiales, ofrecemos vehículos de lujo y minivans. Contáctanos para más detalles."]
+      },
+      {
+        "tag": "vehiculo_escolar",
+        "patterns": ["vehículo para transporte escolar", "escolar", "niños"],
+        "responses": ["Para transporte escolar, nuestras minivans son ideales. Contáctanos para disponibilidad."]
+      },
+      {
+        "tag": "vehiculo_mercancias",
+        "patterns": ["vehículo para transporte de mercancías", "mercancías", "carga pesada"],
+        "responses": ["Para transporte de mercancías, nuestras pick-ups son perfectas. Contáctanos para más información."]
+      },
+      {
+        "tag": "mracas_disponibles",
+        "patterns": ["marcas de vehiculos", "marcas"],
+        "responses": ["Conramos con diferentes marcas reconocidas como Chevrolet, Toyota, Hyundai, Mitsubisi, Nissan, entre otras."]
+      }
+    ]
+  }
+  

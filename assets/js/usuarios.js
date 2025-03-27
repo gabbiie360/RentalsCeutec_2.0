@@ -33,6 +33,7 @@ function cargarUsuarios() {
     snapshot.forEach((docu) => {
       const data = docu.data();
       const uid = docu.id;
+      const genero = data.genero || "";
       const email = data.email || "";
       const rol = data.rol || "user";
       if (!email.trim()) return;
@@ -44,6 +45,7 @@ function cargarUsuarios() {
         const fila = document.createElement("tr");
         fila.innerHTML = `
           <td>${email}</td>
+          <td>${genero}</td>
           <td>
             <select class="form-select form-select-sm" data-uid="${uid}">
               <option value="user" ${rol === "user" ? "selected" : ""}>Usuario</option>

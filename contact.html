@@ -355,7 +355,22 @@
                 </div>
             </div>
         </div>
-        <!-- Footer -->
+
+        <div class="Carlitos">
+            <button id="chatbot-button" onclick="toggleChat()">
+                <img src="/assets/img/CarLitos.gif" alt="Chatbot">
+            </button>
+    
+            <div id="chat-container">
+                <div id="messages"></div>
+                <div id="input-container">
+                    <input type="text" id="user-input" placeholder="Escribe tu consulta aqui...">
+                    <button onclick="sendMessage()">Enviar</button>
+                </div>
+            </div>
+        </div>
+        </div>
+
         <footer class="footer-section fix">
             <div class="container">
                 <div class="footer-widgets-wrapper">
@@ -406,17 +421,16 @@
         <script src="assets/js/wow.min.js"></script>
         <script src="assets/js/ajax-mail.js"></script>
         <script src="assets/js/main.js"></script>
+        <script src="chatbot/chatbot.js"></script>
 
-        <!-- Firebase & Login -->
     <script type="module" src="assets/js/firebaseConfig.js"></script>
     <script type="module" src="assets/js/login.js"></script>
     <script type="module" src="assets/js/authHeader.js"></script>
 
-    <!-- EmailJS SDK -->
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
   (function () {
-    emailjs.init("UzE2T0wX2_VAgOY6Q"); // Public Key
+    emailjs.init("UzE2T0wX2_VAgOY6Q"); 
   })();
 </script>
 
