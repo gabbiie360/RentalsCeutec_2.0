@@ -279,8 +279,65 @@
         "tag": "beneficios_ceutec",
         "patterns": ["Soy de CEUTEC", "¿Hay descuento por ser estudiante?", "¿Tienen promociones para alumnos?"],
         "responses": ["¡Sí! Si sos estudiante de CEUTEC, recibís un 15% de descuento. Solo mostranos tu carnet vigente."]
+      },
+      
+      {
+        "tag": "idiomas",
+        "patterns": ["¿En qué idiomas atienden?", "¿Puedo hablar en inglés?", "¿Hablan español e inglés?"],
+        "responses": ["Actualmente brindamos atención en español. Si necesitas asistencia en inglés, pronto estará disponible."]
+      },
+      {
+        "tag": "accesibilidad",
+        "patterns": ["¿Tienen opciones para personas con discapacidad?", "¿Vehículos accesibles?", "Silla de ruedas"],
+        "responses": ["Por ahora no contamos con vehículos adaptados, pero podemos ayudarte a elegir el más cómodo y accesible."]
+      },
+      {
+        "tag": "mascotas",
+        "patterns": ["¿Puedo llevar a mi mascota?", "¿Aceptan mascotas?", "Viajar con perro o gato"],
+        "responses": ["Sí, puedes viajar con tu mascota. Solo asegúrate de mantener el vehículo limpio para evitar cargos adicionales."]
+      },
+      {
+        "tag": "multas",
+        "patterns": ["¿Qué pasa si recibo una multa?", "Multas", "Infracciones"],
+        "responses": ["Las multas generadas durante el alquiler son responsabilidad del cliente y deben ser liquidadas al devolver el vehículo."]
+      },
+      {
+        "tag": "hora_entrega",
+        "patterns": ["¿Puedo entregar el carro tarde?", "¿Qué pasa si llego después?", "¿Hay tiempo límite para devolver?"],
+        "responses": ["Sí, pero si te pasás del horario acordado aplicamos un recargo proporcional. Te recomendamos avisar con anticipación."]
+      },
+      {
+        "tag": "refrescos",
+        "patterns": ["¿Incluyen agua o snacks?", "¿Hay bebidas en el carro?", "¿Dan algo extra?"],
+        "responses": ["No incluimos snacks o bebidas por defecto, pero podés solicitarlos como cortesía si hay disponibilidad."]
+      },
+      {
+        "tag": "limpieza",
+        "patterns": ["¿Debo lavar el carro?", "¿Cobra por limpieza?", "Suciedad"],
+        "responses": ["Te pedimos devolver el vehículo en condiciones razonables. Si se entrega excesivamente sucio, se cobra limpieza adicional."]
+      },
+      {
+        "tag": "preferencia_marca",
+        "patterns": ["Quiero un Toyota", "¿Tienen Kia?", "Prefiero Chevrolet"],
+        "responses": ["Podés indicarnos tu marca preferida al momento de reservar. Haremos lo posible por asignarte uno disponible."]
+      },
+      {
+        "tag": "reserva_telefonica",
+        "patterns": ["¿Puedo reservar por llamada?", "¿Se puede reservar por WhatsApp?", "Quiero llamar para reservar"],
+        "responses": ["¡Claro! Puedes llamarnos o escribirnos por WhatsApp al +504 0000-0000 para reservar directamente."]
+      },
+      {
+        "tag": "atencion_domingos",
+        "patterns": ["¿Abren domingos?", "¿Puedo alquilar domingo?", "Horario domingo"],
+        "responses": ["Abrimos de lunes a sábado. Para domingos, puedes coordinar entrega anticipada o devolución especial con cita previa."]
       }
       
+
+
+
     ]
+
+
+
   }
   
