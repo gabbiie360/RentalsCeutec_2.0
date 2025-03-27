@@ -229,7 +229,58 @@
         "tag": "mracas_disponibles",
         "patterns": ["marcas de vehiculos", "marcas"],
         "responses": ["Conramos con diferentes marcas reconocidas como Chevrolet, Toyota, Hyundai, Mitsubisi, Nissan, entre otras."]
+      },
+      {
+        "tag": "disponibilidad_vehiculo",
+        "patterns": ["¿Está disponible el vehículo?", "¿Hay carros disponibles?", "¿Tienen algún Toyota disponible?"],
+        "responses": ["Puedes consultar la disponibilidad actual en la sección de vehículos de nuestro sitio. Cada tarjeta te muestra si está disponible para reservar."]
+      },
+      {
+        "tag": "como_funciona",
+        "patterns": ["¿Cómo funciona el sistema?", "¿Cómo reservo un carro?", "¿Qué pasos debo seguir?"],
+        "responses": ["Primero debes iniciar sesión o registrarte. Luego puedes seleccionar un vehículo, elegir fechas, y enviar tu solicitud. Te confirmaremos por correo."]
+      },
+      {
+        "tag": "modificar_reserva",
+        "patterns": ["¿Puedo cambiar mi reserva?", "¿Y si quiero modificar la fecha?", "¿Se puede reprogramar?"],
+        "responses": ["Sí, puedes editar tu reserva desde la sección 'Mis Reservas', siempre y cuando sea con al menos 24 horas de anticipación."]
+      },
+      {
+        "tag": "soporte",
+        "patterns": ["Necesito ayuda", "No encuentro lo que busco", "¿Puedo hablar con alguien?"],
+        "responses": ["Claro, puedes escribirnos directamente a rentalsceutec@gmail.com y con gusto te ayudaremos lo más pronto posible."]
+      },
+      {
+        "tag": "factura",
+        "patterns": ["¿Dan factura?", "¿Puedo pedir un recibo?", "¿Me dan comprobante?"],
+        "responses": ["Sí, al momento de la entrega del vehículo se te proporciona un comprobante de pago y, si lo solicitas, una factura."]
+      },
+      {
+        "tag": "vehiculo_necesidad",
+        "patterns": ["Quiero un carro para vacaciones", "Necesito un carro para trabajar", "Voy a salir de viaje"],
+        "responses": ["Tenemos una opción para cada necesidad: minivans para familias, SUVs para turismo y pick-ups para trabajo. ¿Qué tipo de viaje vas a hacer?"]
+      },
+      {
+        "tag": "ver_detalles",
+        "patterns": ["¿Dónde veo más fotos del carro?", "Quiero ver detalles del carro", "¿Tienen fotos del interior?"],
+        "responses": ["Puedes ver más fotos y especificaciones al hacer clic en el botón 'Reservar' en cada tarjeta de vehículo."]
+      },
+      {
+        "tag": "tiempo_renta",
+        "patterns": ["¿Cuál es el mínimo para rentar?", "¿Por cuánto tiempo puedo alquilar?", "¿Tienen límite de días?"],
+        "responses": ["El mínimo es un día, y podés alquilar por el tiempo que necesites. Para períodos largos, te damos tarifas especiales."]
+      },
+      {
+        "tag": "restricciones",
+        "patterns": ["¿Qué no se puede hacer?", "¿Hay reglas?", "¿Qué pasa si me atraso?"],
+        "responses": ["No está permitido fumar en el vehículo, conducir en estado de ebriedad ni cruzar la frontera sin autorización. El retraso en la devolución genera cargos adicionales."]
+      },
+      {
+        "tag": "beneficios_ceutec",
+        "patterns": ["Soy de CEUTEC", "¿Hay descuento por ser estudiante?", "¿Tienen promociones para alumnos?"],
+        "responses": ["¡Sí! Si sos estudiante de CEUTEC, recibís un 15% de descuento. Solo mostranos tu carnet vigente."]
       }
+      
     ]
   }
   
