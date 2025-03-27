@@ -28,7 +28,7 @@ const storage = getStorage(app);
 // Proveedores de autenticación
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
-const microsoftProvider = new OAuthProvider('microsoft.com');  // <---- CORREGIDO
+const microsoftProvider = new OAuthProvider('microsoft.com'); 
 
 export { auth, db, googleProvider, githubProvider, microsoftProvider, 
          signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, 

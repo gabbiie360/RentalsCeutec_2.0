@@ -1,527 +1,505 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="pixydrops">
-    <meta name="description" content="Remons - Booking Rental HTML Template">
-    <title>RentalsCeutec</title>
-    <link rel="shortcut icon" href="assets/img/favicon.png">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="assets/css/meanmenu.css">
-    <link rel="stylesheet" href="assets/css/datepickerboot.css">
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/nice-select.css">
-    <link rel="stylesheet" href="assets/css/main.css">
-</head>
-
-<body>
-    <div id="preloader" class="preloader">
-        <div class="animation-preloader">
-            <div class="spinner">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="pixydrops">
+        <meta name="description" content="Remons - Booking Rental HTML Template">
+        <title>RentalsCeutec</title>
+        <link rel="shortcut icon" href="assets/img/favicon5.png">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/all.min.css">
+        <link rel="stylesheet" href="assets/css/animate.css">
+        <link rel="stylesheet" href="assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="assets/css/meanmenu.css">
+        <link rel="stylesheet" href="assets/css/datepickerboot.css">
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="assets/css/nice-select.css">
+        <link rel="stylesheet" href="assets/css/main.css">
+    </head>
+    <body>
+        <div id="preloader" class="preloader">
+            <div class="animation-preloader">
+                <div class="spinner">                
+                </div>
+                <div class="txt-loading">
+                    <span data-text-preloader="R" class="letters-loading">
+                        R
+                    </span>
+                    <span data-text-preloader="E" class="letters-loading">
+                        E
+                    </span>
+                    <span data-text-preloader="N" class="letters-loading">
+                        N
+                    </span>
+                    <span data-text-preloader="T" class="letters-loading">
+                        T
+                    </span>
+                    <span data-text-preloader="A" class="letters-loading">
+                        A
+                    </span>
+                    <span data-text-preloader="L" class="letters-loading">
+                        L
+                    </span>
+                    <span data-text-preloader="S" class="letters-loading">
+                        S
+                    </span>
+                    <span data-text-preloader="C" class="letters-loading">
+                        C
+                    </span><span data-text-preloader="E" class="letters-loading">
+                        E
+                    </span>
+                    <span data-text-preloader="U" class="letters-loading">
+                        U
+                    </span>
+                    <span data-text-preloader="T" class="letters-loading">
+                        T
+                    </span>
+                    <span data-text-preloader="E" class="letters-loading">
+                        E
+                    </span>
+                    <span data-text-preloader="C" class="letters-loading">
+                        C
+                    </span>
+                </div>
+                <p class="text-center">Cargando</p>
             </div>
-            <div class="txt-loading">
-                <span data-text-preloader="R" class="letters-loading">
-                    R
-                </span>
-                <span data-text-preloader="E" class="letters-loading">
-                    E
-                </span>
-                <span data-text-preloader="N" class="letters-loading">
-                    N
-                </span>
-                <span data-text-preloader="T" class="letters-loading">
-                    T
-                </span>
-                <span data-text-preloader="A" class="letters-loading">
-                    A
-                </span>
-                <span data-text-preloader="L" class="letters-loading">
-                    L
-                </span>
-                <span data-text-preloader="S" class="letters-loading">
-                    S
-                </span>
-                <span data-text-preloader="C" class="letters-loading">
-                    C
-                </span><span data-text-preloader="E" class="letters-loading">
-                    E
-                </span>
-                <span data-text-preloader="U" class="letters-loading">
-                    U
-                </span>
-                <span data-text-preloader="T" class="letters-loading">
-                    T
-                </span>
-                <span data-text-preloader="E" class="letters-loading">
-                    E
-                </span>
-                <span data-text-preloader="C" class="letters-loading">
-                    C
-                </span>
-            </div>
-            <p class="text-center">Cargando</p>
-        </div>
-        <div class="loader">
-            <div class="row">
-                <div class="col-3 loader-section section-left">
-                    <div class="bg"></div>
+            <div class="loader">
+                <div class="row">
+                    <div class="col-3 loader-section section-left">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-left">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-right">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-right">
+                        <div class="bg"></div>
+                    </div>
                 </div>
-                <div class="col-3 loader-section section-left">
-                    <div class="bg"></div>
-                </div>
-                <div class="col-3 loader-section section-right">
-                    <div class="bg"></div>
-                </div>
-                <div class="col-3 loader-section section-right">
-                    <div class="bg"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="Carlitos">
-        <button id="chatbot-button" onclick="toggleChat()">
-            <img src="/assets/img/Animation - 1743091934941.gif" alt="Chatbot">
-        </button>
-
-        <div id="chat-container">
-            <div id="messages"></div>
-            <div id="input-container">
-                <input type="text" id="user-input" placeholder="Escribe tu consulta aqui...">
-                <button onclick="sendMessage()">Enviar</button>
             </div>
         </div>
-    </div>
-    </div>
-
-    <div class="scroll-up">
-        <svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-        </svg>
-    </div>
-    <div class="offcanvas__overlay"></div>
-    <div class="header-top-section">
-        <div class="container-fluid">
-            <div class="header-top-wrapper">
-                <ul class="contact-list">
-                    <li>
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:info@example.com" class="link">rentalsceutec@gmail.com</a>
-                    </li>
-                    <li>
-                        <i class="fas fa-map-marker-alt"></i>
-                        Ceutec, San Pedro Sula, Honduras
-                    </li>
-                </ul>
-                <div class="header-top-right">
-                    <ul class="top-list">
-                        <li><a href="contact.html">Ayuda</a></li>
-                        <li><a href="contact.html">Soporte</a></li>
-                        <li><a href="contact.html">Contacto</a></li>
+        <div class="scroll-up">
+            <svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+            </svg>
+        </div>
+        <div class="offcanvas__overlay"></div>
+        <div class="header-top-section">
+            <div class="container-fluid">
+                <div class="header-top-wrapper">
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@example.com" class="link">rentalsceutec@gmail.com</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            Ceutec, San Pedro Sula, Honduras
+                        </li>
                     </ul>
+                    <div class="header-top-right">
+                        <ul class="top-list">
+                            <li><a href="contact.html">Ayuda</a></li>
+                            <li><a href="contact.html">Soporte</a></li>
+                            <li><a href="contact.html">Contacto</a></li>
+                        </ul>                        
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="fix-area">
-        <div class="offcanvas__info">
-            <div class="offcanvas__wrapper">
-                <div class="offcanvas__content">
-                    <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
-                        <div class="offcanvas__logo">
-                            <a href="index.html">
-                                <img src="assets/img/about/RentalsCBR.png" alt="logo-img" style="width: 120px;">
-                            </a>
-                        </div>
-                        <div class="offcanvas__close">
-                            <button>
+        <div class="fix-area">
+            <div class="offcanvas__info">
+                <div class="offcanvas__wrapper">
+                    <div class="offcanvas__content">
+                        <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                            <div class="offcanvas__logo">
+                                <a href="index.html">
+                                    <img src="assets/img/about/RentalsCBR.png" alt="logo-img" style="width: 120px;">
+                                </a>
+                            </div>
+                            <div class="offcanvas__close">
+                                <button>
                                 <i class="fas fa-times"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <p class="text d-none d-xl-block">
-                        Bienvenido a RentalsCeutec
-                    <div class="mobile-menu fix mb-3"></div>
-                    <div class="offcanvas__contact">
-                        <h4>Contact Info</h4>
-                        <ul>
-                            <li class="d-flex align-items-center">
-                                <div class="offcanvas__contact-icon">
-                                    <i class="fal fa-map-marker-alt"></i>
-                                </div>
-                                <div class="offcanvas__contact-text">
-                                    <a target="_blank" href="#">Ceutec, San Pedro Sula, Honduras</a>
-                                </div>
-                            </li>
-                            <li class="d-flex align-items-center">
-                                <div class="offcanvas__contact-icon mr-15">
-                                    <i class="fal fa-envelope"></i>
-                                </div>
-                                <div class="offcanvas__contact-text">
-                                    <a href="mailto:info@example.com"><span
-                                            class="mailto:info@example.com">info@example.com</span></a>
-                                </div>
-                            </li>
-                            <li class="d-flex align-items-center">
-                                <div class="offcanvas__contact-icon mr-15">
-                                    <i class="fal fa-clock"></i>
-                                </div>
-                                <div class="offcanvas__contact-text">
-                                    <a target="_blank" href="#">Lun - Sabado, 09am -05pm</a>
-                                </div>
-                            </li>
-                            <li class="d-flex align-items-center">
-                                <div class="offcanvas__contact-icon mr-15">
-                                    <i class="far fa-phone"></i>
-                                </div>
-                                <div class="offcanvas__contact-text">
-                                    <a href="tel:+11002345909">+504 0000 0000</a>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="header-button mt-4">
-                            <a href="contact.html" class="theme-btn text-center">
-                                <span>Obtén una cotización<i class="fa-solid fa-arrow-right-long"></i></span>
-                            </a>
-                        </div>
-                        <div class="social-icon d-flex align-items-center">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="offcanvas__overlay"></div>
-    <header id="header-sticky" class="header-2">
-        <div class="container-fluid">
-            <div class="mega-menu-wrapper">
-                <div class="header-main">
-                    <div class="header-left">
-                        <div class="logo">
-                            <a href="index.html" class="header-logo">
-                                <img src="assets/img/about/RentalsCBR.png" alt="logo-img" style="width: 120px;">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="mean__menu-wrapper">
-                        <div class="main-menu">
-                            <nav id="mobile-menu">
-                                <ul>
-                                    <li class="has-dropdown active menu-thumb">
-                                        <a href="index.html"> Inicio</a>
-                                    </li>
-                                    <li>
-                                        <a href="about.html">Sobre Nosotros</a>
-                                    </li>
-                                    <li>
-                                        <a href="car-grid.html">
-                                            Autos
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="contact.html">Contacto</a>
-                                    </li>
-                                    <li class="has-dropdown">
-                                        <a href="faq.html">
-                                            Faq's
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                    <div class="header-right d-flex justify-content-end align-items-center">
-                        <div class="icon-items">
-                            <div class="icon">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div class="content">
-                                <p>Llame en todo momento</p>
-                                <h6><a href="tel:+9288009850">+504 0000 - 0000</a></h6>
+                                </button>
                             </div>
                         </div>
-                        <div class="header-button">
-                            <a href="login.html" id="loginButton" class="theme-btn">
-                                ¡Inicia Sesión o Regístrate!
-                            </a>
-                            <div id="userIcon" style="display: none;">
-                                <img src="assets/img/Avatars/avatar-icon.svg" alt="Usuario" width="40px" height="40px">
-                                <div id="userMenu" class="user-menu">
-                                    <a href="userProfile.html">Mi Perfil</a>
-                                    <a href="reservations.html">Mis Reservas</a>
-                                    <a href="#" id="logoutButton" class="logout-btn">Cerrar Sesión</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="header__hamburger d-xl-none my-auto">
-                        <div class="sidebar__toggle">
-                            <i class="fas fa-bars"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-    </header>
-    <div class="search-wrap">
-        <div class="search-inner">
-            <i class="fas fa-times search-close" id="search-close"></i>
-            <div class="search-cell">
-                <form method="get">
-                    <div class="search-field-holder">
-                        <input type="search" class="main-search-input" placeholder="Search...">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <section class="hero-section-2 bg-cover fix" style="background-image: url('assets/img/hero/hero-bg.jpg');">
-        <div class="radius-shape">
-            <img src="assets/img/circle.png" alt="shape-img">
-        </div>
-        <div class="shadow-shape">
-            <img src="assets/img/hero/shadow.png" alt="img">
-        </div>
-        <div class="array-button">
-            <button class="image-array-left bg-cover" style="background-image: url('assets/img/bg-slideshow-02.jpg');">
-                <i class="fa-solid fa-chevron-left"></i>
-            </button>
-            <button class="image-array-right bg-cover" style="background-image: url('assets/img/bg-slideshow-02.jpg');">
-                <i class="fa-solid fa-chevron-right"></i>
-            </button>
-        </div>
-        <div class="swiper hero-slider-2">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="hero-2">
-                        <div class="top-image" data-animation="fadeInDown" data-delay="1.5s">
-                            <img src="assets/img/hero/top-img.png" alt="img">
-                        </div>
-                        <div class="circle-shape" data-animation="fadeInDown" data-delay="1.5s">
-                            <img src="assets/img/hero/circle.png" alt="img">
-                        </div>
-                        <div class="container">
-                            <div class="row g-4 align-items-center">
-                                <div class="col-xl-7 col-lg-6">
-                                    <div class="hero-content">
-                                        <h6 data-animation="fadeInUp" data-delay=".3s" class="hero-title">Bienvenido a
-                                            RentalsCeutec</h6>
-                                        <h1 data-animation="fadeInUp" data-delay=".5s">
-                                            Busca, Reserva <br>
-                                            & Renta
-                                            <span>Muy Fácil</span>
-                                        </h1>
+                        <p class="text d-none d-xl-block">
+                            Bienvenido a RentalsCeutec
+                        <div class="mobile-menu fix mb-3"></div>
+                        <div class="offcanvas__contact">
+                            <h4>Contact Info</h4>
+                            <ul>
+                                <li class="d-flex align-items-center">
+                                    <div class="offcanvas__contact-icon">
+                                        <i class="fal fa-map-marker-alt"></i>
                                     </div>
-                                </div>
-                                <div class="col-xl-5 col-lg-6">
-                                    <div class="hero-image" data-animation="fadeInUp" data-delay=".7s">
-                                        <img src="assets/img/hero/car.png" alt="img">
+                                    <div class="offcanvas__contact-text">
+                                        <a target="_blank" href="#">Ceutec, San Pedro Sula, Honduras</a>
                                     </div>
-                                </div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div class="offcanvas__contact-icon mr-15">
+                                        <i class="fal fa-envelope"></i>
+                                    </div>
+                                    <div class="offcanvas__contact-text">
+                                        <a href="mailto:info@example.com"><span class="mailto:info@example.com">info@example.com</span></a>
+                                    </div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div class="offcanvas__contact-icon mr-15">
+                                        <i class="fal fa-clock"></i>
+                                    </div>
+                                    <div class="offcanvas__contact-text">
+                                        <a target="_blank" href="#">Lun - Sabado, 09am -05pm</a>
+                                    </div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div class="offcanvas__contact-icon mr-15">
+                                        <i class="far fa-phone"></i>
+                                    </div>
+                                    <div class="offcanvas__contact-text">
+                                        <a href="tel:+11002345909">+504 0000 0000</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="header-button mt-4">
+                                <a href="contact.html" class="theme-btn text-center">
+                                    <span>Obtén una cotización<i class="fa-solid fa-arrow-right-long"></i></span>
+                                </a>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="hero-2">
-                        <div class="top-image" data-animation="fadeInDown" data-delay="1.5s">
-                            <img src="assets/img/hero/top-img.png" alt="img">
-                        </div>
-                        <div class="circle-shape" data-animation="fadeInDown" data-delay="1.5s">
-                            <img src="assets/img/hero/circle.png" alt="img">
-                        </div>
-                        <div class="container">
-                            <div class="row g-4 align-items-center">
-                                <div class="col-xl-7 col-lg-6">
-                                    <div class="hero-content">
-                                        <h6 data-animation="fadeInUp" data-delay=".3s" class="hero-title">Tu Opción #1
-                                            en Rentar Carros</h6>
-                                        <h1 data-animation="fadeInUp" data-delay=".5s">
-                                            Busca, Reserva <br>
-                                            & Renta
-                                            <span>Muy fácil</span>
-                                        </h1>
-                                    </div>
-                                </div>
-                                <div class="col-xl-5 col-lg-6">
-                                    <div class="hero-image" data-animation="fadeInUp" data-delay=".7s">
-                                        <img src="assets/img/hero/car.png" alt="img">
-                                    </div>
-                                </div>
+                            <div class="social-icon d-flex align-items-center">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-youtube"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Select Car Section Start -->
-    <section class="select-car-section section-padding fix">
-        <div class="container">
-            <div class="section-title text-center">
-                <img src="assets/img/sub-icon.png" alt="img" class="wow fadeInUp">
-                <span class="wow fadeInUp" data-wow-delay=".2s">Diferentes tipos de Vehiculos</span>
-                <h2 class="wow fadeInUp" data-wow-delay=".4s">
-                    Ofrecemos Diversos Tipos<br>
-                    de Vehiculos
-                </h2>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".2s">
-                    <div class="select-car-items">
-                        <div class="thumb">
-                            <img src="assets/img/car/sedan_icon.jpg" alt="">
-                        </div>
-                        <div class="bg-overlay"></div>
-                        <div class="icon">
-                            <img src="assets/img/car/icon/01.png" alt="img">
-                        </div>
-                        <div class="content">
-                            <h5><a>Sedan</a></h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".3s">
-                    <div class="select-car-items">
-                        <div class="thumb">
-                            <img src="assets/img/car/suv_icon.jpg" alt="">
-                        </div>
-                        <div class="bg-overlay"></div>
-                        <div class="icon">
-                            <img src="assets/img/car/icon/02.png" alt="img">
-                        </div>
-                        <div class="content">
-                            <h5><a>SUV</a></h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".5s">
-                    <div class="select-car-items">
-                        <div class="thumb">
-                            <img src="assets/img/car/coupe_icon.jpg" alt="img">
-                        </div>
-                        <div class="bg-overlay"></div>
-                        <div class="icon">
-                            <img src="assets/img/car/icon/04.png" alt="img">
-                        </div>
-                        <div class="content">
-                            <h5><a href="car-grid.html">Coupé</a></h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".6s">
-                    <div class="select-car-items">
-                        <div class="thumb">
-                            <img src="assets/img/car/pickup_icon.jpg" alt="img">
-                        </div>
-                        <div class="bg-overlay"></div>
-                        <div class="icon">
-                            <img src="assets/img/car/icon/05.png" alt="img">
-                        </div>
-                        <div class="content">
-                            <h5><a href="car-grid.html">Pickup</a></h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".7s">
-                    <div class="select-car-items">
-                        <div class="thumb">
-                            <img src="assets/img/car/compact_icon.jpg" alt="img">
-                        </div>
-                        <div class="bg-overlay"></div>
-                        <div class="icon">
-                            <img src="assets/img/car/icon/06.png" alt="img">
-                        </div>
-                        <div class="content">
-                            <h5><a href="car-grid.html">Compacto</a></h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="about-section-2 fix section-padding bg-cover"
-        style="background-image: url('assets/img/car/car-bg.jpg');">
-        <div class="container">
-            <div class="about-wrapper-2">
-                <div class="row g-4">
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
-                        <div class="about-image">
-                            <img src="assets/img/about/ImagenRentar.png" alt="about-image">
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="about-content">
-                            <div class="section-title">
-                                <img src="assets/img/sub-icon.png" alt="icon-img" class="wow fadeInUp">
-                                <span class="wow fadeInUp" data-wow-delay=".2s">Conócenos</span>
-                                <h2 class="wow fadeInUp" data-wow-delay=".4s">
-                                    Confiable & Líder en
-                                    Servicios de Alquiler de Vehiculos
-                                </h2>
+        <div class="offcanvas__overlay"></div>
+        <header id="header-sticky" class="header-2">
+            <div class="container-fluid">
+                <div class="mega-menu-wrapper">
+                    <div class="header-main">
+                        <div class="header-left">
+                            <div class="logo">
+                                <a href="index.html" class="header-logo">
+                                    <img src="assets/img/about/RentalsCBR.png" alt="logo-img" style="width: 120px;">
+                                </a>
                             </div>
-                            <p class="mt-3 mt-md-0 wow fadeInUp" data-wow-delay=".6s">
-                                En RentalsCeutec, garantizamos un servicio de alquiler de vehículos rápido, confiable y
-                                adaptado a tus necesidades.
-                            </p>
-                            <div class="about-list-wrapper">
-                                <div class="about-list-items wow fadeInUp" data-wow-delay=".3s">
+                            </div>
+                        <div class="mean__menu-wrapper">
+                            <div class="main-menu">
+                                <nav id="mobile-menu">
                                     <ul>
-                                        <li>
-                                            <i class="fa-solid fa-arrow-right"></i>
-                                            Calidad garantizada
+                                        <li class="has-dropdown active menu-thumb">
+                                            <a href="index.html"> Inicio</a>                                           
                                         </li>
                                         <li>
-                                            <i class="fa-solid fa-arrow-right"></i>
-                                            Variedad de vehículos
-                                        </li>
+                                            <a href="about.html">Sobre Nosotros</a>
+                                        </li>                                      
                                         <li>
-                                            <i class="fa-solid fa-arrow-right"></i>
-                                            Reserva rápida y sencilla
-                                        </li>
+                                            <a href="car-grid.html">
+                                                Autos
+                                            </a>
+                                        </li>                                                                             
                                         <li>
-                                            <i class="fa-solid fa-arrow-right"></i>
-                                            Atención personalizada
+                                            <a href="contact.html">Contacto</a>
+                                        </li>
+                                        <li class="has-dropdown">
+                                            <a href="faq.html">
+                                                Faq's
+                                            </a>
                                         </li>
                                     </ul>
-                                    <a href="about.html" class="theme-btn">Descubre más</a>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="header-right d-flex justify-content-end align-items-center">
+                            <div class="icon-items">
+                                <div class="icon">
+                                    <i class="fas fa-phone-alt"></i>
                                 </div>
-                                <div class="author-items wow fadeInUp" data-wow-delay=".5s">
-                                    <div class="icon">
-                                        <i class="fa-solid fa-phone"></i>
+                                <div class="content">
+                                    <p>Llame en todo momento</p>
+                                    <h6><a href="tel:+9288009850">+504 0000 - 0000</a></h6>
+                                </div>
+                            </div>
+                              <div class="header-button">
+                                    <a href="login.html" id="loginButton" class="theme-btn">
+                                        ¡Inicia Sesión o Regístrate!
+                                    </a>
+                                    <div id="userIcon" style="display: none;">
+                                        <img src="assets/img/Avatars/avatar-icon.svg" alt="Usuario" width="40px" height="40px">
+                                        <div id="userMenu" class="user-menu">
+                                            <a href="userProfile.html">Mi Perfil</a>
+                                            <a href="reservations.html">Mis Reservas</a>
+                                            <a href="#" id="logoutButton" class="logout-btn">Cerrar Sesión</a>
+                                        </div>
                                     </div>
-                                    <p>¿Necesitas ayuda? Comunícate con un <br> Experto</p>
-                                    <h6><a href="tel:9288009850">+504 0000 - 0000</a></h6>
+                                </div>
+                            </div>
+                            <div class="header__hamburger d-xl-none my-auto">
+                                <div class="sidebar__toggle">
+                                    <i class="fas fa-bars"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </header>
+        <div class="search-wrap">
+            <div class="search-inner">
+                <i class="fas fa-times search-close" id="search-close"></i>
+                <div class="search-cell">
+                    <form method="get">
+                        <div class="search-field-holder">
+                            <input type="search" class="main-search-input" placeholder="Search...">
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
 
-
-
-        <section class="how-works-section fix section-padding pt-20">
+        <section class="hero-section-2 bg-cover fix" style="background-image: url('assets/img/hero/hero-bg.jpg');">
+            <div class="radius-shape">
+                <img src="assets/img/circle.png" alt="shape-img">
+            </div>
+            <div class="shadow-shape">
+                <img src="assets/img/hero/shadow.png" alt="img">
+            </div>
+            <div class="array-button">
+                <button class="image-array-left bg-cover" style="background-image: url('assets/img/bg-slideshow-02.jpg');">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="image-array-right bg-cover" style="background-image: url('assets/img/bg-slideshow-02.jpg');">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="swiper hero-slider-2">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="hero-2">
+                            <div class="top-image" data-animation="fadeInDown" data-delay="1.5s">
+                                <img src="assets/img/hero/top-img.png" alt="img">
+                            </div>
+                            <div class="circle-shape" data-animation="fadeInDown" data-delay="1.5s">
+                                <img src="assets/img/hero/circle.png" alt="img">
+                            </div>
+                            <div class="container">
+                                <div class="row g-4 align-items-center">
+                                    <div class="col-xl-7 col-lg-6">
+                                        <div class="hero-content">
+                                            <h6 data-animation="fadeInUp" data-delay=".3s" class="hero-title">Bienvenido a RentalsCeutec</h6>
+                                            <h1 data-animation="fadeInUp" data-delay=".5s">
+                                                Busca, Reserva <br>
+                                                & Renta
+                                               <span>Muy Fácil</span>
+                                            </h1>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-5 col-lg-6">
+                                        <div class="hero-image" data-animation="fadeInUp" data-delay=".7s">
+                                            <img src="assets/img/hero/car.png" alt="img">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="hero-2">
+                            <div class="top-image" data-animation="fadeInDown" data-delay="1.5s">
+                                <img src="assets/img/hero/top-img.png" alt="img">
+                            </div>
+                            <div class="circle-shape" data-animation="fadeInDown" data-delay="1.5s">
+                                <img src="assets/img/hero/circle.png" alt="img">
+                            </div>
+                            <div class="container">
+                                <div class="row g-4 align-items-center">
+                                    <div class="col-xl-7 col-lg-6">
+                                        <div class="hero-content">
+                                            <h6 data-animation="fadeInUp" data-delay=".3s" class="hero-title">Tu Opción #1 en Rentar Carros</h6>
+                                            <h1 data-animation="fadeInUp" data-delay=".5s">
+                                                Busca, Reserva <br>
+                                                & Renta
+                                               <span>Muy fácil</span>
+                                            </h1>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-5 col-lg-6">
+                                        <div class="hero-image" data-animation="fadeInUp" data-delay=".7s">
+                                            <img src="assets/img/hero/car.png" alt="img">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Select Car Section Start -->
+        <section class="select-car-section section-padding fix">
             <div class="container">
                 <div class="section-title text-center">
                     <img src="assets/img/sub-icon.png" alt="img" class="wow fadeInUp">
+                    <span class="wow fadeInUp" data-wow-delay=".2s">Diferentes tipos de Vehiculos</span>
+                    <h2 class="wow fadeInUp" data-wow-delay=".4s">
+                        Ofrecemos Diversos Tipos<br>
+                        de Vehiculos
+                    </h2>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".2s">
+                        <div class="select-car-items">
+                            <div class="thumb">
+                                <img src="assets/img/car/sedan_icon.jpg" alt="">
+                            </div>
+                            <div class="bg-overlay"></div>
+                            <div class="icon">
+                                <img src="assets/img/car/icon/01.png" alt="img">
+                            </div>
+                            <div class="content">
+                                <h5><a>Sedan</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".3s">
+                        <div class="select-car-items">
+                            <div class="thumb">
+                                <img src="assets/img/car/suv_icon.jpg" alt="">
+                            </div>
+                            <div class="bg-overlay"></div>
+                            <div class="icon">
+                                <img src="assets/img/car/icon/02.png" alt="img">
+                            </div>
+                            <div class="content">
+                                <h5><a>SUV</a></h5>
+                            </div>
+                        </div>
+                    </div>                
+                    <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".5s">
+                        <div class="select-car-items">
+                            <div class="thumb">
+                                <img src="assets/img/car/coupe_icon.jpg" alt="img">
+                            </div>
+                            <div class="bg-overlay"></div>
+                            <div class="icon">
+                                <img src="assets/img/car/icon/04.png" alt="img">
+                            </div>
+                            <div class="content">
+                                <h5><a href="car-grid.html">Coupé</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".6s">
+                        <div class="select-car-items">
+                            <div class="thumb">
+                                <img src="assets/img/car/pickup_icon.jpg" alt="img">
+                            </div>
+                            <div class="bg-overlay"></div>
+                            <div class="icon">
+                                <img src="assets/img/car/icon/05.png" alt="img">
+                            </div>
+                            <div class="content">
+                                <h5><a href="car-grid.html">Pickup</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".7s">
+                        <div class="select-car-items">
+                            <div class="thumb">
+                                <img src="assets/img/car/compact_icon.jpg" alt="img">
+                            </div>
+                            <div class="bg-overlay"></div>
+                            <div class="icon">
+                                <img src="assets/img/car/icon/06.png" alt="img">
+                            </div>
+                            <div class="content">
+                                <h5><a href="car-grid.html">Compacto</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+               <section class="about-section-2 fix section-padding bg-cover" style="background-image: url('assets/img/car/car-bg.jpg');">
+            <div class="container">
+                <div class="about-wrapper-2">
+                    <div class="row g-4">
+                        <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
+                            <div class="about-image">
+                                <img src="assets/img/about/ImagenRentar.png" alt="about-image">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="about-content">
+                                <div class="section-title">
+                                    <img src="assets/img/sub-icon.png" alt="icon-img" class="wow fadeInUp">
+                                    <span class="wow fadeInUp" data-wow-delay=".2s">Conócenos</span>
+                                    <h2 class="wow fadeInUp" data-wow-delay=".4s">
+                                        Confiable & Líder en
+                                        Servicios de Alquiler de Vehiculos
+                                    </h2>
+                                </div>
+                                <p class="mt-3 mt-md-0 wow fadeInUp" data-wow-delay=".6s">
+                                    En RentalsCeutec, garantizamos un servicio de alquiler de vehículos rápido, confiable y adaptado a tus necesidades.
+                                </p>
+                                <div class="about-list-wrapper">
+                                    <div class="about-list-items wow fadeInUp" data-wow-delay=".3s">
+                                        <ul>
+                                            <li>
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                                Calidad garantizada
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                                Variedad de vehículos
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                                Reserva rápida y sencilla
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                                Atención personalizada
+                                            </li>
+                                        </ul>
+                                        <a href="about.html" class="theme-btn">Descubre más</a>
+                                    </div>
+                                    <div class="author-items wow fadeInUp" data-wow-delay=".5s">
+                                        <div class="icon">
+                                            <i class="fa-solid fa-phone"></i>
+                                        </div>
+                                        <p>¿Necesitas ayuda? Comunícate con un <br> Experto</p>
+                                        <h6><a href="tel:9288009850">+504 0000 - 0000</a></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            
+              
+        <section class="how-works-section fix section-padding pt-20">
+            <div class="container">
+               <div class="section-title text-center">
+                    <img src="assets/img/sub-icon.png" alt="img" class="wow fadeInUp">
                     <span class="wow fadeInUp" data-wow-delay=".2s">Todo en 4 Sencillos Pasos</span>
                     <h2 class="wow fadeInUp" data-wow-delay=".4s">Te explicamos como funciona</h2>
-                </div>
-                <div class="row">
+               </div>
+               <div class="row">
                     <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
                         <div class="how-works-items">
                             <h6 class="title">Buscar</a></h6>
@@ -532,8 +510,7 @@
                                 </div>
                             </div>
                             <p>
-                                Encuentra el vehículo perfecto explorando nuestra amplia selección de opciones
-                                disponibles.
+                                Encuentra el vehículo perfecto explorando nuestra amplia selección de opciones disponibles.
                             </p>
                         </div>
                     </div>
@@ -547,8 +524,7 @@
                                 </div>
                             </div>
                             <p>
-                                Elige el vehículo que mejor se adapte a tus necesidades y prepárate para tu próxima
-                                aventura. </p>
+                                Elige el vehículo que mejor se adapte a tus necesidades y prepárate para tu próxima aventura.                            </p>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".6s">
@@ -561,8 +537,7 @@
                                 </div>
                             </div>
                             <p>
-                                Completa tu reserva de manera rápida y segura con nuestro proceso sencillo y directo.
-                            </p>
+                                Completa tu reserva de manera rápida y segura con nuestro proceso sencillo y directo.                            </p>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".8s">
@@ -575,10 +550,10 @@
                                 </div>
                             </div>
                             <p>
-                                Disfruta del viaje con tu vehículo y vive la experiencia RentalsCeutec. </p>
+                                Disfruta del viaje con tu vehículo y vive la experiencia RentalsCeutec.                          </p>
                         </div>
                     </div>
-                </div>
+               </div>
             </div>
         </section>
         <section class="rental-benefit-section fix section-padding pb-0">
@@ -596,17 +571,17 @@
                                     <img src="assets/img/sub-icon.png" alt="img" class="wow fadeInUp">
                                     <span class="wow fadeInUp" data-wow-delay=".2s">Nuestros Beneficios</span>
                                     <h2 class="text-white wow fadeInUp" data-wow-delay=".4s">
-                                        ¿Por qué elegir
+                                        ¿Por qué elegir 
                                         RentalsCeutec?
                                     </h2>
-                                </div>
-                                <p class="wow fadeInUp" data-wow-delay=".6s">
-                                    En RentalsCeutec, nos destacamos por ofrecer un servicio de renta de vehículos
-                                    confiable y profesional. Nuestro enfoque está en brindarte la mejor experiencia
-                                    de viaje, con una flota moderna y un proceso de reserva sencillo y rápido.
-                                    Descubre la libertad de conducir con nosotros y haz de cada viaje una
-                                    experiencia inolvidable. </p>
-                                <div class="icon-items wow fadeInUp" data-wow-delay=".3s">
+                               </div>
+                               <p class="wow fadeInUp" data-wow-delay=".6s">
+                                En RentalsCeutec, nos destacamos por ofrecer un servicio de renta de vehículos 
+                                confiable y profesional. Nuestro enfoque está en brindarte la mejor experiencia
+                                 de viaje, con una flota moderna y un proceso de reserva sencillo y rápido. 
+                                 Descubre la libertad de conducir con nosotros y haz de cada viaje una 
+                                 experiencia inolvidable.                               </p>
+                               <div class="icon-items wow fadeInUp" data-wow-delay=".3s">
                                     <div class="icon">
                                         <img src="assets/img/feature-benefit/icon-4.png" alt="img">
                                     </div>
@@ -614,26 +589,26 @@
                                         <p>Ventaja 01</p>
                                         <h3>Rápida & Sencilla Reserva</h3>
                                     </div>
+                               </div>
+                               <div class="icon-items style-bottom wow fadeInUp" data-wow-delay=".5s">
+                                <div class="icon">
+                                    <img src="assets/img/feature-benefit/icon-5.png" alt="img">
                                 </div>
-                                <div class="icon-items style-bottom wow fadeInUp" data-wow-delay=".5s">
-                                    <div class="icon">
-                                        <img src="assets/img/feature-benefit/icon-5.png" alt="img">
-                                    </div>
-                                    <div class="content">
-                                        <p>Ventaja 02</p>
-                                        <h3>Muchas ubicaciones de recogida</h3>
-                                    </div>
+                                <div class="content">
+                                    <p>Ventaja 02</p>
+                                    <h3>Muchas ubicaciones de recogida</h3>
                                 </div>
-                                <div class="benefit-counter-items wow fadeInUp" data-wow-delay=".7s">
-                                    <div class="icon-img">
-                                        <img src="assets/img/feature-benefit/icon-6.png" alt="img">
-                                        <div class="divider"></div>
-                                    </div>
-                                    <div class="content">
+                               </div>
+                               <div class="benefit-counter-items wow fadeInUp" data-wow-delay=".7s">
+                                <div class="icon-img">
+                                    <img src="assets/img/feature-benefit/icon-6.png" alt="img">
+                                    <div class="divider"></div>
+                                </div>
+                                  <div class="content">
                                         <h2><span class="count">1,500</span></h2>
                                         <p>Nuestros clientes satisfechos</p>
-                                    </div>
-                                </div>
+                                  </div>
+                               </div>
                             </div>
                         </div>
                     </div>
@@ -689,7 +664,7 @@
                         <img src="assets/img/bg-shape-saleoff.png" alt="shape-img">
                     </div>
                     <div class="badge-shape">
-
+                        
                     </div>
                     <div class="car-shape">
                         <img src="assets/img/car.png" alt="img">
@@ -697,8 +672,7 @@
                     <div class="car-sale-content">
                         <h2 class="wow fadeInUp" data-wow-delay=".3s">Oferta del 50% de descuento</h2>
                         <h3 class="wow fadeInUp" data-wow-delay=".5s">En tu primer reserva</h3>
-                        <a href="car-grid.html" class="theme-btn bg-header wow fadeInUp" data-wow-delay=".7s">Reserva tu
-                            auto</a>
+                        <a href="car-grid.html" class="theme-btn bg-header wow fadeInUp" data-wow-delay=".7s">Reserva tu auto</a>
                     </div>
                 </div>
             </div>
@@ -712,18 +686,18 @@
                                 <img src="assets/img/sub-icon.png" alt="img" class="wow fadeInUp">
                                 <span class="wow fadeInUp" data-wow-delay=".2s">Nuestras Reseñas</span>
                                 <h2 class="wow fadeInUp" data-wow-delay=".4s">
-                                    ¿De qué están
+                                    ¿De qué están 
                                     hablando nuestros
                                     clientes?
                                 </h2>
-                            </div>
-                            <p class="mt-3 mt-md-0 wow fadeInUp" data-wow-delay=".6s">
-                                Dejanos tus comentarios y reseñas sobre tu experiencia con nosotros.
-                            </p>
-                            <div class="array-button mt-5 wow fadeInUp" data-wow-delay=".6s">
-                                <button class="array-prev"><i class="fa-solid fa-arrow-left-long"></i></button>
-                                <button class="array-next"><i class="fa-solid fa-arrow-right-long"></i></button>
-                            </div>
+                           </div>
+                           <p class="mt-3 mt-md-0 wow fadeInUp" data-wow-delay=".6s">
+                               Dejanos tus comentarios y reseñas sobre tu experiencia con nosotros.
+                           </p>
+                           <div class="array-button mt-5 wow fadeInUp" data-wow-delay=".6s">
+                            <button class="array-prev"><i class="fa-solid fa-arrow-left-long"></i></button>
+                            <button class="array-next"><i class="fa-solid fa-arrow-right-long"></i></button>
+                        </div>
                         </div>
                         <div class="col-lg-8">
                             <div class="testimonial-items">
@@ -732,8 +706,7 @@
                                         <div class="swiper-slide">
                                             <div class="client-info-items">
                                                 <p>
-                                                    Excelente servicio y autos en perfecto estado. ¡Definitivamente
-                                                    volveré a alquilar con RentalsCeutec!
+                                                    Excelente servicio y autos en perfecto estado. ¡Definitivamente volveré a alquilar con RentalsCeutec!
                                                 </p>
                                                 <div class="info">
                                                     <div class="icon">
@@ -743,8 +716,8 @@
                                                         <h5 class="name">
                                                             David Zaldivar
                                                         </h5>
-                                                        <div class="separator">.</div>
-                                                        <span class="job">Cliente</span>
+                                                    <div class="separator">.</div>
+                                                    <span class="job">Cliente</span>
                                                     </div>
                                                     <div class="triangle">
                                                         <div class="inner-triangle"></div>
@@ -755,8 +728,7 @@
                                         <div class="swiper-slide">
                                             <div class="client-info-items">
                                                 <p>
-                                                    El proceso de reserva fue rápido y sencillo. El auto estaba
-                                                    impecable y el personal muy amable. ¡Muy recomendado!
+                                                    El proceso de reserva fue rápido y sencillo. El auto estaba impecable y el personal muy amable. ¡Muy recomendado!
                                                 </p>
                                                 <div class="info">
                                                     <div class="icon">
@@ -766,8 +738,8 @@
                                                         <h5 class="name">
                                                             Mario Yanez
                                                         </h5>
-                                                        <div class="separator">.</div>
-                                                        <span class="job">Cliente</span>
+                                                    <div class="separator">.</div>
+                                                    <span class="job">Cliente</span>
                                                     </div>
                                                     <div class="triangle">
                                                         <div class="inner-triangle"></div>
@@ -778,8 +750,7 @@
                                         <div class="swiper-slide">
                                             <div class="client-info-items">
                                                 <p>
-                                                    "Gran variedad de vehículos y precios accesibles. ¡Recomendado al
-                                                    100%!
+                                                    "Gran variedad de vehículos y precios accesibles. ¡Recomendado al 100%!
                                                 </p>
                                                 <div class="info">
                                                     <div class="icon">
@@ -789,8 +760,8 @@
                                                         <h5 class="name">
                                                             Hellen Rivera
                                                         </h5>
-                                                        <div class="separator">.</div>
-                                                        <span class="job">Cliente</span>
+                                                    <div class="separator">.</div>
+                                                    <span class="job">Cliente</span>
                                                     </div>
                                                     <div class="triangle">
                                                         <div class="inner-triangle"></div>
@@ -809,9 +780,8 @@
                 </div>
             </div>
         </section>
-
-
-
+        
+        
         <!-- Footer -->
         <footer class="footer-section fix">
             <div class="container">
@@ -839,42 +809,39 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="footer-bottom">
-                            <div class="footer-wrapper">
-                                <p class="wow fadeInUp" data-wow-delay=".4s">
-                                    © Copyright 2024 by <a href="index.html">RentalsCeutec.com</a>
-                                </p>
-                            </div>
-                        </div>
+                                           
+                <div class="footer-bottom">
+                    <div class="footer-wrapper">
+                        <p class="wow fadeInUp" data-wow-delay=".4s">
+                            © Copyright 2024 by <a href="index.html">RentalsCeutec.com</a>
+                        </p>
                     </div>
+                </div>
+            </div>
         </footer>
 
-        <script src="assets/js/jquery-3.7.1.min.js"></script>
-        <script src="assets/js/viewport.jquery.js"></script>
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/js/jquery.nice-select.min.js"></script>
-        <script src="assets/js/jquery.waypoints.js"></script>
-        <script src="assets/js/jquery.counterup.min.js"></script>
-        <script src="assets/js/bootstrap-datepicker.js"></script>
-        <script src="assets/js/swiper-bundle.min.js"></script>
-        <script src="assets/js/jquery.meanmenu.min.js"></script>
-        <script src="assets/js/jquery.magnific-popup.min.js"></script>
-        <script src="assets/js/animation.js"></script>
-        <script src="assets/js/wow.min.js"></script>
-        <script src="assets/js/main.js"></script>
-        <script src="chatbot/chatbot.js"></script>
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/viewport.jquery.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/jquery.waypoints.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/bootstrap-datepicker.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/jquery.meanmenu.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/animation.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/main.js"></script>
 
+     <!-- Módulos -->
+    <script type="module" src="assets/js/firebaseConfig.js"></script>
+    <script type="module" src="assets/js/login.js"></script>
+    <script type="module" src="assets/js/car-grid.js"></script>
+    
 
-        <!-- Módulos -->
-        <script type="module" src="assets/js/firebaseConfig.js"></script>
-        <script type="module" src="assets/js/login.js"></script>
-        <script type="module" src="assets/js/car-grid.js"></script>
-
-
-        <!-- Contenedor global para toasts -->
-        <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999;"></div>
+    <!-- Contenedor global para toasts -->
+<div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999;"></div>
 
 </body>
-
 </html>

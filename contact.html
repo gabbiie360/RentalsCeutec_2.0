@@ -7,7 +7,7 @@
         <meta name="author" content="pixydrops">
         <meta name="description" content="Remons - Booking Rental HTML Template">
         <title>RentalsCeutec - Renta de Vehículos</title>
-        <link rel="shortcut icon" href="assets/img/favicon.png">
+        <link rel="shortcut icon" href="assets/img/favicon4.png">
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/all.min.css">
         <link rel="stylesheet" href="assets/css/animate.css">
@@ -168,7 +168,7 @@
                     <ul class="contact-list">
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <a href="mailto:info@example.com" class="link">infoRentalsCeutec@gmail.com</a>
+                            <a href="mailto:info@example.com" class="link">rentalsceutec@gmail.com</a>
                         </li>
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
@@ -305,40 +305,42 @@
                                         Envíanos tus consultas
                                     </h2>
                                 </div>
-                                <form action="#" id="contact-form" method="POST" class="contact-form-items mt-5 mt-md-0">
+                              
+                                <form id="formContacto" class="contact-form-items mt-5 mt-md-0">
                                     <div class="row g-4">
-                                        <div class="col-lg-6">
-                                            <div class="form-clt">
-                                                <input type="text" name="name" id="name" placeholder="Nombre y appellido">
-                                            </div>
+                                      <div class="col-lg-6">
+                                        <div class="form-clt">
+                                          <input type="text" name="nombre" id="nombre" placeholder="Nombre y apellido" required>
                                         </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-clt">
-                                                <input type="text" name="email" id="email2" placeholder="Tu correo">
-                                            </div>
+                                      </div>
+                                      <div class="col-lg-6">
+                                        <div class="form-clt">
+                                          <input type="email" name="correo" id="correo" placeholder="Tu correo" required>
                                         </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-clt">
-                                                <input type="text" name="subject" id="subject" placeholder="Asunto">
-                                            </div>
+                                      </div>
+                                      <div class="col-lg-6">
+                                        <div class="form-clt">
+                                          <input type="text" name="asunto" id="asunto" placeholder="Asunto" required>
                                         </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-clt">
-                                                <input type="text" name="phone" id="phone" placeholder="Telefono">
-                                            </div>
+                                      </div>
+                                      <div class="col-lg-6">
+                                        <div class="form-clt">
+                                          <input type="text" name="telefono" id="telefono" placeholder="Teléfono">
                                         </div>
-                                        <div class="col-lg-12">
-                                            <div class="form-clt">
-                                                <textarea name="message" id="message" placeholder="Redactar comentario"></textarea>
-                                            </div>
+                                      </div>
+                                      <div class="col-lg-12">
+                                        <div class="form-clt">
+                                          <textarea name="mensaje" id="mensaje" placeholder="Redactar comentario" required></textarea>
                                         </div>
-                                        <div class="col-lg-6">
-                                            <button type="submit" class="theme-btn">
-                                                Enviar mensaje
-                                            </button>
-                                        </div>
+                                      </div>
+                                      <div class="col-lg-6">
+                                        <button type="submit" class="theme-btn">
+                                          Enviar mensaje
+                                        </button>
+                                      </div>
                                     </div>
-                                </form>
+                                  </form>
+                                  
                             </div>
                         </div>
                        
@@ -355,22 +357,7 @@
                 </div>
             </div>
         </div>
-
-        <div class="Carlitos">
-            <button id="chatbot-button" onclick="toggleChat()">
-                <img src="/assets/img/CarLitos.gif" alt="Chatbot">
-            </button>
-    
-            <div id="chat-container">
-                <div id="messages"></div>
-                <div id="input-container">
-                    <input type="text" id="user-input" placeholder="Escribe tu consulta aqui...">
-                    <button onclick="sendMessage()">Enviar</button>
-                </div>
-            </div>
-        </div>
-        </div>
-
+        <!-- Footer -->
         <footer class="footer-section fix">
             <div class="container">
                 <div class="footer-widgets-wrapper">
@@ -421,18 +408,13 @@
         <script src="assets/js/wow.min.js"></script>
         <script src="assets/js/ajax-mail.js"></script>
         <script src="assets/js/main.js"></script>
-        <script src="chatbot/chatbot.js"></script>
 
+        <!-- Firebase & Login -->
     <script type="module" src="assets/js/firebaseConfig.js"></script>
     <script type="module" src="assets/js/login.js"></script>
     <script type="module" src="assets/js/authHeader.js"></script>
 
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-  (function () {
-    emailjs.init("UzE2T0wX2_VAgOY6Q"); 
-  })();
-</script>
+    
 
 <!-- Contact logic -->
 <script type="module" src="assets/js/contact.js"></script>
