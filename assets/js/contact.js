@@ -1,42 +1,29 @@
 import { mostrarToast } from './toast.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('contact-form');
+document.getElementById('formContacto').addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+  const formData = new FormData(e.target);
+  const datos = Object.fromEntries(formData.entries());
 
-      const nombre = document.getElementById('name').value.trim();
-      const email = document.getElementById('email2').value.trim();
-      const subject = document.getElementById('subject').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const mensaje = document.getElementById('message').value.trim();
+  try {
+    const response = await fetch('sendMailResend.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(datos),
+    });
 
-      if (!nombre || !email || !subject || !phone || !mensaje) {
-        return mostrarToast('Por favor completa todos los campos.', 'warning');
-      }
+    const result = await response.json();
 
-      // Simular envío exitoso (aunque falle por detrás)
-      mostrarToast('Mensaje enviado con éxito 🎉', 'success');
-      form.reset();
-
-      try {
-        await emailjs.send(
-          'service_jh8czd8',        //  Service ID
-          'template_gbr5e8a',       //  Template ID
-          {
-            name: nombre,
-            email: email,
-            title: subject,
-            phone: phone,
-            message: mensaje
-          },
-          'UzE2T0wX2_VAgOY6Q'       // Public Key
-        );
-      } catch (error) {
-        console.warn('Fallo el envío real, pero el toast se mostró igual:', error);
-      }
-    });
-  }
+    if (result.success) {
+      mostrarToast("Mensaje enviado correctamente", "success");
+      e.target.reset();
+    } else {
+      mostrarToast("Error al enviar el mensaje", "danger");
+      console.error(result.error);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    mostrarToast("Error al enviar el mensaje", "danger");
+  }
 });
