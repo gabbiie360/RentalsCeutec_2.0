@@ -24,4 +24,9 @@ import { mostrarToast } from "./toast.js";
       }
     });
   }
+
+  document.getElementById("adminUserIcon").addEventListener("click", () => {
+    window.location.href = "userProfile.html";
+  });
+  
 });

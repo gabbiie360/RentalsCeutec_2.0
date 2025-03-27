@@ -1,6 +1,7 @@
 // authHeader.js
-import { auth } from "./firebaseConfig.js";
+import { auth, db } from "./firebaseConfig.js";
 import { signOut } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 import { mostrarToast } from "./toast.js";
 
 // Esperar a que el DOM esté cargado
@@ -8,9 +9,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const headerButton = document.querySelector(".header-button");
   if (!headerButton) return;
 
-  auth.onAuthStateChanged((user) => {
+  auth.onAuthStateChanged(async (user) => {
     if (user) {
-      mostrarMenuUsuario();
+      try {
+        const docSnap = await getDoc(doc(db, "usuarios", user.uid));
+        const data = docSnap.exists() ? docSnap.data() : {};
+        const esAdmin = data.rol === "admin";
+        mostrarMenuUsuario(esAdmin);
+      } catch (error) {
+        console.error("Error obteniendo el rol del usuario:", error);
+        mostrarMenuUsuario(false);
+      }
     } else {
       mostrarBotonLogin();
     }
@@ -29,8 +38,8 @@ function mostrarBotonLogin() {
   `;
 }
 
-// Mostrar ícono con submenú
-function mostrarMenuUsuario() {
+// Mostrar ícono con submenú (dinámico según rol)
+function mostrarMenuUsuario(esAdmin) {
   const headerButton = document.querySelector(".header-button");
   if (!headerButton) return;
 
@@ -40,6 +49,7 @@ function mostrarMenuUsuario() {
       <div id="userMenu" class="user-menu d-none" style="position: absolute; top: 50px; right: 0; background: white; border: 1px solid #ccc; padding: 10px; z-index: 1000;">
         <a href="userProfile.html">Mi Perfil</a><br>
         <a href="reservations.html">Mis Reservas</a><br>
+        ${esAdmin ? `<a href="dashboardAdmin.html">Dashboard</a><br>` : ""}
         <a href="#" id="logoutButton" class="logout-btn">Cerrar Sesión</a>
       </div>
     </div>

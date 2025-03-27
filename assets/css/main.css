@@ -7329,3 +7329,6 @@ input.main-search-input::placeholder {
 .dropdown-logout {
   color: red;
 }
+.sidebar-user-icon {
+  cursor: pointer;
+}
