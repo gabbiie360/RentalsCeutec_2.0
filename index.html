@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
         <link rel="stylesheet" href="assets/css/nice-select.css">
         <link rel="stylesheet" href="assets/css/main.css">
+        <link rel="stylesheet" href="assets/css/Carlitos.css">
     </head>
     <body>
         <div id="preloader" class="preloader">
@@ -780,8 +781,22 @@
                 </div>
             </div>
         </section>
-        
-        
+    
+    </div>
+    <div class="Carlitos">
+        <button id="chatbot-button" onclick="toggleChat()">
+            <img src="/assets/img/Carlitos.gif" alt="Chatbot">
+        </button>
+
+        <div id="chat-container">
+            <div id="messages"></div>
+            <div id="input-container">
+                <input type="text" id="user-input" placeholder="Escribe tu consulta aqui...">
+                <button onclick="sendMessage()">Enviar</button>
+            </div>
+        </div>
+    </div>
+
         <!-- Footer -->
         <footer class="footer-section fix">
             <div class="container">
@@ -833,6 +848,7 @@
     <script src="assets/js/animation.js"></script>
     <script src="assets/js/wow.min.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="chatbot/chatbot.js"></script>
 
      <!-- Módulos -->
     <script type="module" src="assets/js/firebaseConfig.js"></script>
