@@ -7,36 +7,24 @@ var _require = require("../assets/js/loginTest"),
 
 describe("Pruebas unitarias de autenticación", function () {
   test("Debería retornar el rol 'admin' para el UID de Maria", function () {
-    // Arrange
-    var uid = "maria"; // Act
-
-    var rol = obtenerRol(uid); // Assert
-
+    var uid = "maria";
+    var rol = obtenerRol(uid);
     expect(rol).toBe("admin");
   });
   test("Debería retornar el rol 'user' para el UID de Juan", function () {
-    // Arrange
-    var uid = "juan"; // Act
-
-    var rol = obtenerRol(uid); // Assert
-
+    var uid = "juan";
+    var rol = obtenerRol(uid);
     expect(rol).toBe("user");
   });
   test("Debería retornar 'null' para un UID desconocido", function () {
-    // Arrange
-    var uid = "desconocido"; // Act
-
-    var rol = obtenerRol(uid); // Assert
-
+    var uid = "desconocido";
+    var rol = obtenerRol(uid);
     expect(rol).toBeNull();
   });
   test("Debería iniciar sesión correctamente con el usuario admin", function () {
-    // Arrange
     var email = "maria@example.com";
-    var password = "admin123"; // Act
-
-    var result = signInWithEmail(email, password); // Assert
-
+    var password = "admin123";
+    var result = signInWithEmail(email, password);
     expect(result).toEqual({
       user: {
         uid: "maria",
@@ -45,12 +33,9 @@ describe("Pruebas unitarias de autenticación", function () {
     });
   });
   test("Debería iniciar sesión correctamente con el usuario común", function () {
-    // Arrange
     var email = "juan@example.com";
-    var password = "user123"; // Act
-
-    var result = signInWithEmail(email, password); // Assert
-
+    var password = "user123";
+    var result = signInWithEmail(email, password);
     expect(result).toEqual({
       user: {
         uid: "juan",
@@ -59,28 +44,20 @@ describe("Pruebas unitarias de autenticación", function () {
     });
   });
   test("Debería lanzar un error al iniciar sesión con credenciales incorrectas", function () {
-    // Arrange
     var email = "incorrecto@example.com";
-    var password = "wrong"; // Act & Assert
-
+    var password = "wrong";
     expect(function () {
       return signInWithEmail(email, password);
     }).toThrow("Credenciales inválidas");
   });
   test("Debería devolver 'dashboard.html' si el rol es admin", function () {
-    // Arrange
-    var rol = obtenerRol("maria"); // Act
-
-    var redireccion = rol === "admin" ? "dashboard.html" : "clientes.html"; // Assert
-
+    var rol = obtenerRol("maria");
+    var redireccion = rol === "admin" ? "dashboard.html" : "clientes.html";
     expect(redireccion).toBe("dashboard.html");
   });
   test("Debería devolver 'clientes.html' si el rol es user", function () {
-    // Arrange
-    var rol = obtenerRol("juan"); // Act
-
-    var redireccion = rol === "admin" ? "dashboard.html" : "clientes.html"; // Assert
-
+    var rol = obtenerRol("juan");
+    var redireccion = rol === "admin" ? "dashboard.html" : "clientes.html";
     expect(redireccion).toBe("clientes.html");
   });
 });
