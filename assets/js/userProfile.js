@@ -22,6 +22,8 @@ function mostrarDatosInformativos(data) {
   document.getElementById("profilePhone").textContent = data.telefono || "No disponible";
   document.getElementById("profileAddress").textContent = data.direccion || "No disponible";
   document.getElementById("fotoPerfil").src = data.fotoPerfil || "assets/img/user-icon.png";
+  
+
 }
 
 // ==========================
@@ -40,6 +42,7 @@ async function cargarDatosPerfil(uid) {
       document.getElementById("inputNombre").value = "";
       document.getElementById("inputTelefono").value = "";
       document.getElementById("inputDireccion").value = "";
+      
     }
   } catch (error) {
     console.error("Error al cargar perfil:", error);
@@ -91,7 +94,7 @@ document.getElementById("profileForm").addEventListener("submit", async (e) => {
     const nombre = document.getElementById("inputNombre").value.trim();
     const telefono = document.getElementById("inputTelefono").value.trim();
     const direccion = document.getElementById("inputDireccion").value.trim();
-  
+    
     const camposActualizados = {};
     if (nombre.length > 0) {
       if (nombre.length < 3) {

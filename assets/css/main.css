@@ -7329,3 +7329,11 @@ input.main-search-input::placeholder {
 .dropdown-logout {
   color: red;
 }
+.sidebar-user-icon {
+  cursor: pointer;
+}
+
+.sidebar-header a:hover img {
+  opacity: 0.8;
+  transition: opacity 0.2s ease-in-out;
+}

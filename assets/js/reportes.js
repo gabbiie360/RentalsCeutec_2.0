@@ -1,7 +1,9 @@
 import { db } from "./firebaseConfig.js";
 import {
   collection,
-  onSnapshot
+  onSnapshot,
+  
+
 } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
 // Referencias
@@ -20,6 +22,8 @@ const limpiarFiltros = document.getElementById("limpiarFiltrosReportes");
 const kpiTotalReservas = document.getElementById("kpiTotalReservas");
 const kpiVehiculoTop = document.getElementById("kpiVehiculoTop");
 const kpiUsuarioTop = document.getElementById("kpiUsuarioTop");
+
+ 
 
 // Gráficas
 const graficaReservas = document.getElementById("chartReservasFecha");
@@ -55,6 +59,7 @@ onSnapshot(reservasRef, (snapshot) => {
     }
   });
   aplicarFiltros();
+  
 });
 
 // Escuchar cambios en filtros

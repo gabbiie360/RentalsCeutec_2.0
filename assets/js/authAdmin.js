@@ -10,15 +10,29 @@ export function inicializarAutenticacion(onLoginExitoso) {
       return (window.location.href = "index.html");
     }
 
+    // Mostrar contenido si el usuario es admin
     document.body.style.display = "block";
+
+    // Mostrar nombre en el sidebar
     const nombre = docSnap.data().firstName || user.email;
     document.getElementById("nombreTexto").textContent = nombre;
 
+    // Mostrar foto de perfil en el sidebar (si existe)
+    const fotoPerfil = docSnap.data().fotoPerfil;
+    const avatar = document.getElementById("adminUserPhoto");
+    if (avatar && fotoPerfil) {
+      avatar.src = fotoPerfil;
+    }
+
+    
+
+    // Botón para colapsar el sidebar
     document.getElementById("toggleSidebar").addEventListener("click", () => {
       document.getElementById("sidebar").classList.toggle("collapsed");
       document.getElementById("mainContent").classList.toggle("expanded");
     });
 
+    // Navegación entre secciones del dashboard
     const links = document.querySelectorAll(".sidebar-link");
     const secciones = document.querySelectorAll(".dashboard-section");
 
@@ -31,7 +45,7 @@ export function inicializarAutenticacion(onLoginExitoso) {
       });
     });
 
-    // Ejecutar función callback cuando la autenticación es exitosa
+    // Ejecutar función adicional si se proporciona
     if (onLoginExitoso) onLoginExitoso();
   });
 }
