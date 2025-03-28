@@ -16,8 +16,10 @@ import { mostrarToast } from "./toast.js";
 
 const reservasRef = collection(db, "reservas");
 const vehiculosRef = collection(db, "vehiculos");
+
 let vehiculosDisponibles = [];
 let vehiculoAnteriorId = null;
+let todasLasReservas = [];
 
 export function inicializarReservas() {
   cargarReservas();
@@ -27,14 +29,13 @@ export function inicializarReservas() {
     document.getElementById("filtroHasta").value = "";
     document.getElementById("filtroUsuario").value = "";
     document.getElementById("filtroEstado").value = "";
-    cargarReservas();
+    aplicarFiltrosReservas();
   });
 
   ["filtroDesde", "filtroHasta", "filtroUsuario", "filtroEstado"].forEach(id => {
-    document.getElementById(id).addEventListener("input", cargarReservas);
+    document.getElementById(id).addEventListener("input", aplicarFiltrosReservas);
   });
 
-  // Exponer funciones globalmente
   window.abrirModalReserva = abrirModalReserva;
   window.editarReserva = editarReserva;
   window.guardarReserva = guardarReserva;
@@ -42,17 +43,10 @@ export function inicializarReservas() {
 }
 
 function cargarReservas() {
-  const tabla = document.getElementById("tablaReservas");
-  tabla.innerHTML = "";
-
   onSnapshot(reservasRef, (snapshot) => {
-    const ahora = new Date();
-    const desde = document.getElementById("filtroDesde")?.valueAsDate;
-    const hasta = document.getElementById("filtroHasta")?.valueAsDate;
-    const usuarioFiltro = document.getElementById("filtroUsuario")?.value.toLowerCase();
-    const estadoFiltro = document.getElementById("filtroEstado")?.value;
+    todasLasReservas = [];
 
-    let reservas = [];
+    const ahora = new Date();
 
     snapshot.forEach((docu) => {
       const data = docu.data();
@@ -60,35 +54,61 @@ function cargarReservas() {
       const fechaEntrega = data["Fecha de entrega"]?.toDate();
 
       if (!fechaReserva || !fechaEntrega) return;
-      if (desde && fechaReserva < desde) return;
-      if (hasta && fechaReserva > hasta) return;
-      if (usuarioFiltro && !data.Email.toLowerCase().includes(usuarioFiltro)) return;
-      if (estadoFiltro === "futuras" && fechaEntrega < ahora) return;
-      if (estadoFiltro === "pasadas" && fechaEntrega >= ahora) return;
 
-      reservas.push({ id: docu.id, ...data, fechaReserva, fechaEntrega });
+      todasLasReservas.push({
+        id: docu.id,
+        ...data,
+        fechaReserva,
+        fechaEntrega
+      });
     });
 
-    reservas.sort((a, b) => b.fechaReserva - a.fechaReserva);
-
-    reservas.forEach((data) => {
-      tabla.innerHTML += `
-        <tr>
-          <td>${data["Nombre Completo"]}</td>
-          <td>${data.Email}</td>
-          <td>${data["Numero de Telefono"]}</td>
-          <td>${data["Recoges en"]}</td>
-          <td>${data.nombreVehiculo}</td>
-          <td>${data.fechaReserva.toLocaleString()}</td>
-          <td>${data.fechaEntrega.toLocaleString()}</td>
-          <td>
-            <button class="btn btn-sm btn-secondary" onclick="editarReserva('${data.id}')"><i class="fa fa-pen"></i></button>
-            <button class="btn btn-sm btn-danger" onclick="eliminarReserva('${data.id}')"><i class="fa fa-trash"></i></button>
-          </td>
-        </tr>
-      `;
-    });
+    aplicarFiltrosReservas();
   });
+}
+
+function aplicarFiltrosReservas() {
+  const tabla = document.getElementById("tablaReservas");
+  tabla.innerHTML = "";
+
+  const ahora = new Date();
+  const desde = document.getElementById("filtroDesde")?.valueAsDate;
+  const hasta = document.getElementById("filtroHasta")?.valueAsDate;
+  const usuarioFiltro = document.getElementById("filtroUsuario")?.value.toLowerCase();
+  const estadoFiltro = document.getElementById("filtroEstado")?.value;
+
+  let reservasFiltradas = todasLasReservas.filter((data) => {
+    if (desde && data.fechaReserva < desde) return false;
+    if (hasta && data.fechaReserva > hasta) return false;
+    if (usuarioFiltro && !data.Email?.toLowerCase().includes(usuarioFiltro)) return false;
+    if (estadoFiltro === "futuras" && data.fechaEntrega < ahora) return false;
+    if (estadoFiltro === "pasadas" && data.fechaEntrega >= ahora) return false;
+    return true;
+  });
+
+  reservasFiltradas.sort((a, b) => b.fechaReserva - a.fechaReserva);
+
+  reservasFiltradas.forEach((data) => {
+    tabla.innerHTML += `
+      <tr>
+        <td>${data["Nombre Completo"]}</td>
+        <td>${data.Email}</td>
+        <td>${data["Numero de Telefono"]}</td>
+        <td>${data["Recoges en"]}</td>
+        <td>${data.nombreVehiculo}</td>
+        <td>${data.fechaReserva.toLocaleString()}</td>
+        <td>${data.fechaEntrega.toLocaleString()}</td>
+        <td>
+          <button class="btn btn-sm btn-secondary" onclick="editarReserva('${data.id}')"><i class="fa fa-pen"></i></button>
+          <button class="btn btn-sm btn-danger" onclick="eliminarReserva('${data.id}')"><i class="fa fa-trash"></i></button>
+        </td>
+      </tr>
+    `;
+  });
+
+  if (reservasFiltradas.length === 0) {
+    tabla.innerHTML = "<tr><td colspan='8'>No se encontraron reservas con los filtros aplicados</td></tr>";
+  }
 }
 
 function cargarVehiculosParaReservas(callback = null) {
@@ -135,7 +155,7 @@ async function editarReserva(id) {
     document.getElementById("fechaEntrega").value = data["Fecha de entrega"]?.toDate().toISOString().slice(0, 16);
     vehiculoAnteriorId = data.idVehiculo;
 
-      cargarVehiculosParaReservas(() => {
+    cargarVehiculosParaReservas(() => {
       document.getElementById("vehiculoReserva").value = vehiculoAnteriorId;
       const modalEl = document.getElementById("modalReserva");
       const modalInstance = bootstrap.Modal.getOrCreateInstance(modalEl);

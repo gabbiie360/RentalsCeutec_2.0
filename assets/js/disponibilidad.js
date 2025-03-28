@@ -13,7 +13,6 @@ const vehiculosRef = collection(db, "vehiculos");
 actualizarDisponibilidadVehiculos();
 
 
-// Esta función se encargará de actualizar los estados
 function actualizarDisponibilidadVehiculos() {
     onSnapshot(reservasRef, async (snapshot) => {
       const hoy = new Date();
@@ -34,7 +33,6 @@ function actualizarDisponibilidadVehiculos() {
         const id = vehiculo.id;
         const estaActivo = vehiculosConReservaActiva.has(id);
   
-        // Solo actualizamos si el estado es diferente
         if (vehiculo.data().DISPONIBLE === estaActivo) {
           await updateDoc(doc(db, "vehiculos", id), {
             DISPONIBLE: !estaActivo
