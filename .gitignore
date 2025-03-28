@@ -2,6 +2,6 @@
 /vendor/
 /node_modules/
 assets/js/firebaseConfig.js
-assets/chatbot/node_modules
-assets/chatbot/.env
-assets/chatbot/server.js
+chatbot/node_modules
+chatbot/.env
+chatbot/server.js
