@@ -525,13 +525,7 @@ Js TABLE OF CONTENTS
             car.to(".car-image", {xPercent: -20, ease: "none",});
         }
 
-        $(function() {
-            $("#datepicker, #datepicker2, #datepicker3, #datepicker4, #datepicker5, #datepicker6, #datepicker7, #datepicker8, #datepicker9, #datepicker10, #datepicker11").datepicker({
-                autoclose: true,
-                todayHighlight: true
-            });
-        });
-        
+      
     }); // End Document Ready Function
 
     function loader() {
