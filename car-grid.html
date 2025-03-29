@@ -20,222 +20,260 @@
 </head>
 <body>
 
-  <!-- Preloader -->
-  <div id="preloader" class="preloader">
-    <div class="animation-preloader">
-      <div class="spinner"></div>
-      <div class="txt-loading">
-        <span class="letters-loading" data-text-preloader="RENTALSCEUTEC">RENTALSCEUTEC</span>
-      </div>
-      <p class="text-center">Cargando</p>
+<!-- Preloader -->
+<div id="preloader" class="preloader">
+  <div class="animation-preloader">
+    <div class="spinner"></div>
+    <div class="txt-loading">
+      <span class="letters-loading" data-text-preloader="RENTALSCEUTEC">RENTALSCEUTEC</span>
     </div>
-    <div class="loader">
-      <div class="row">
-        <div class="col-3 loader-section section-left"><div class="bg"></div></div>
-        <div class="col-3 loader-section section-left"><div class="bg"></div></div>
-        <div class="col-3 loader-section section-right"><div class="bg"></div></div>
-        <div class="col-3 loader-section section-right"><div class="bg"></div></div>
-      </div>
+    <p class="text-center">Cargando</p>
+  </div>
+  <div class="loader">
+    <div class="row">
+      <div class="col-3 loader-section section-left"><div class="bg"></div></div>
+      <div class="col-3 loader-section section-left"><div class="bg"></div></div>
+      <div class="col-3 loader-section section-right"><div class="bg"></div></div>
+      <div class="col-3 loader-section section-right"><div class="bg"></div></div>
     </div>
   </div>
+</div>
 
-  <!-- Header -->
-  <header id="main-header"></header>
-  <div class="header-top-section">
-    <div class="container-fluid">
-      <div class="header-top-wrapper">
-        <ul class="contact-list">
-          <li><i class="fas fa-envelope"></i> <a href="mailto:info@example.com" class="link">rentalsceutec@gmail.com</a></li>
-          <li><i class="fas fa-map-marker-alt"></i> Ceutec, San Pedro Sula, Honduras</li>
+<!-- Overlay para sidebar -->
+<div class="offcanvas__overlay"></div>
+
+<!-- Header Top -->
+<div class="header-top-section">
+  <div class="container-fluid">
+    <div class="header-top-wrapper">
+      <ul class="contact-list">
+        <li><i class="fas fa-envelope"></i> <a href="mailto:rentalsceutec@gmail.com" class="link">rentalsceutec@gmail.com</a></li>
+        <li><i class="fas fa-map-marker-alt"></i> Ceutec, San Pedro Sula, Honduras</li>
+      </ul>
+      <div class="header-top-right">
+        <ul class="top-list">
+          <li><a href="contact.html">Ayuda</a></li>
+          <li><a href="contact.html">Soporte</a></li>
+          <li><a href="contact.html">Contacto</a></li>
         </ul>
-        <div class="header-top-right">
-          <ul class="top-list">
-            <li><a href="contact.html">Ayuda</a></li>
-            <li><a href="contact.html">Soporte</a></li>
-            <li><a href="contact.html">Contacto</a></li>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sidebar / Offcanvas -->
+<div class="fix-area">
+  <div class="offcanvas__info">
+    <div class="offcanvas__wrapper">
+      <div class="offcanvas__content">
+        <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+          <div class="offcanvas__logo">
+            <a href="index.html">
+              <img src="assets/img/about/RentalsCBR.png" alt="logo-img" style="width: 120px;">
+            </a>
+          </div>
+          <div class="offcanvas__close">
+            <button><i class="fas fa-times"></i></button>
+          </div>
+        </div>
+        <p class="text d-none d-xl-block">Bienvenido a RentalsCeutec</p>
+        <div class="mobile-menu fix mb-3"></div>
+        <div class="offcanvas__contact">
+          <h4>Información de Contacto</h4>
+          <ul>
+            <li class="d-flex align-items-center">
+              <div class="offcanvas__contact-icon"><i class="fal fa-map-marker-alt"></i></div>
+              <div class="offcanvas__contact-text"><a target="_blank" href="#">Ceutec, San Pedro Sula, Honduras</a></div>
+            </li>
+            <li class="d-flex align-items-center">
+              <div class="offcanvas__contact-icon"><i class="fal fa-envelope"></i></div>
+              <div class="offcanvas__contact-text"><a href="mailto:rentalsceutec@gmail.com">rentalsceutec@gmail.com</a></div>
+            </li>
+            <li class="d-flex align-items-center">
+              <div class="offcanvas__contact-icon"><i class="fal fa-clock"></i></div>
+              <div class="offcanvas__contact-text"><a>Lun - Sáb, 09am - 05pm</a></div>
+            </li>
+            <li class="d-flex align-items-center">
+              <div class="offcanvas__contact-icon"><i class="far fa-phone"></i></div>
+              <div class="offcanvas__contact-text"><a href="tel:+50400000000">+504 0000 - 0000</a></div>
+            </li>
           </ul>
+          <div class="sidebar-button mt-4">
+            <a href="contact.html" class="theme-btn text-center">
+              <span>Contáctanos <i class="fa-solid fa-arrow-right-long"></i></span>
+            </a>
+          </div>
+          <div class="social-icon d-flex align-items-center mt-3">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Header Principal -->
-  <header id="header-sticky" class="header-2">
-    <div class="container-fluid">
-        <div class="mega-menu-wrapper">
-            <div class="header-main">
-                <div class="header-left">
-                    <div class="logo">
-                        <a href="index.html" class="header-logo">
-                            <img src="assets/img/about/RentalsCBR.png" alt="logo-img" style="width: 120px;">
-                        </a>
-                    </div>
-                </div>
-                <div class="mean__menu-wrapper">
-                    <div class="main-menu">
-                        <nav id="mobile-menu">
-                            <ul>
-                                <li class="has-dropdown active menu-thumb">
-                                    <a href="index.html">Inicio</a>
-                                </li>
-                                <li>
-                                    <a href="about.html">Sobre Nosotros</a>
-                                </li>
-                                <li>
-                                    <a href="car-grid.html">Autos</a>
-                                </li>
-                                <li>
-                                    <a href="contact.html">Contacto</a>
-                                </li>
-                                <li class="has-dropdown">
-                                    <a href="faq.html">Faq’s</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="header-right d-flex justify-content-end align-items-center">
-                    <div class="icon-items">
-                        <div class="icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div class="content">
-                            <p>Llame en todo momento</p>
-                            <h6><a href="tel:+50400000000">+504 0000 - 0000</a></h6>
-                        </div>
-                    </div>
-
-                    <!-- Este contenedor lo llena authHeader.js -->
-                    <div class="header-button"></div>
-
-                    <div class="header__hamburger d-xl-none my-auto">
-                        <div class="sidebar__toggle">
-                            <i class="fas fa-bars"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
+</div>
+<!-- Header Principal -->
+<header id="header-sticky" class="header-2">
+  <div class="container-fluid">
+    <div class="mega-menu-wrapper">
+      <div class="header-main">
+        <div class="header-left">
+          <div class="logo">
+            <a href="index.html" class="header-logo">
+              <img src="assets/img/about/RentalsCBR.png" alt="logo-img" style="width: 120px;">
+            </a>
+          </div>
         </div>
+        <div class="mean__menu-wrapper">
+          <div class="main-menu">
+            <nav id="mobile-menu">
+              <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="about.html">Sobre Nosotros</a></li>
+                <li class="active"><a href="car-grid.html">Autos</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="faq.html">Faq’s</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="header-right d-flex justify-content-end align-items-center">
+          <div class="icon-items">
+            <div class="icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="content">
+              <p>Llame en todo momento</p>
+              <h6><a href="tel:+50400000000">+504 0000 - 0000</a></h6>
+            </div>
+          </div>
+          <!-- Contenedor para login o ícono de usuario -->
+          <div class="header-button"></div>
+          <div class="header__hamburger d-xl-none my-auto">
+            <div class="sidebar__toggle"><i class="fas fa-bars"></i></div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </header>
 
-
-  <!-- Banner -->
-  <div class="breadcrumb-wrapper bg-cover" style="background-image: url('assets/img/bg-header-banner.jpg');">
-    <div class="container">
-      <div class="page-heading">
-        <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".3s">
-          <li><a href="index.html">Inicio</a></li>
-          <li><i class="fas fa-chevron-right"></i></li>
-          <li>Vehículos</li>
-        </ul>
-        <h1 class="wow fadeInUp" data-wow-delay=".5s">Vehículos Disponibles</h1>
-      </div>
+<!-- Banner -->
+<div class="breadcrumb-wrapper bg-cover" style="background-image: url('assets/img/bg-header-banner.jpg');">
+  <div class="container">
+    <div class="page-heading">
+      <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".3s">
+        <li><a href="index.html">Inicio</a></li>
+        <li><i class="fas fa-chevron-right"></i></li>
+        <li>Vehículos</li>
+      </ul>
+      <h1 class="wow fadeInUp" data-wow-delay=".5s">Vehículos Disponibles</h1>
     </div>
   </div>
+</div>
 
-  <!-- Vehículos -->
-  <section class="car-rentals-section-2 section-padding fix pt-0">
-    <div class="container">
-      <div class="section-title text-center">
-        <img src="assets/img/sub-icon.png" alt="icon-img" class="wow fadeInUp" />
-        <span class="wow fadeInUp" data-wow-delay=".2s">Explora nuestra flota</span>
-        <h2 class="wow fadeInUp" data-wow-delay=".4s">Vehículos en Renta</h2>
-      </div>
-      <div class="row g-4" id="contenedor-vehiculos"></div>
+<!-- Sección de Vehículos -->
+<section class="car-rentals-section-2 section-padding fix pt-0">
+  <div class="container">
+    <div class="section-title text-center">
+      <img src="assets/img/sub-icon.png" alt="icon-img" class="wow fadeInUp" />
+      <span class="wow fadeInUp" data-wow-delay=".2s">Explora nuestra flota</span>
+      <h2 class="wow fadeInUp" data-wow-delay=".4s">Vehículos en Renta</h2>
     </div>
-  </section>
+    <div class="row g-4" id="contenedor-vehiculos"></div>
+  </div>
+</section>
 
-  <!-- Modal de Reserva -->
-  <div class="modal fade" id="modalReserva" tabindex="-1" aria-labelledby="modalReservaLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <form id="formReservaCliente">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalReservaLabel">Solicitud de Reserva</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-          </div>
-          <div class="modal-body row g-3">
-            <div class="col-md-6"><label for="nombreCompleto" class="form-label">Nombre Completo</label><input type="text" id="nombreCompleto" class="form-control" readonly></div>
-            <div class="col-md-6"><label for="emailReserva" class="form-label">Correo</label><input type="email" id="emailReserva" class="form-control" readonly></div>
-            <div class="col-md-6"><label for="telefono" class="form-label">Número de Teléfono</label><input type="text" id="telefono" class="form-control" required></div>
-            <div class="col-md-6"><label for="ubicacion" class="form-label">Recoges en</label><select id="ubicacion" class="form-select" required><option value="San Pedro Sula">San Pedro Sula</option></select></div>
-            <div class="col-md-6"><label for="marcaVehiculo" class="form-label">Marca</label><input type="text" id="marcaVehiculo" class="form-control" readonly></div>
-            <div class="col-md-6"><label for="modeloVehiculo" class="form-label">Modelo</label><input type="text" id="modeloVehiculo" class="form-control" readonly></div>
-            <div class="col-md-6"><label for="fechaReserva" class="form-label">Fecha y hora de reserva</label><input type="datetime-local" id="fechaReserva" class="form-control" required></div>
-            <div class="col-md-6"><label for="fechaEntrega" class="form-label">Fecha y hora de entrega</label><input type="datetime-local" id="fechaEntrega" class="form-control" required></div>
-            <input type="hidden" id="idVehiculoSeleccionado">
-          </div>
-          <div class="modal-footer"><button type="submit" class="btn btn-success w-100">Confirmar Reserva</button></div>
-        </form>
-      </div>
+<!-- Modal de Reserva -->
+<div class="modal fade" id="modalReserva" tabindex="-1" aria-labelledby="modalReservaLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form id="formReservaCliente">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalReservaLabel">Solicitud de Reserva</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body row g-3">
+          <div class="col-md-6"><label for="nombreCompleto" class="form-label">Nombre Completo</label><input type="text" id="nombreCompleto" class="form-control" readonly></div>
+          <div class="col-md-6"><label for="emailReserva" class="form-label">Correo</label><input type="email" id="emailReserva" class="form-control" readonly></div>
+          <div class="col-md-6"><label for="telefono" class="form-label">Número de Teléfono</label><input type="text" id="telefono" class="form-control" required></div>
+          <div class="col-md-6"><label for="ubicacion" class="form-label">Recoges en</label><select id="ubicacion" class="form-select" required><option value="San Pedro Sula">San Pedro Sula</option></select></div>
+          <div class="col-md-6"><label for="marcaVehiculo" class="form-label">Marca</label><input type="text" id="marcaVehiculo" class="form-control" readonly></div>
+          <div class="col-md-6"><label for="modeloVehiculo" class="form-label">Modelo</label><input type="text" id="modeloVehiculo" class="form-control" readonly></div>
+          <div class="col-md-6"><label for="fechaReserva" class="form-label">Fecha y hora de reserva</label><input type="datetime-local" id="fechaReserva" class="form-control" required></div>
+          <div class="col-md-6"><label for="fechaEntrega" class="form-label">Fecha y hora de entrega</label><input type="datetime-local" id="fechaEntrega" class="form-control" required></div>
+          <input type="hidden" id="idVehiculoSeleccionado">
+        </div>
+        <div class="modal-footer"><button type="submit" class="btn btn-success w-100">Confirmar Reserva</button></div>
+      </form>
     </div>
   </div>
+</div>
 
-  <!-- Chatbot -->
-  <div class="Carlitos">
-    <button id="chatbot-button" onclick="toggleChat()"><img src="/assets/img/CarLitos.gif" alt="Chatbot"></button>
-    <div id="chat-container">
-      <div id="messages"></div>
-      <div id="input-container">
-        <input type="text" id="user-input" placeholder="Escribe tu consulta aqui...">
-        <button onclick="sendMessage()">Enviar</button>
-      </div>
+<!-- Chatbot -->
+<div class="Carlitos">
+  <button id="chatbot-button" onclick="toggleChat()"><img src="/assets/img/CarLitos.gif" alt="Chatbot"></button>
+  <div id="chat-container">
+    <div id="messages"></div>
+    <div id="input-container">
+      <input type="text" id="user-input" placeholder="Escribe tu consulta aqui...">
+      <button onclick="sendMessage()">Enviar</button>
     </div>
   </div>
+</div>
 
-  <!-- Footer -->
-  <footer class="footer-section fix">
-    <div class="container">
-      <div class="footer-widgets-wrapper">
-        <div class="row justify-content-between">
-          <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
-            <div class="single-footer-widget shape-map">
-              <div class="widget-head"><h4>Contacto</h4></div>
-              <div class="footer-content">
-                <p>Ceutec, San Pedro Sula, Honduras</p>
-                <ul class="contact-info">
-                  <li><i class="fa-regular fa-envelope"></i> <a href="mailto:rentalsceutec@gmail.com">rentalsceutec@gmail.com</a></li>
-                  <li><i class="fa-solid fa-phone-volume"></i> <a href="tel:926668880000">+504 0000 - 0000</a></li>
-                </ul>
-              </div>
+<!-- Footer -->
+<footer class="footer-section fix">
+  <div class="container">
+    <div class="footer-widgets-wrapper">
+      <div class="row justify-content-between">
+        <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+          <div class="single-footer-widget shape-map">
+            <div class="widget-head"><h4>Contacto</h4></div>
+            <div class="footer-content">
+              <p>Ceutec, San Pedro Sula, Honduras</p>
+              <ul class="contact-info">
+                <li><i class="fa-regular fa-envelope"></i> <a href="mailto:rentalsceutec@gmail.com">rentalsceutec@gmail.com</a></li>
+                <li><i class="fa-solid fa-phone-volume"></i> <a href="tel:+50400000000">+504 0000 - 0000</a></li>
+              </ul>
             </div>
           </div>
         </div>
-        <div class="footer-bottom">
-          <div class="footer-wrapper">
-            <p class="wow fadeInUp" data-wow-delay=".4s">© Copyright 2024 by <a href="index.html">RentalsCeutec.com</a></p>
-          </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-wrapper">
+          <p class="wow fadeInUp" data-wow-delay=".4s">© Copyright 2024 by <a href="index.html">RentalsCeutec.com</a></p>
         </div>
       </div>
     </div>
-  </footer>
-
-  <!-- Scroll to Top -->
-  <div class="scroll-up">
-    <svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-      <path d="M50,1 a49,49 0 1,1 0,98 a49,49 0 1,1 0,-98" />
-    </svg>
   </div>
+</footer>
 
-  <!-- Scripts -->
-  <script src="assets/js/jquery-3.7.1.min.js"></script>
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/jquery.nice-select.min.js"></script>
-  <script src="assets/js/swiper-bundle.min.js"></script>
-  <script src="assets/js/jquery.meanmenu.min.js"></script>
-  <script src="assets/js/jquery.magnific-popup.min.js"></script>
-  <script src="assets/js/wow.min.js"></script>
-  <script src="assets/js/jquery.waypoints.js"></script>
-  <script src="assets/js/jquery.counterup.min.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="chatbot/chatbot.js"></script>
+<!-- Scroll to Top -->
+<div class="scroll-up">
+  <svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+    <path d="M50,1 a49,49 0 1,1 0,98 a49,49 0 1,1 0,-98" />
+  </svg>
+</div>
 
-  <!-- Firebase y lógica -->
-  <script type="module" src="assets/js/firebaseConfig.js"></script>
-  <script type="module" src="assets/js/authHeader.js"></script>
-  <script type="module" src="assets/js/reservaCliente.js"></script>
-  <script type="module" src="assets/js/car-grid.js"></script>
+<!-- Scripts -->
+<script src="assets/js/jquery-3.7.1.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/jquery.nice-select.min.js"></script>
+<script src="assets/js/swiper-bundle.min.js"></script>
+<script src="assets/js/jquery.meanmenu.min.js"></script>
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<script src="assets/js/wow.min.js"></script>
+<script src="assets/js/jquery.waypoints.js"></script>
+<script src="assets/js/jquery.counterup.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="chatbot/chatbot.js"></script>
+
+<!-- Firebase y lógica -->
+<script type="module" src="assets/js/firebaseConfig.js"></script>
+<script type="module" src="assets/js/authHeader.js"></script>
+<script type="module" src="assets/js/reservaCliente.js"></script>
+<script type="module" src="assets/js/car-grid.js"></script>
 
 </body>
 </html>

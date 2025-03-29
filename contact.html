@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="assets/css/Carlitos.css">
 </head>
 <body>
+
   <!-- Preloader -->
   <div id="preloader" class="preloader">
     <div class="animation-preloader">
@@ -38,90 +39,103 @@
     </div>
   </div>
 
-  <div class="scroll-up">
-    <svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-    </svg>
-  </div>
-
-  <!-- Header Top -->
-  <div class="header-top-section">
-    <div class="container-fluid">
-      <div class="header-top-wrapper">
-        <ul class="contact-list">
-          <li><i class="fas fa-envelope"></i> <a href="mailto:rentalsceutec@gmail.com" class="link">rentalsceutec@gmail.com</a></li>
-          <li><i class="fas fa-map-marker-alt"></i> San Pedro Sula, Honduras</li>
-        </ul>
-        <div class="header-top-right">
-          <ul class="top-list">
-            <li><a href="contact.html">Ayuda</a></li>
-            <li><a href="contact.html">Soporte</a></li>
-            <li><a href="contact.html">Contacto</a></li>
-          </ul>
+  <!-- Sidebar -->
+  <div class="fix-area">
+    <div class="offcanvas__info">
+      <div class="offcanvas__wrapper">
+        <div class="offcanvas__content">
+          <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+            <div class="offcanvas__logo">
+              <a href="index.html">
+                <img src="assets/img/about/RentalsCBR.png" alt="logo-img" style="width: 120px;">
+              </a>
+            </div>
+            <div class="offcanvas__close">
+              <button><i class="fas fa-times"></i></button>
+            </div>
+          </div>
+          <p class="text d-none d-xl-block">Bienvenido a RentalsCeutec</p>
+          <div class="mobile-menu fix mb-3"></div>
+          <div class="offcanvas__contact">
+            <h4>Información de Contacto</h4>
+            <ul>
+              <li class="d-flex align-items-center">
+                <div class="offcanvas__contact-icon"><i class="fal fa-map-marker-alt"></i></div>
+                <div class="offcanvas__contact-text"><a target="_blank" href="#">Ceutec, San Pedro Sula, Honduras</a></div>
+              </li>
+              <li class="d-flex align-items-center">
+                <div class="offcanvas__contact-icon"><i class="fal fa-envelope"></i></div>
+                <div class="offcanvas__contact-text"><a href="mailto:rentalsceutec@gmail.com">rentalsceutec@gmail.com</a></div>
+              </li>
+              <li class="d-flex align-items-center">
+                <div class="offcanvas__contact-icon"><i class="fal fa-clock"></i></div>
+                <div class="offcanvas__contact-text"><a>Lun - Sáb, 09am - 05pm</a></div>
+              </li>
+              <li class="d-flex align-items-center">
+                <div class="offcanvas__contact-icon"><i class="far fa-phone"></i></div>
+                <div class="offcanvas__contact-text"><a href="tel:+50400000000">+504 0000 - 0000</a></div>
+              </li>
+            </ul>
+            <div class="sidebar-button mt-4">
+              <a href="contact.html" class="theme-btn text-center">
+                <span>Contáctanos <i class="fa-solid fa-arrow-right-long"></i></span>
+              </a>
+            </div>
+            <div class="social-icon d-flex align-items-center mt-3">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <div class="offcanvas__overlay"></div>
 
   <!-- Header -->
   <header id="header-sticky" class="header-2">
     <div class="container-fluid">
-        <div class="mega-menu-wrapper">
-            <div class="header-main">
-                <div class="header-left">
-                    <div class="logo">
-                        <a href="index.html" class="header-logo">
-                            <img src="assets/img/about/RentalsCBR.png" alt="logo-img" style="width: 120px;">
-                        </a>
-                    </div>
-                </div>
-                <div class="mean__menu-wrapper">
-                    <div class="main-menu">
-                        <nav id="mobile-menu">
-                            <ul>
-                                <li class="has-dropdown active menu-thumb">
-                                    <a href="index.html">Inicio</a>
-                                </li>
-                                <li>
-                                    <a href="about.html">Sobre Nosotros</a>
-                                </li>
-                                <li>
-                                    <a href="car-grid.html">Autos</a>
-                                </li>
-                                <li>
-                                    <a href="contact.html">Contacto</a>
-                                </li>
-                                <li class="has-dropdown">
-                                    <a href="faq.html">Faq’s</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="header-right d-flex justify-content-end align-items-center">
-                    <div class="icon-items">
-                        <div class="icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div class="content">
-                            <p>Llame en todo momento</p>
-                            <h6><a href="tel:+50400000000">+504 0000 - 0000</a></h6>
-                        </div>
-                    </div>
-
-                    <!-- Este contenedor lo llena authHeader.js -->
-                    <div class="header-button"></div>
-
-                    <div class="header__hamburger d-xl-none my-auto">
-                        <div class="sidebar__toggle">
-                            <i class="fas fa-bars"></i>
-                        </div>
-                    </div>
-                </div>
+      <div class="mega-menu-wrapper">
+        <div class="header-main">
+          <div class="header-left">
+            <div class="logo">
+              <a href="index.html" class="header-logo">
+                <img src="assets/img/about/RentalsCBR.png" alt="logo-img" style="width: 120px;">
+              </a>
             </div>
+          </div>
+          <div class="mean__menu-wrapper">
+            <div class="main-menu">
+              <nav id="mobile-menu">
+                <ul>
+                  <li><a href="index.html">Inicio</a></li>
+                  <li><a href="about.html">Sobre Nosotros</a></li>
+                  <li><a href="car-grid.html">Autos</a></li>
+                  <li class="active"><a href="contact.html">Contacto</a></li>
+                  <li><a href="faq.html">Faq’s</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="header-right d-flex justify-content-end align-items-center">
+            <div class="icon-items">
+              <div class="icon"><i class="fas fa-phone-alt"></i></div>
+              <div class="content">
+                <p>Llame en todo momento</p>
+                <h6><a href="tel:+50400000000">+504 0000 - 0000</a></h6>
+              </div>
+            </div>
+            <div class="header-button"></div>
+            <div class="header__hamburger d-xl-none my-auto">
+              <div class="sidebar__toggle"><i class="fas fa-bars"></i></div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</header>
+  </header>
 
   <!-- Banner -->
   <div class="breadcrumb-wrapper bg-cover" style="background-image: url('assets/img/bg-header-banner.jpg');">
@@ -137,7 +151,7 @@
     </div>
   </div>
 
-  <!-- Formulario de contacto -->
+  <!-- Contact Form -->
   <section class="contact-section-1 fix section-padding pb-0">
     <div class="container">
       <div class="contact-wrapper-area">
@@ -176,15 +190,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Mapa -->
-  <div class="map-section">
-    <div class="map-items">
-      <div class="googpemap">
-        <iframe src="https://www.google.com/maps/embed?...(acortado para espacio)..." width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
 
   <!-- Chatbot -->
   <div class="Carlitos">
@@ -225,15 +230,12 @@
     </div>
   </footer>
 
-    <!-- Scroll to Top -->
-  <div class="scroll-up">
-    <svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-      <path d="M50,1 a49,49 0 1,1 0,98 a49,49 0 1,1 0,-98" />
-    </svg>
-  </div>
-
-
-
+  <!-- Scroll to Top -->
+<div class="scroll-up">
+  <svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+    <path d="M50,1 a49,49 0 1,1 0,98 a49,49 0 1,1 0,-98" />
+  </svg>
+</div>
   <!-- Scripts -->
   <script src="assets/js/jquery-3.7.1.min.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
@@ -247,7 +249,7 @@
   <script src="assets/js/main.js"></script>
   <script src="chatbot/chatbot.js"></script>
 
-  <!-- Firebase y Lógica -->
+  <!-- Firebase y lógica -->
   <script type="module" src="assets/js/firebaseConfig.js"></script>
   <script type="module" src="assets/js/login.js"></script>
   <script type="module" src="assets/js/authHeader.js"></script>

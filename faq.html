@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="assets/css/Carlitos.css" />
 </head>
 <body>
+
+  <!-- Preloader -->
   <div id="preloader" class="preloader">
     <div class="animation-preloader">
       <div class="spinner"></div>
@@ -36,6 +38,7 @@
       </div>
     </div>
   </div>
+
   <!-- Scroll to Top -->
   <div class="scroll-up">
     <svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
@@ -43,8 +46,7 @@
     </svg>
   </div>
 
-  <div class="offcanvas__overlay"></div>
-
+  <!-- Header Top -->
   <div class="header-top-section">
     <div class="container-fluid">
       <div class="header-top-wrapper">
@@ -62,67 +64,124 @@
       </div>
     </div>
   </div>
-
-  <header id="header-sticky" class="header-2">
-    <div class="container-fluid">
-        <div class="mega-menu-wrapper">
-            <div class="header-main">
-                <div class="header-left">
-                    <div class="logo">
-                        <a href="index.html" class="header-logo">
+   <!-- Side Bar -->
+  <div class="fix-area">
+    <div class="offcanvas__info">
+        <div class="offcanvas__wrapper">
+            <div class="offcanvas__content">
+                <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                    <div class="offcanvas__logo">
+                        <a href="index.html">
                             <img src="assets/img/about/RentalsCBR.png" alt="logo-img" style="width: 120px;">
                         </a>
                     </div>
-                </div>
-                <div class="mean__menu-wrapper">
-                    <div class="main-menu">
-                        <nav id="mobile-menu">
-                            <ul>
-                                <li class="has-dropdown active menu-thumb">
-                                    <a href="index.html">Inicio</a>
-                                </li>
-                                <li>
-                                    <a href="about.html">Sobre Nosotros</a>
-                                </li>
-                                <li>
-                                    <a href="car-grid.html">Autos</a>
-                                </li>
-                                <li>
-                                    <a href="contact.html">Contacto</a>
-                                </li>
-                                <li class="has-dropdown">
-                                    <a href="faq.html">Faq’s</a>
-                                </li>
-                            </ul>
-                        </nav>
+                    <div class="offcanvas__close">
+                        <button>
+                        <i class="fas fa-times"></i>
+                        </button>
                     </div>
                 </div>
-                <div class="header-right d-flex justify-content-end align-items-center">
-                    <div class="icon-items">
-                        <div class="icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div class="content">
-                            <p>Llame en todo momento</p>
-                            <h6><a href="tel:+50400000000">+504 0000 - 0000</a></h6>
-                        </div>
+                <p class="text d-none d-xl-block">
+                    Bienvenido a RentalsCeutec
+                <div class="mobile-menu fix mb-3"></div>
+                <div class="offcanvas__contact">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li class="d-flex align-items-center">
+                            <div class="offcanvas__contact-icon">
+                                <i class="fal fa-map-marker-alt"></i>
+                            </div>
+                            <div class="offcanvas__contact-text">
+                                <a target="_blank" href="#">Ceutec, San Pedro Sula, Honduras</a>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <div class="offcanvas__contact-icon mr-15">
+                                <i class="fal fa-envelope"></i>
+                            </div>
+                            <div class="offcanvas__contact-text">
+                                <a href="mailto:info@example.com"><span class="mailto:info@example.com">rentalsceutec@gmail.com</span></a>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <div class="offcanvas__contact-icon mr-15">
+                                <i class="fal fa-clock"></i>
+                            </div>
+                            <div class="offcanvas__contact-text">
+                                <a target="_blank" href="#">Lun - Sabado, 09am -05pm</a>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <div class="offcanvas__contact-icon mr-15">
+                                <i class="far fa-phone"></i>
+                            </div>
+                            <div class="offcanvas__contact-text">
+                                <a href="tel:+11002345909">+504 0000 0000</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="sidebar-button mt-4">
+                        <a href="contact.html" class="theme-btn text-center">
+                            <span>Obtén una cotización<i class="fa-solid fa-arrow-right-long"></i></span>
+                        </a>
                     </div>
-
-                    <!-- Este contenedor lo llena authHeader.js -->
-                    <div class="header-button"></div>
-
-                    <div class="header__hamburger d-xl-none my-auto">
-                        <div class="sidebar__toggle">
-                            <i class="fas fa-bars"></i>
-                        </div>
+                    <div class="social-icon d-flex align-items-center">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</header>
+</div>
 
 
+  <!-- Header -->
+  <header id="header-sticky" class="header-2">
+       <div class="container-fluid">
+      <div class="mega-menu-wrapper">
+        <div class="header-main">
+          <div class="header-left">
+            <div class="logo">
+              <a href="index.html" class="header-logo">
+                <img src="assets/img/about/RentalsCBR.png" alt="logo-img" style="width: 120px;">
+              </a>
+            </div>
+          </div>
+          <div class="mean__menu-wrapper">
+            <div class="main-menu">
+              <nav id="mobile-menu">
+                <ul>
+                  <li><a href="index.html">Inicio</a></li>
+                  <li><a href="about.html">Sobre Nosotros</a></li>
+                  <li><a href="car-grid.html">Autos</a></li>
+                  <li><a href="contact.html">Contacto</a></li>
+                  <li class="active"><a href="faq.html">Faq’s</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="header-right d-flex justify-content-end align-items-center">
+            <div class="icon-items">
+              <div class="icon"><i class="fas fa-phone-alt"></i></div>
+              <div class="content">
+                <p>Llame en todo momento</p>
+                <h6><a href="tel:+50400000000">+504 0000 - 0000</a></h6>
+              </div>
+            </div>
+            <div class="header-button"></div>
+            <div class="header__hamburger d-xl-none my-auto">
+              <div class="sidebar__toggle"><i class="fas fa-bars"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner -->
   <div class="breadcrumb-wrapper bg-cover" style="background-image: url('assets/img/bg-header-banner.jpg');">
     <div class="container">
       <div class="page-heading">
@@ -135,9 +194,13 @@
       </div>
     </div>
   </div>
+
+
+  <!-- Sección Preguntas Frecuentes -->
   <section class="faq-section-2 fix section-padding">
     <div class="container">
       <div class="row g-5">
+        <!-- Sidebar de búsqueda y contacto -->
         <div class="col-lg-4">
           <div class="faq-sidebar">
             <div class="search-widget">
@@ -156,6 +219,8 @@
             </div>
           </div>
         </div>
+
+        <!-- Acordeón de preguntas -->
         <div class="col-lg-8">
           <div class="faq-content">
             <div class="section-title">
@@ -163,8 +228,10 @@
               <span class="wow fadeInUp" data-wow-delay=".2s">Preguntas Frecuentes</span>
               <h2 class="wow fadeInUp" data-wow-delay=".4s">Preguntas & Respuestas</h2>
             </div>
+
             <div class="faq-accordion mt-4 mt-md-0">
               <div class="accordion" id="accordionFAQ">
+
                 <!-- Pregunta 1 -->
                 <div class="accordion-item mb-4 wow fadeInUp" data-wow-delay=".2s">
                   <h5 class="accordion-header">
@@ -249,88 +316,91 @@
                   </div>
                 </div>
 
-              </div> <!-- .accordion -->
+              </div> <!-- /accordion -->
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-<!-- Chatbot Carlitos -->
-<div class="Carlitos">
-  <button id="chatbot-button" onclick="toggleChat()">
-    <img src="assets/img/CarLitos.gif" alt="Chatbot">
-  </button>
-  <div id="chat-container">
-    <div id="messages"></div>
-    <div id="input-container">
-      <input type="text" id="user-input" placeholder="Escribe tu consulta aquí...">
-      <button onclick="sendMessage()">Enviar</button>
+
+  <!-- Chatbot Carlitos -->
+  <div class="Carlitos">
+    <button id="chatbot-button" onclick="toggleChat()">
+      <img src="assets/img/CarLitos.gif" alt="Chatbot">
+    </button>
+    <div id="chat-container">
+      <div id="messages"></div>
+      <div id="input-container">
+        <input type="text" id="user-input" placeholder="Escribe tu consulta aquí...">
+        <button onclick="sendMessage()">Enviar</button>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Footer -->
-<footer class="footer-section fix">
-  <div class="container">
-    <div class="footer-widgets-wrapper">
-      <div class="row justify-content-between">
-        <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
-          <div class="single-footer-widget shape-map">
-            <div class="widget-head">
-              <h4>Contacto</h4>
-            </div>
-            <div class="footer-content">
-              <p>Ceutec, San Pedro Sula, Honduras</p>
-              <ul class="contact-info">
-                <li>
-                  <i class="fa-regular fa-envelope"></i>
-                  <a href="mailto:rentalsceutec@gmail.com">rentalsceutec@gmail.com</a>
-                </li>
-                <li>
-                  <i class="fa-solid fa-phone-volume"></i>
-                  <a href="tel:+50400000000">+504 0000 - 0000</a>
-                </li>
-              </ul>
+
+
+  <!-- Footer -->
+  <footer class="footer-section fix">
+    <div class="container">
+      <div class="footer-widgets-wrapper">
+        <div class="row justify-content-between">
+          <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+            <div class="single-footer-widget shape-map">
+              <div class="widget-head">
+                <h4>Contacto</h4>
+              </div>
+              <div class="footer-content">
+                <p>Ceutec, San Pedro Sula, Honduras</p>
+                <ul class="contact-info">
+                  <li>
+                    <i class="fa-regular fa-envelope"></i>
+                    <a href="mailto:rentalsceutec@gmail.com">rentalsceutec@gmail.com</a>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-phone-volume"></i>
+                    <a href="tel:+50400000000">+504 0000 - 0000</a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="footer-wrapper">
-          <p class="wow fadeInUp" data-wow-delay=".4s">
-            © Copyright 2024 by <a href="index.html">RentalsCeutec.com</a>
-          </p>
+
+        <!-- Footer inferior -->
+        <div class="footer-bottom">
+          <div class="footer-wrapper">
+            <p class="wow fadeInUp" data-wow-delay=".4s">
+              © Copyright 2024 by <a href="index.html">RentalsCeutec.com</a>
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<!-- Scroll to Top -->
-<div class="scroll-up">
-  <svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-    <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-  </svg>
-</div>
+  
+  <!-- Scripts -->
+  <script src="assets/js/jquery-3.7.1.min.js"></script>
+  <script src="assets/js/viewport.jquery.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/jquery.nice-select.min.js"></script>
+  <script src="assets/js/jquery.meanmenu.min.js"></script>
+  <script src="assets/js/jquery.magnific-popup.min.js"></script>
+  <script src="assets/js/wow.min.js"></script>
+  <script src="assets/js/jquery.waypoints.js"></script>
+  <script src="assets/js/jquery.counterup.min.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/swiper-bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
 
-<!-- Scripts -->
-<script src="assets/js/jquery-3.7.1.min.js"></script>
-<script src="assets/js/viewport.jquery.js"></script>
-<script src="assets/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/jquery.nice-select.min.js"></script>
-<script src="assets/js/jquery.meanmenu.min.js"></script>
-<script src="assets/js/jquery.magnific-popup.min.js"></script>
-<script src="assets/js/wow.min.js"></script>
-<script src="assets/js/jquery.waypoints.js"></script>
-<script src="assets/js/jquery.counterup.min.js"></script>
-<script src="assets/js/animation.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="chatbot/chatbot.js"></script>
+  
+  <!-- Chatbot -->
+  <script src="chatbot/chatbot.js"></script>
 
-<!-- Firebase y Autenticación -->
-<script type="module" src="assets/js/firebaseConfig.js"></script>
-<script type="module" src="assets/js/login.js"></script>
-<script type="module" src="assets/js/authHeader.js"></script>
+  <!-- Firebase -->
+  <script type="module" src="assets/js/firebaseConfig.js"></script>
+  <script type="module" src="assets/js/login.js"></script>
+  <script type="module" src="assets/js/authHeader.js"></script>
 </body>
 </html>
