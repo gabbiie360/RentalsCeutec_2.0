@@ -10,7 +10,7 @@ const app = express();
 const PORT = 3000;
 
 const API_URL = 'https://openrouter.ai/api/v1/chat/completions';
-const API_KEY = 'Bearer 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';
+const API_KEY = 'Bearer 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';
 
 const infoData = fs.readFileSync(path.join(__dirname, 'info.json'), 'utf-8');
 
